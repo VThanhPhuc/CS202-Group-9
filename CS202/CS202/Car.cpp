@@ -111,8 +111,8 @@ void CarLane::sfml(sf::RenderWindow& window) {
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works!");
-    CarLane L(4, 5, 20, 1);
-    CarLane T(8, 3, 20, -1);
+    CarLane L(4, 5, 100, 1);
+    CarLane T(8, 3, 100, -1);
     while (window.isOpen())
     {
         sf::Event event;

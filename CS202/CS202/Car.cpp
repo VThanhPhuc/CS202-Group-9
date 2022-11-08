@@ -108,28 +108,28 @@ void CarLane::sfml(sf::RenderWindow& window) {
     }
 }
 
-int main()
-{
-    sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works!");
-    CarLane L(4, 5, 100, 1);
-    CarLane T(8, 3, 100, -1);
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-
-        window.clear();
-        L.sfml(window);
-        T.sfml(window);
-        
-        window.display();
-        L.moveL();
-        T.moveL();
-    }
-
-    return 0;
-}
+//int main()
+//{
+//    sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works!");
+//    CarLane L(4, 5, 100, 1);
+//    CarLane T(8, 3, 100, -1);
+//    while (window.isOpen())
+//    {
+//        sf::Event event;
+//        while (window.pollEvent(event))
+//        {
+//            if (event.type == sf::Event::Closed)
+//                window.close();
+//        }
+//
+//        window.clear();
+//        L.sfml(window);
+//        T.sfml(window);
+//        
+//        window.display();
+//        L.moveL();
+//        T.moveL();
+//    }
+//
+//    return 0;
+//}

@@ -1,4 +1,5 @@
 #pragma once
+
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <Windows.h>
@@ -42,7 +43,7 @@ private:
 public:
 	virtual void move();
 	virtual void draw(sf::RenderWindow& window);
-	virtual void tell(sf::SoundBuffer& Buffer, sf::Sound& S);
+	virtual void tell(sf::SoundBuffer& buffer, sf::Sound& sound)=0;
 	
 	CANIMAL();
 	CANIMAL(int x, int y, int sp);
@@ -56,7 +57,7 @@ private:
 public:
 	void draw(sf::RenderWindow& window);
 	void move();
-	void tell(sf::SoundBuffer& Buffer, sf::Sound& S);
+	void tell(sf::SoundBuffer& buffer, sf::Sound& sound);
 };
 
 class CDINO :public CANIMAL {
@@ -64,6 +65,6 @@ private:
 public:
 	void draw(sf::RenderWindow& window);
 	void move();
-	void tell(sf::SoundBuffer& Buffer, sf::Sound& S);
+	void tell(sf::SoundBuffer& buffer, sf::Sound& sound);
 	
 };

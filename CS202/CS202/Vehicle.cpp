@@ -1,8 +1,12 @@
-#include <SFML/Graphics.hpp>
+﻿#include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <iostream>
 #include <Windows.h>
 #include "Vehicle.h"
+#include <conio.h>
+#include <mmsystem.h>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
@@ -138,63 +142,42 @@ void CDINO::draw(sf::RenderWindow& window) {
 void CDINO::move() {
 	CANIMAL::move();
 }
-void CANIMAL::tell(sf::SoundBuffer& Buffer, sf::Sound& S){}
-void CDINO::tell(sf::SoundBuffer& Buffer, sf::Sound& S){
-
+void CANIMAL::tell(sf::SoundBuffer& buffer, sf::Sound& sound){}
+void CDINO::tell(sf::SoundBuffer& buffer, sf::Sound& sound) {
+	if (!buffer.loadFromFile("dino.wav"))
+		return;
+	sound.setBuffer(buffer);
 }
-void CBIRD::tell(sf::SoundBuffer& Buffer, sf::Sound& S){
-	Buffer.loadFromFile("birdsound.wav");
-	S.setBuffer(Buffer);
-	
+void CBIRD::tell(sf::SoundBuffer& buffer, sf::Sound& sound){
+	if (!buffer.loadFromFile("bird.wav"))
+		return ;
+	sound.setBuffer(buffer);
+
 }
 CCar::CCar(int x, int y, int sp) :CVEHICLE(x, y, sp) {}
 CTruck::CTruck(int x, int y, int sp) :CVEHICLE(x, y, sp) {}
 
 
-int main() {
+// note:
+/*
+* Vì một số lý do nhỏ nhỏ của sfml, muốn chạy âm thanh của động vật thì khai báo Soundbuffer với sound trước
+* rồi gọi hàm tell để load vào, khi nào cần kêu thì gọi cái play của sound , kiểu như thế này: 
+* int main() {
 	CBIRD b;
-	sf::SoundBuffer Buffer;
-
-	sf::Sound s;
-	b.tell(Buffer, s);
+	CDINO d;
+	sf::SoundBuffer buffer;
+	sf::Sound sound;
+	d.tell(buffer,sound);
+	sound.play();
 	while (true) {
-		s.play();
-		Sleep(2000);
+
 	}
-
+	return 0;
 }
+sorry nha :((
+*/
 
 
 
 
-//int main() {
-//	//sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works!");
-//	sf::SoundBuffer buffer;
-//	buffer.loadFromFile("birdsound.wav");
-//
-//	sf::Sound sound;
-//	sound.setBuffer(buffer);
-//	sound.play();
-//	CTruck c(5,10,10);
-//	CBIRD b;
-//	sound.setLoop(TRUE);
-//	while (true) {
-//		sound.play();
-//	}
-//	/*while (window.isOpen())
-//		    {
-//		        sf::Event event;
-//		        while (window.pollEvent(event))
-//		        {
-//		            if (event.type == sf::Event::Closed)
-//		                window.close();
-//		        }
-//		
-//		        window.clear();
-//				c.draw(window);
-//		        window.display();
-//				b.tell();
-//				s.play();
-//		    }*/
-//
-//}
+

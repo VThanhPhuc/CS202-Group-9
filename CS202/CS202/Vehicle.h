@@ -55,6 +55,7 @@ public:
 class CBIRD :public CANIMAL {
 private:
 public:
+	CBIRD(int x, int y, int sp);
 	void draw(sf::RenderWindow& window);
 	void move();
 	void tell(sf::SoundBuffer& buffer, sf::Sound& sound);

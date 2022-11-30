@@ -159,24 +159,19 @@ CTruck::CTruck(int x, int y, int sp) :CVEHICLE(x, y, sp) {}
 
 
 // note:
-/*
-* Vì một số lý do nhỏ nhỏ của sfml, muốn chạy âm thanh của động vật thì khai báo Soundbuffer với sound trước
-* rồi gọi hàm tell để load vào, khi nào cần kêu thì gọi cái play của sound , kiểu như thế này: 
-* int main() {
+int main() {
 	CBIRD b;
 	CDINO d;
 	sf::SoundBuffer buffer;
 	sf::Sound sound;
 	d.tell(buffer,sound);
 	sound.play();
+	
 	while (true) {
 
 	}
 	return 0;
 }
-sorry nha :((
-*/
-
 
 
 

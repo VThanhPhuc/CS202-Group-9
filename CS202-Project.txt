@@ -1,3 +1,6 @@
 Vĩ-Trí: CGame
 Khoa:CPeople
 Phúc:CObstacle.
+T3-10h00
+T4-8h00
+Location: Thu Vien HCMUS

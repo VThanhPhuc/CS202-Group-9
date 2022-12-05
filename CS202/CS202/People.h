@@ -16,4 +16,7 @@ public:
 	bool isImpact(CANIMAL*&);
 	bool isFinish();
 	bool isDead();
+	int getmX();
+	int getmY();
+	void draw(sf::RenderWindow& window);
 };

@@ -64,3 +64,26 @@ bool CPEOPLE::isDead()
 {
 	return !mState;
 }
+
+int CPEOPLE::getmX()
+{
+	return mX;
+}
+
+int CPEOPLE::getmY()
+{
+	return mY;
+}
+
+void CPEOPLE::draw(sf::RenderWindow& window)
+{
+	sf::Texture pic;
+	if (!pic.loadFromFile("person.png"))
+	{
+		return;
+	}
+	sf::Sprite sprite(pic);
+	sprite.setPosition(getmX(), getmY());
+	sprite.setScale(0.1, 0.1);
+	window.draw(sprite);
+}

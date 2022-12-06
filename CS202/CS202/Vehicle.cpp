@@ -6,7 +6,7 @@
 #include <mmsystem.h>
 #include <cstdlib>
 #include <ctime>
-
+#include "Light.h"
 using namespace std;
 
 
@@ -40,15 +40,16 @@ CVEHICLE::CVEHICLE(int x, int y, int sp) {
 	mY = y;
 	speed = sp;
 }
-void CVEHICLE::move() {
+void CVEHICLE::move(CLight l) {
+	if(l.geton()==true)
 	mX = getnextmod1000(mX,speed);
 	//out.move(speed, 0);
 }
 
 
  
-void CCar::move() {
-	CVEHICLE::move();
+void CCar::move(CLight l) {
+	CVEHICLE::move(l);
 }
 void CCar::draw(sf::RenderWindow& window) {
 	sf::Texture pic;
@@ -64,8 +65,8 @@ void CCar::draw(sf::RenderWindow& window) {
 }
 
 
-void CTruck::move() {
-	CVEHICLE::move();
+void CTruck::move(CLight l) {
+	CVEHICLE::move(l);
 }
 void CTruck::draw(sf::RenderWindow& window) {
 	sf::Texture pic;

@@ -2,10 +2,9 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
-#include <SFML/Graphics.hpp>
 #include <iostream>
 #include <Windows.h>
-
+#include "Light.h"
 using namespace std;
 int getnextmod1000(int x, int sp);
 class CVEHICLE {
@@ -15,7 +14,7 @@ private:
 protected:
 	sf::Sprite out;
 public:
-	virtual void move();
+	virtual void move(CLight l);
 	virtual void draw(sf::RenderWindow& window);
 	CVEHICLE();
 	CVEHICLE(int x, int y, int sp);
@@ -30,7 +29,7 @@ private:
 public:
 	CCar(int x, int y, int sp);
 	void draw(sf::RenderWindow& window);
-	void move();
+	void move(CLight l);
 	sf::Sprite getObj();
 };
 
@@ -39,7 +38,7 @@ private:
 public:
 	CTruck(int x, int y, int sp);
 	void draw(sf::RenderWindow& window);
-	void move();
+	void move(CLight l);
 };
 
 class CANIMAL {

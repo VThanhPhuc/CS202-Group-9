@@ -13,6 +13,7 @@ protected:
 	sf::Sprite sprite;
 public:
 	CPEOPLE();
+	CPEOPLE(int x, int y);
 	void Up(int);
 	void Left(int);
 	void Right(int);

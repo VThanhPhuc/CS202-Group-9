@@ -6,6 +6,12 @@ CPEOPLE::CPEOPLE()
 	mY = 0;
 	mState = 1; //1 is alive, 0 is dead
 }
+CPEOPLE::CPEOPLE(int x, int y)
+{
+	mX = x;
+	mY = y;
+	mState = 1;
+}
 
 void CPEOPLE::Up(int step)
 {

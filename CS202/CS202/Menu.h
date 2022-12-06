@@ -31,4 +31,11 @@ public:
 		this->button_exit.setSize(sf::Vector2f(200, 200));
 		this->button_exit.setPosition(400, 600);
 	}
+	void draw(sf::RenderWindow& window)
+	{
+		InnitMenuBackground();
+		window.draw(this->MenuBackground);
+		window.draw(this->button_start);
+		window.draw(this->button_exit);
+	}
 };

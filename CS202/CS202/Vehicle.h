@@ -5,7 +5,7 @@
 #include <Windows.h>
 
 using namespace std;
-
+int getnextmod1000(int x, int sp);
 class CVEHICLE {
 private:
 	int mX, mY;

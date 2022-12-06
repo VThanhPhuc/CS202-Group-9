@@ -13,12 +13,12 @@ using namespace std;
 
 
 void CVEHICLE::draw(sf::RenderWindow& window){}
-int getnextmod150(int x, int sp) {
+int getnextmod1000(int x, int sp) {
 	x = x + sp;
 	if (x < 0)
-		return x + 150;
-	else if (x > 150)
-		return x + 150;
+		return x + 1000;
+	else if (x > 1000)
+		return x + 1000;
 	else
 		return x;
 }
@@ -42,7 +42,7 @@ CVEHICLE::CVEHICLE(int x, int y, int sp) {
 	speed = sp;
 }
 void CVEHICLE::move() {
-	mX = getnextmod150(mX,speed);
+	mX = getnextmod1000(mX,speed);
 }
 
 
@@ -60,7 +60,7 @@ void CCar::draw(sf::RenderWindow& window) {
 	}
 	sf::Sprite out;
 	out.setTexture(pic);
-	out.setPosition(getmX()*10, getmY()*40);
+	out.setPosition(getmX(), getmY()*40);
 	window.draw(out);
 }
 
@@ -102,7 +102,7 @@ int CANIMAL::getspeed() {
 	return speed;
 }
 void CANIMAL::move() {
-	mX = getnextmod150(mX, speed);
+	mX = getnextmod1000(mX, speed);
 }
 void CANIMAL::draw(sf::RenderWindow& window) {}
 

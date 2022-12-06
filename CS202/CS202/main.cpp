@@ -9,6 +9,7 @@ int main()
 	CCar b(100, 10, 10);
 	CCar c(900, 10, -5);
 	CLight l;
+	Menu c1;
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -16,8 +17,22 @@ int main()
 		{
 			if (event.type == sf::Event::Closed)
 				window.close();
+			if (event.type == sf::Event::MouseButtonPressed)
+			{
+
+				if (c1.IsMouseOver(window) == 1)
+				{
+					cout << "Start" << endl;
+				}
+				else if (c1.IsMouseOver(window) == 2)
+				{
+					cout << "Exit" << endl;
+				}
+				else cout << "No" << endl;
+			}
 		}
 		window.clear();
+		c1.draw(window);
 		b.draw(window);
 		c.draw(window);
 		window.display();

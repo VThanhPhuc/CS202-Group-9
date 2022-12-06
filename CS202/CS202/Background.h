@@ -14,13 +14,14 @@ private:
 	sf::RectangleShape rectBottomRoad;
 	sf::RectangleShape rectCentralRes;
 	sf::RectangleShape rectBottomPavement;
+	sf::RectangleShape rectRiver;
 
 	// The textures that will be applied to the background elements
 	sf::Texture m_texRoad;
 	sf::Texture m_texTopPavement;
 	sf::Texture m_texCentralRes;
 	sf::Texture m_texBottomPavement;
-
+	sf::Texture m_texRiver;
 
 public:
 	Background();

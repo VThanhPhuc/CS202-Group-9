@@ -1,6 +1,9 @@
 #pragma once
 #include"Vehicle.h"
 
+#define screenheight 1920
+#define screenwidth 1980
+
 class CPEOPLE
 {
 private:

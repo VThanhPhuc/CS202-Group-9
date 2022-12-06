@@ -1,7 +1,5 @@
 #include "People.h"
 
-const int step = 100;
-
 CPEOPLE::CPEOPLE()
 {
 	mX = 0;
@@ -9,30 +7,52 @@ CPEOPLE::CPEOPLE()
 	mState = 1; //1 is alive, 0 is dead
 }
 
-void CPEOPLE::Up(int)
+void CPEOPLE::Up(int step)
 {
-	if (mY - step < 0)
-		mY = 0;
-	else
-		mY -= step;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	{
+		sf::Vector2f pos = this->sprite.getPosition();
+		if (pos.y - step < 0)
+			this->sprite.setPosition(pos.x, 0);
+		else
+			this->sprite.move(0, -step);
+	}
 }
 
-void CPEOPLE::Left(int)
+void CPEOPLE::Left(int step)
 {
-	mX += step;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	{
+		sf::Vector2f pos = this->sprite.getPosition();
+		if (pos.x - step < 0)
+			this->sprite.setPosition(0, pos.y);
+		else
+			this->sprite.move(-step, 0);
+	}
 }
 
-void CPEOPLE::Right(int)
+void CPEOPLE::Right(int step)
 {
-	if (mX - step < 0)
-		mX = 0;
-	else
-		mX -= step;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+	{
+		sf::Vector2f pos = this->sprite.getPosition();
+		if (pos.x + step > screenwidth)
+			this->sprite.setPosition(screenwidth, pos.y);
+		else
+			this->sprite.move(step, 0);
+	}
 }
 
-void CPEOPLE::Down(int)
+void CPEOPLE::Down(int step)
 {
-	mY += step;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+	{
+		sf::Vector2f pos = this->sprite.getPosition();
+		if (pos.y + step > screenheight)
+			this->sprite.setPosition(pos.x, screenheight);
+		else
+			this->sprite.move(0, step);
+	}
 }
 
 bool CPEOPLE::isImpact(CVEHICLE*& v)

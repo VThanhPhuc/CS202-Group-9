@@ -5,7 +5,7 @@
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works!");
-	CCar b(10, 10, 2);
+	CCar b(100, 10, 2);
 	
 	while (window.isOpen())
 	{

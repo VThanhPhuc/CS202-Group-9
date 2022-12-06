@@ -24,3 +24,9 @@ void CGAME::initGame()
 
 	game_state = PLAYING;
 }
+
+// accessors
+const bool CGAME::running() const
+{
+	return this->window->isOpen();
+}

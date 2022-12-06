@@ -36,6 +36,12 @@ private:
 	void initGame();
 
 public:
+	// Constructor | destructor
+	// CGAME();
+	// ~CGAME();
+
+	//Accessors
+	const bool running() const;
 	
 }
 

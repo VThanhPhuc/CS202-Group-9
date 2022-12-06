@@ -38,4 +38,19 @@ public:
 		window.draw(this->button_start);
 		window.draw(this->button_exit);
 	}
+	int IsMouseOver(sf::RenderWindow& window)
+	{
+		float mouseX = sf::Mouse::getPosition(window).x;
+		float mouseY = sf::Mouse::getPosition(window).y;
+
+		if (mouseX >= button_start.getPosition().x && mouseX <= (button_start.getPosition().x + 200) && mouseY <= (button_start.getPosition().y + 200) && mouseY >= button_start.getPosition().y)
+		{
+			return 1;
+		}
+		if (mouseX >= button_exit.getPosition().x && mouseX <= (button_exit.getPosition().x + 200) && mouseY <= (button_exit.getPosition().y + 200) && mouseY >= button_exit.getPosition().y)
+		{
+			return 2;
+		}
+		return 0;
+	}
 };

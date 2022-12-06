@@ -1,4 +1,4 @@
-﻿#include <SFML/Graphics.hpp>
+﻿
 #include <SFML/Audio.hpp>
 #include <iostream>
 #include <Windows.h>
@@ -18,7 +18,7 @@ int getnextmod1000(int x, int sp) {
 	if (x < 0)
 		return x + 1000;
 	else if (x > 1000)
-		return x + 1000;
+		return x - 1000;
 	else
 		return x;
 }
@@ -58,7 +58,6 @@ void CCar::draw(sf::RenderWindow& window) {
 	else {
 		pic.loadFromFile("car.png");
 	}
-	sf::Sprite out;
 	out.setTexture(pic);
 	out.setPosition(getmX(), getmY()*40);
 	window.draw(out);
@@ -157,3 +156,10 @@ void CBIRD::tell(sf::SoundBuffer& buffer, sf::Sound& sound){
 CCar::CCar(int x, int y, int sp) :CVEHICLE(x, y, sp) {}
 CTruck::CTruck(int x, int y, int sp) :CVEHICLE(x, y, sp) {}
 CBIRD::CBIRD(int x, int y, int sp) :CANIMAL(x, y, sp) {}
+sf::Sprite CCar::getObj() {
+	return out;
+}
+void test(CCar b,CCar c) {
+	sf::Sprite c1 = b.getObj();
+	sf::Sprite c2 = c.getObj();
+}

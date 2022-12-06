@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
+#include <SFML/Graphics.hpp>
 #include <iostream>
 #include <Windows.h>
 
@@ -23,10 +24,12 @@ public:
 
 class CCar :public CVEHICLE {
 private:
+	sf::Sprite out;
 public:
 	CCar(int x, int y, int sp);
 	void draw(sf::RenderWindow& window);
 	void move();
+	sf::Sprite getObj();
 };
 
 class CTruck :public CVEHICLE {

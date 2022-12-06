@@ -1,6 +1,7 @@
 ﻿  Background.cpp
   main.cpp
   People.cpp
+<<<<<<< Updated upstream
 D:\my documents\APCS\year2\Programming_Systems\project\CS202\CS202\People.cpp(86,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 D:\my documents\APCS\year2\Programming_Systems\project\CS202\CS202\People.cpp(86,26): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 D:\my documents\APCS\year2\Programming_Systems\project\CS202\CS202\People.cpp(87,26): warning C4305: 'argument': truncation from 'double' to 'float'
@@ -15,11 +16,31 @@ D:\my documents\APCS\year2\Programming_Systems\project\CS202\CS202\Vehicle.cpp(1
 D:\my documents\APCS\year2\Programming_Systems\project\CS202\CS202\Vehicle.cpp(138,26): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Generating Code...
 Background.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: void __cdecl sf::Transformable::setPosition(class sf::Vector2<float> const &)" (__imp_?setPosition@Transformable@sf@@QEAAXAEBV?$Vector2@M@2@@Z) referenced in function "public: void __cdecl Background::draw(class sf::RenderWindow &)" (?draw@Background@@QEAAXAEAVRenderWindow@sf@@@Z)
+=======
+C:\Users\DELL\Desktop\Github\Seminar\CS202-Group-9\CS202\CS202\People.cpp(86,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\DELL\Desktop\Github\Seminar\CS202-Group-9\CS202\CS202\People.cpp(86,26): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\DELL\Desktop\Github\Seminar\CS202-Group-9\CS202\CS202\People.cpp(87,26): warning C4305: 'argument': truncation from 'double' to 'float'
+  Vehicle.cpp
+C:\Users\DELL\Desktop\Github\Seminar\CS202-Group-9\CS202\CS202\Vehicle.cpp(63,34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\DELL\Desktop\Github\Seminar\CS202-Group-9\CS202\CS202\Vehicle.cpp(63,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\DELL\Desktop\Github\Seminar\CS202-Group-9\CS202\CS202\Vehicle.cpp(81,40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\DELL\Desktop\Github\Seminar\CS202-Group-9\CS202\CS202\Vehicle.cpp(81,26): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\DELL\Desktop\Github\Seminar\CS202-Group-9\CS202\CS202\Vehicle.cpp(120,40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\DELL\Desktop\Github\Seminar\CS202-Group-9\CS202\CS202\Vehicle.cpp(120,26): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\DELL\Desktop\Github\Seminar\CS202-Group-9\CS202\CS202\Vehicle.cpp(138,40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\DELL\Desktop\Github\Seminar\CS202-Group-9\CS202\CS202\Vehicle.cpp(138,26): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+Background.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: void __cdecl sf::Transformable::setPosition(class sf::Vector2<float> const &)" (__imp_?setPosition@Transformable@sf@@QEAAXAEBV?$Vector2@M@2@@Z) referenced in function "public: __cdecl Background::Background(void)" (??0Background@@QEAA@XZ)
+>>>>>>> Stashed changes
 Background.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: void __cdecl sf::Shape::setTexture(class sf::Texture const *,bool)" (__imp_?setTexture@Shape@sf@@QEAAXPEBVTexture@2@_N@Z) referenced in function "private: void __cdecl Background::loadTexture(void)" (?loadTexture@Background@@AEAAXXZ)
 Background.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: __cdecl sf::Texture::Texture(void)" (__imp_??0Texture@sf@@QEAA@XZ) referenced in function "public: __cdecl Background::Background(void)" (??0Background@@QEAA@XZ)
 People.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: __cdecl sf::Texture::Texture(void)" (__imp_??0Texture@sf@@QEAA@XZ)
 Vehicle.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: __cdecl sf::Texture::Texture(void)" (__imp_??0Texture@sf@@QEAA@XZ)
+<<<<<<< Updated upstream
 Background.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: __cdecl sf::Texture::~Texture(void)" (__imp_??1Texture@sf@@QEAA@XZ) referenced in function "int `public: __cdecl Background::Background(void)'::`1'::dtor$5" (?dtor$5@?0???0Background@@QEAA@XZ@4HA)
+=======
+Background.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: __cdecl sf::Texture::~Texture(void)" (__imp_??1Texture@sf@@QEAA@XZ) referenced in function "int `public: __cdecl Background::Background(void)'::`1'::dtor$4" (?dtor$4@?0???0Background@@QEAA@XZ@4HA)
+>>>>>>> Stashed changes
 People.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: __cdecl sf::Texture::~Texture(void)" (__imp_??1Texture@sf@@QEAA@XZ)
 Vehicle.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: __cdecl sf::Texture::~Texture(void)" (__imp_??1Texture@sf@@QEAA@XZ)
 Background.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: bool __cdecl sf::Texture::loadFromFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,class sf::Rect<int> const &)" (__imp_?loadFromFile@Texture@sf@@QEAA_NAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$Rect@H@2@@Z) referenced in function "private: void __cdecl Background::loadTexture(void)" (?loadTexture@Background@@AEAAXXZ)
@@ -55,9 +76,122 @@ Vehicle.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) p
 Vehicle.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: void __cdecl sf::Sprite::setTexture(class sf::Texture const &,bool)" (__imp_?setTexture@Sprite@sf@@QEAAXAEBVTexture@2@_N@Z) referenced in function "public: virtual void __cdecl CBIRD::draw(class sf::RenderWindow &)" (?draw@CBIRD@@UEAAXAEAVRenderWindow@sf@@@Z)
 Vehicle.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: void __cdecl sf::Sound::setBuffer(class sf::SoundBuffer const &)" (__imp_?setBuffer@Sound@sf@@QEAAXAEBVSoundBuffer@2@@Z) referenced in function "public: virtual void __cdecl CBIRD::tell(class sf::SoundBuffer &,class sf::Sound &)" (?tell@CBIRD@@UEAAXAEAVSoundBuffer@sf@@AEAVSound@3@@Z)
 Vehicle.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: bool __cdecl sf::SoundBuffer::loadFromFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (__imp_?loadFromFile@SoundBuffer@sf@@QEAA_NAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) referenced in function "public: virtual void __cdecl CBIRD::tell(class sf::SoundBuffer &,class sf::Sound &)" (?tell@CBIRD@@UEAAXAEAVSoundBuffer@sf@@AEAVSound@3@@Z)
+<<<<<<< Updated upstream
 D:\my documents\APCS\year2\Programming_Systems\project\CS202\SFML-2.5.1-windows-vc15-32-bit\SFML-2.5.1\lib\sfml-audio-d.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
 D:\my documents\APCS\year2\Programming_Systems\project\CS202\SFML-2.5.1-windows-vc15-32-bit\SFML-2.5.1\lib\sfml-network-d.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
 D:\my documents\APCS\year2\Programming_Systems\project\CS202\SFML-2.5.1-windows-vc15-32-bit\SFML-2.5.1\lib\sfml-graphics-d.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
 D:\my documents\APCS\year2\Programming_Systems\project\CS202\SFML-2.5.1-windows-vc15-32-bit\SFML-2.5.1\lib\sfml-window-d.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
 D:\my documents\APCS\year2\Programming_Systems\project\CS202\SFML-2.5.1-windows-vc15-32-bit\SFML-2.5.1\lib\sfml-system-d.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
 D:\my documents\APCS\year2\Programming_Systems\project\CS202\x64\Debug\CS202.exe : fatal error LNK1120: 29 unresolved externals
+=======
+C:\Users\DELL\Desktop\Github\Seminar\CS202-Group-9\CS202\SFML-2.5.1-windows-vc15-32-bit\SFML-2.5.1\lib\sfml-audio-d.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\DELL\Desktop\Github\Seminar\CS202-Group-9\CS202\SFML-2.5.1-windows-vc15-32-bit\SFML-2.5.1\lib\sfml-network-d.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\DELL\Desktop\Github\Seminar\CS202-Group-9\CS202\SFML-2.5.1-windows-vc15-32-bit\SFML-2.5.1\lib\sfml-graphics-d.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\DELL\Desktop\Github\Seminar\CS202-Group-9\CS202\SFML-2.5.1-windows-vc15-32-bit\SFML-2.5.1\lib\sfml-window-d.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\DELL\Desktop\Github\Seminar\CS202-Group-9\CS202\SFML-2.5.1-windows-vc15-32-bit\SFML-2.5.1\lib\sfml-system-d.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\DELL\Desktop\Github\Seminar\CS202-Group-9\CS202\x64\Debug\CS202.exe : fatal error LNK1120: 29 unresolved externals
+
+Project Performance Summary:
+     3492 ms  C:\Users\DELL\Desktop\Github\Seminar\CS202-Group-9\CS202\CS202\CS202.vcxproj   1 calls
+               3492 ms  Build                                      1 calls
+
+Target Performance Summary:
+        0 ms  _BuildGenerateSourcesAction                1 calls
+        0 ms  PrepareResourceNames                       1 calls
+        0 ms  AfterBuildGenerateSources                  1 calls
+        0 ms  AfterBuildGenerateSourcesEvent             1 calls
+        0 ms  ComputeLinkSwitches                        1 calls
+        0 ms  BuildGenerateSources                       1 calls
+        0 ms  BuildCompileTraverse                       1 calls
+        0 ms  BeforeClCompile                            1 calls
+        0 ms  ComputeCLInputPDBName                      1 calls
+        0 ms  FindReferenceAssembliesForReferences       1 calls
+        0 ms  GetReferencedVCProjectsInfo                1 calls
+        0 ms  ComputeReferenceCLInput                    1 calls
+        0 ms  WarnCompileDuplicatedFilename              1 calls
+        0 ms  SelectClCompile                            1 calls
+        0 ms  AfterClCompile                             1 calls
+        0 ms  _ClCompile                                 1 calls
+        0 ms  BeforeResourceCompile                      1 calls
+        0 ms  MakeDirsForResourceCompile                 1 calls
+        0 ms  ComputeManifestInputsTargets               1 calls
+        0 ms  ComputeLinkInputsFromProject               1 calls
+        0 ms  ComputeCLOutputs                           1 calls
+        0 ms  ComputeManifestGeneratedLinkerInputs       1 calls
+        0 ms  ComputeRCGeneratedLinkInputs               1 calls
+        0 ms  ComputeRCOutputs                           1 calls
+        0 ms  AfterMidl                                  1 calls
+        0 ms  BeforeLink                                 1 calls
+        0 ms  BuildLinkTraverse                          1 calls
+        0 ms  BuildCompile                               1 calls
+        0 ms  _BuildCompileAction                        1 calls
+        0 ms  AfterBuildCompileEvent                     1 calls
+        0 ms  _ResourceCompile                           1 calls
+        0 ms  AfterResourceCompile                       1 calls
+        0 ms  ComputeLegacyManifestEmbedding             1 calls
+        0 ms  ComputeMIDLGeneratedCompileInputs          1 calls
+        0 ms  _Midl                                      1 calls
+        0 ms  _Xsd                                       1 calls
+        0 ms  PreLinkEvent                               1 calls
+        0 ms  _PrepareForReferenceResolution             1 calls
+        0 ms  BeforeResolveReferences                    1 calls
+        0 ms  _SplitProjectReferencesByFileExistence     1 calls
+        0 ms  DoLinkOutputFilesMatch                     1 calls
+        0 ms  PrepareProjectReferences                   1 calls
+        0 ms  ResolveProjectReferences                   1 calls
+        0 ms  GetFrameworkPaths                          1 calls
+        0 ms  GetReferenceAssemblyPaths                  1 calls
+        0 ms  AddExternalIncludDirectoriesToPaths        1 calls
+        0 ms  GetResolvedWinMD                           1 calls
+        0 ms  _CheckWindowsSDKInstalled                  1 calls
+        0 ms  MakeDirsForMidl                            1 calls
+        0 ms  ResolveSDKReferences                       1 calls
+        0 ms  SetCABuildNativeEnvironmentVariables       1 calls
+        0 ms  PreBuildEvent                              1 calls
+        0 ms  CopyFileToFolders                          1 calls
+        0 ms  ComputeCustomBuildOutput                   1 calls
+        0 ms  SelectCustomBuild                          1 calls
+        0 ms  _SelectedFiles                             1 calls
+        0 ms  BeforeBuildGenerateSources                 1 calls
+        0 ms  BuildGenerateSourcesTraverse               1 calls
+        0 ms  CreateCustomManifestResourceNames          1 calls
+        0 ms  AfterResolveReferences                     1 calls
+        0 ms  ResolveAssemblyReferences                  1 calls
+        0 ms  ExpandSDKReferences                        1 calls
+        0 ms  ResolveReferences                          1 calls
+        1 ms  MakeDirsForLink                            1 calls
+        1 ms  _AddOutputPathToGlobalPropertiesToRemove   1 calls
+        1 ms  AssignProjectConfiguration                 1 calls
+        1 ms  SetBuildDefaultEnvironmentVariables        1 calls
+        1 ms  ComputeCLGeneratedLinkInputs               1 calls
+        1 ms  MakeDirsForCl                              1 calls
+        1 ms  FixupCLCompileOptions                      1 calls
+        1 ms  AssignTargetPaths                          1 calls
+        2 ms  InitializeBuildStatus                      1 calls
+        4 ms  SetTelemetryEnvironmentVariables           1 calls
+        5 ms  PrepareForBuild                            1 calls
+        6 ms  CustomBuild                                1 calls
+        6 ms  _CheckForInvalidConfigurationAndPlatform   1 calls
+        9 ms  _PrepareForBuild                           1 calls
+       18 ms  SplitResourcesByCulture                    1 calls
+       27 ms  _GetProjectReferenceTargetFrameworkProperties   1 calls
+      171 ms  Link                                       1 calls
+     3231 ms  ClCompile                                  1 calls
+
+Task Performance Summary:
+        0 ms  Message                                    2 calls
+        0 ms  AssignProjectConfiguration                 1 calls
+        0 ms  ReadLinesFromFile                          1 calls
+        0 ms  Touch                                      1 calls
+        0 ms  Delete                                     1 calls
+        0 ms  AssignTargetPath                           4 calls
+        0 ms  AssignCulture                              1 calls
+        1 ms  MSBuild                                    1 calls
+        1 ms  WriteLinesToFile                           1 calls
+        1 ms  CheckVCToolsetVersion                      1 calls
+        2 ms  MakeDir                                    7 calls
+        2 ms  SetEnv                                     9 calls
+        6 ms  GetOutOfDateItems                          3 calls
+      169 ms  Link                                       1 calls
+     3229 ms  CL                                         1 calls
+>>>>>>> Stashed changes

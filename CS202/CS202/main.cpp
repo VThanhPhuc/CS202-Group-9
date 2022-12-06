@@ -5,8 +5,8 @@
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works!");
-	CCar b(100, 10, 2);
-	
+	CCar b(100, 10, 15);
+	CCar c(900, 10, -10);
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -17,7 +17,11 @@ int main()
 		}
 		window.clear();
 		b.draw(window);
+		c.draw(window);
 		window.display();
+		b.move();
+		c.move();
+		Sleep(100);
 	}
 
 	return 0;

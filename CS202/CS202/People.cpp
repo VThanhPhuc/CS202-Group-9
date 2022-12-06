@@ -37,7 +37,9 @@ void CPEOPLE::Down(int)
 
 bool CPEOPLE::isImpact(CVEHICLE*& v)
 {
-	if (mX == v->getmX() && mY == v->getmY())
+	sf::FloatRect b1 = v->getObj().getGlobalBounds();
+	sf::FloatRect b2 = this->getObj().getGlobalBounds();
+	if (b1.intersects(b2) == true)
 	{
 		mState = 0;
 		return true;
@@ -47,7 +49,9 @@ bool CPEOPLE::isImpact(CVEHICLE*& v)
 
 bool CPEOPLE::isImpact(CANIMAL*& a)
 {
-	if (mX == a->getmX() && mY == a->getmY())
+	sf::FloatRect b1 = a->getObj().getGlobalBounds();
+	sf::FloatRect b2 = this->getObj().getGlobalBounds();
+	if (b1.intersects(b2) == true)
 	{
 		mState = 0;
 		return true;
@@ -86,4 +90,9 @@ void CPEOPLE::draw(sf::RenderWindow& window)
 	sprite.setPosition(getmX(), getmY());
 	sprite.setScale(0.1, 0.1);
 	window.draw(sprite);
+}
+
+sf::Sprite CPEOPLE::getObj() 
+{
+	return sprite;
 }

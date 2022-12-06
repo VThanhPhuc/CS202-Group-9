@@ -6,6 +6,8 @@ class CPEOPLE
 private:
 	int mX, mY;
 	bool mState;
+protected:
+	sf::Sprite sprite;
 public:
 	CPEOPLE();
 	void Up(int);
@@ -19,4 +21,5 @@ public:
 	int getmX();
 	int getmY();
 	void draw(sf::RenderWindow& window);
+	sf::Sprite getObj();
 };

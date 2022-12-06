@@ -104,6 +104,10 @@ void CANIMAL::move() {
 }
 void CANIMAL::draw(sf::RenderWindow& window) {}
 
+sf::Sprite CANIMAL::getObj()
+{
+	return out;
+}
 
 void CBIRD::draw(sf::RenderWindow& window) {
 	sf::Texture pic;

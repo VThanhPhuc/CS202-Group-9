@@ -22,6 +22,7 @@ public:
 	int getmX();
 	int getmY();
 	int getspeed();
+	virtual sf::Sprite getObj() = 0;
 };
 
 class CCar :public CVEHICLE {
@@ -45,6 +46,8 @@ class CANIMAL {
 private:
 	int mX, mY;
 	int speed;
+protected:
+	sf::Sprite out;
 public:
 	virtual void move();
 	virtual void draw(sf::RenderWindow& window);
@@ -55,6 +58,7 @@ public:
 	int getmX();
 	int getmY();
 	int getspeed();
+	sf::Sprite getObj();
 };
 
 class CBIRD :public CANIMAL {

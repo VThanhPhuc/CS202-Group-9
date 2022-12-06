@@ -12,6 +12,8 @@ class CVEHICLE {
 private:
 	int mX, mY;
 	int speed;
+protected:
+	sf::Sprite out;
 public:
 	virtual void move();
 	virtual void draw(sf::RenderWindow& window);
@@ -24,7 +26,6 @@ public:
 
 class CCar :public CVEHICLE {
 private:
-	sf::Sprite out;
 public:
 	CCar(int x, int y, int sp);
 	void draw(sf::RenderWindow& window);
@@ -73,3 +74,4 @@ public:
 	void tell(sf::SoundBuffer& buffer, sf::Sound& sound);
 	
 };
+bool crash(CCar b, CCar c);

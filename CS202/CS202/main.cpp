@@ -21,7 +21,11 @@ int main()
 		window.display();
 		b.move();
 		c.move();
+		
 		Sleep(100);
+		if (crash(b, c) == true) {
+			window.close();
+		}
 	}
 
 	return 0;

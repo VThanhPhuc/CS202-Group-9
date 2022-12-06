@@ -1,5 +1,4 @@
-﻿
-#include <SFML/Audio.hpp>
+﻿#include <SFML/Audio.hpp>
 #include <iostream>
 #include <Windows.h>
 #include "Vehicle.h"
@@ -43,6 +42,7 @@ CVEHICLE::CVEHICLE(int x, int y, int sp) {
 }
 void CVEHICLE::move() {
 	mX = getnextmod1000(mX,speed);
+	//out.move(speed, 0);
 }
 
 
@@ -75,7 +75,6 @@ void CTruck::draw(sf::RenderWindow& window) {
 	else {
 		pic.loadFromFile("truck1.png");
 	}
-	sf::Sprite out;
 	out.setTexture(pic);
 	out.setPosition(getmX() * 10, getmY() * 40);
 	window.draw(out);
@@ -159,7 +158,14 @@ CBIRD::CBIRD(int x, int y, int sp) :CANIMAL(x, y, sp) {}
 sf::Sprite CCar::getObj() {
 	return out;
 }
-void test(CCar b,CCar c) {
-	sf::Sprite c1 = b.getObj();
-	sf::Sprite c2 = c.getObj();
+bool crash(CCar b, CCar c) {
+	sf::Sprite car1 = b.getObj();
+	sf::Sprite car2 = c.getObj();
+	sf::FloatRect b1 = car1.getGlobalBounds();
+	sf::FloatRect b2 = car2.getGlobalBounds();
+	if (b1.intersects(b2) == true) {
+		return true;
+	}
+	return false;
+
 }

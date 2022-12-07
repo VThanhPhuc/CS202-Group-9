@@ -4,7 +4,7 @@
 #define screenheight 1920
 #define screenwidth 1980
 
-<<<<<<< Updated upstream
+//<<<<<<< Updated upstream
 class CPEOPLE
 {
 private:
@@ -19,8 +19,9 @@ public:
 	void Left(int);
 	void Right(int);
 	void Down(int);
-	bool isImpact(CVEHICLE*&);
-	bool isImpact(CANIMAL*&);
+	//bool isImpact(CVEHICLE*&);
+	//bool isImpact(CANIMAL*&);
+	bool isImpact(COBJECT*& obj);
 	bool isFinish();
 	bool isDead();
 	int getmX();
@@ -29,7 +30,7 @@ public:
 	void Control(int step);
 	sf::Sprite getObj();
 };
-=======
+//=======
 //class CPEOPLE
 //{
 //private:
@@ -53,4 +54,4 @@ public:
 //	void draw(sf::RenderWindow& window);
 //	sf::Sprite getObj();
 //};
->>>>>>> Stashed changes
+//>>>>>>> Stashed changes

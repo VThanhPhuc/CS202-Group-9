@@ -25,5 +25,6 @@ public:
 	int getmX();
 	int getmY();
 	void draw(sf::RenderWindow& window);
+	void Control(int step);
 	sf::Sprite getObj();
 };

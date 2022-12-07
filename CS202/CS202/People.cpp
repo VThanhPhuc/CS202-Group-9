@@ -118,6 +118,42 @@ void CPEOPLE::draw(sf::RenderWindow& window)
 	window.draw(sprite);
 }
 
+void CPEOPLE::Control(int step)
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	{
+		cout << "Up" << endl;
+		mY -= step;
+		if (mY < 0)
+		{
+			mY = 0;
+		}
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	{
+		cout << "Left" << endl;
+		mX -= step;
+		if (mX < 0)
+		{
+			mX = 0;
+		}
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+	{
+		cout << "Right" << endl;
+		mX += step;
+		if (mX > 1450)
+		{
+			mX = 1450;
+		}
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+	{
+		cout << "Down" << endl;
+		mY = mY + step;
+		if (mY > 1080) mY = 900;
+	}
+}
 sf::Sprite CPEOPLE::getObj() 
 {
 	return sprite;

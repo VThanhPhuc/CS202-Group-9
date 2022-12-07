@@ -18,15 +18,12 @@ protected:
 
 	double objScale;
 
-	int direction; // 1 - LR or -1  -RL
-
-	sf::Texture* texture;
-	sf::Sprite out;
-
+	sf::SoundBuffer buffer;
+	sf::Sound sound;
 public:
 	virtual void move(CLight l);
-	virtual void draw(sf::RenderWindow& window);
-	virtual void tell(sf::SoundBuffer& buffer, sf::Sound& sound) = 0;
+	virtual void draw(sf::RenderWindow& window) = 0;
+	virtual void tell() = 0;
 
 	bool CheckOutWindow(sf::RenderWindow& window);
 
@@ -39,27 +36,35 @@ public:
 };
 
 
-int getnextmod1000(int x, int sp);
+int getnextmod1500(int x, int sp);
 
 class CCar : public COBJECT
 {
+private:
+	sf::Sprite out;
+
 public:
 	CCar(int x, int y, int sp);
 	void draw(sf::RenderWindow& window);
 	void move(CLight l);
 	sf::Sprite getObj();
-	void tell(sf::SoundBuffer& buffer, sf::Sound& sound) {};
+	void setspr(int type);
+	void tell() {};
 };
 
 class CBIRD :public COBJECT {
 private:
+	sf::Sprite out;
+
 public:
 	CBIRD(int x, int y, int sp);
 	void draw(sf::RenderWindow& window);
-	void move();
-	void tell(sf::SoundBuffer& buffer, sf::Sound& sound);
+	void move(CLight l);
+	sf::Sprite getObj();
+	void setspr(int type);
+	void tell(){};
 };
-bool crash(CCar b, CCar c);
+//bool crash(CCar b, CCar c);
 
 //class CVEHICLE {
 //private:

@@ -9,15 +9,35 @@
 #include "Light.h"
 using namespace std;
 
-
-void CCar::draw(sf::RenderWindow& window) {}
-int getnextmod1000(int x, int sp)
+void CCar::setspr(int type) {
+	sf::Texture texture;
+	if (type == 1) {
+		if (getspeed() > 0) {
+			texture.loadFromFile("car1.png");
+		}
+		else
+			texture.loadFromFile("car.png");
+	}
+	else {
+		if (getspeed() > 0) {
+			texture.loadFromFile("truck.png");
+		}
+		else
+			texture.loadFromFile("truck1.png");
+	}
+	out.setTexture(texture);
+}
+void CCar::draw(sf::RenderWindow& window) {
+	out.setPosition(mX, mY);
+	window.draw(out);
+}
+int getnextmod1500(int x, int sp)
 {
 	x = x + sp;
 	if (x < 0)
-		return x + 1000;
-	else if (x > 1000)
-		return x - 1000;
+		return x + 1500;
+	else if (x > 1500)
+		return x - 1500;
 	else
 		return x;
 }
@@ -25,6 +45,7 @@ int getnextmod1000(int x, int sp)
 bool COBJECT::CheckOutWindow(sf::RenderWindow& window)
 {
 	window.getSize().x;
+	return true;
 }
 
 int COBJECT::getmX() {
@@ -47,28 +68,53 @@ COBJECT::COBJECT(int x, int y, int sp) {
 	speed = sp;
 }
 void COBJECT::move(CLight l) {
-	if (l.geton() == true)
-		mX = getnextmod1000(mX, speed);
-	out.move(speed, 0);
+	if (l.geton() == true||l.getstatus()==false)
+		mX = getnextmod1500(mX, speed);
+	
 }
 
 
 void CCar::move(CLight l) {
 	COBJECT::move(l);
 }
-void CCar::draw(sf::RenderWindow& window) {
-	sf::Texture pic;
-	if (getspeed() > 0) {
-		pic.loadFromFile("car1.png");
+
+void CBIRD::setspr(int type) {
+	sf::Texture texture;
+	if (type == 1) {
+		if (getspeed() > 0) {
+			texture.loadFromFile("bird.png");
+		}
+		else
+			texture.loadFromFile("bird1.png");
 	}
 	else {
-		pic.loadFromFile("car.png");
+		if (getspeed() > 0) {
+			texture.loadFromFile("dino.png");
+		}
+		else
+			texture.loadFromFile("dino1.png");
 	}
-	out.setTexture(pic);
+	out.setTexture(texture);
+}
+
+void CBIRD::draw(sf::RenderWindow& window) {
 	out.setPosition(getmX(), getmY() * 40);
 	window.draw(out);
 }
+CCar::CCar(int x, int y, int sp) :COBJECT(x, y, sp) {}
+CBIRD::CBIRD(int x, int y, int sp) :COBJECT(x, y, sp) {}
 
+sf::Sprite CCar::getObj() {
+	return out;
+}
+sf::Sprite CBIRD::getObj() {
+	return out;
+}
+void CBIRD::move(CLight l) {
+	COBJECT::move(l);
+}
+
+/*
 void CBIRD::draw(sf::RenderWindow& window) {
 	sf::Texture pic;
 	if (getspeed() > 0) {
@@ -82,6 +128,28 @@ void CBIRD::draw(sf::RenderWindow& window) {
 	out.setPosition(getmX() * 10, getmY() * 40);
 	window.draw(out);
 }
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //void CVEHICLE::draw(sf::RenderWindow& window){}
 //int getnextmod1000(int x, int sp) {
@@ -229,12 +297,9 @@ void CBIRD::draw(sf::RenderWindow& window) {
 //	sound.setBuffer(buffer);
 //
 //}
-//CCar::CCar(int x, int y, int sp) :CVEHICLE(x, y, sp) {}
+
 //CTruck::CTruck(int x, int y, int sp) :CVEHICLE(x, y, sp) {}
-//CBIRD::CBIRD(int x, int y, int sp) :CANIMAL(x, y, sp) {}
-//sf::Sprite CCar::getObj() {
-//	return out;
-//}
+
 //bool crash(CCar b, CCar c) {
 //	sf::Sprite car1 = b.getObj();
 //	sf::Sprite car2 = c.getObj();

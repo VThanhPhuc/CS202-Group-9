@@ -6,7 +6,8 @@
 
 using namespace std;
 
-CLight::CLight() {
+CLight::CLight(bool a) {
+	avail = a;
 	number = 10;
 	on = true;
 }
@@ -19,4 +20,7 @@ void CLight::update() {
 }
 bool CLight::geton() {
 	return on;
+}
+bool CLight::getstatus() {
+	return avail;
 }

@@ -11,8 +11,10 @@ class CLight {
 private:
 	int number;
 	bool on;
+	bool avail;//1: car, 0: animal
 public:
-	CLight();
+	CLight(bool a);
 	void update();
 	bool geton();
+	bool getstatus();
 };

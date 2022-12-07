@@ -1,6 +1,6 @@
 #include "People.h"
 
-<<<<<<< Updated upstream
+//<<<<<<< Updated upstream
 CPEOPLE::CPEOPLE()
 {
 	mX = 0;
@@ -62,21 +62,33 @@ void CPEOPLE::Down(int step)
 	}
 }
 
-bool CPEOPLE::isImpact(CVEHICLE*& v)
-{
-	sf::FloatRect b1 = v->getObj().getGlobalBounds();
-	sf::FloatRect b2 = this->getObj().getGlobalBounds();
-	if (b1.intersects(b2) == true)
-	{
-		mState = 0;
-		return true;
-	}
-	return false;
-}
+//bool CPEOPLE::isImpact(CVEHICLE*& v)
+//{
+//	sf::FloatRect b1 = v->getObj().getGlobalBounds();
+//	sf::FloatRect b2 = this->getObj().getGlobalBounds();
+//	if (b1.intersects(b2) == true)
+//	{
+//		mState = 0;
+//		return true;
+//	}
+//	return false;
+//}
+//
+//bool CPEOPLE::isImpact(CANIMAL*& a)
+//{
+//	sf::FloatRect b1 = a->getObj().getGlobalBounds();
+//	sf::FloatRect b2 = this->getObj().getGlobalBounds();
+//	if (b1.intersects(b2) == true)
+//	{
+//		mState = 0;
+//		return true;
+//	}
+//	return false;
+//}
 
-bool CPEOPLE::isImpact(CANIMAL*& a)
+bool CPEOPLE::isImpact(COBJECT*& obj)
 {
-	sf::FloatRect b1 = a->getObj().getGlobalBounds();
+	sf::FloatRect b1 = obj->getObj().getGlobalBounds();
 	sf::FloatRect b2 = this->getObj().getGlobalBounds();
 	if (b1.intersects(b2) == true)
 	{
@@ -159,7 +171,7 @@ sf::Sprite CPEOPLE::getObj()
 {
 	return sprite;
 }
-=======
+//=======
 //CPEOPLE::CPEOPLE()
 //{
 //	mX = 0;
@@ -282,4 +294,4 @@ sf::Sprite CPEOPLE::getObj()
 //{
 //	return sprite;
 //}
->>>>>>> Stashed changes
+//>>>>>>> Stashed changes

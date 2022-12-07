@@ -27,14 +27,32 @@ void CCar::setspr(int type) {
 	}
 	out.setTexture(texture);
 }
-void CCar::draw(sf::RenderWindow& window) {
-	out.setPosition(mX, mY);
+void CCar::draw(sf::RenderWindow& window, int type) {
+	sf::Texture pic;
+	if (type == 1) {
+		if (getspeed() > 0) {
+			pic.loadFromFile("car1.png");
+		}
+		else {
+			pic.loadFromFile("car.png");
+		}
+	}
+	else {
+		if (getspeed() > 0) {
+			pic.loadFromFile("truck.png");
+		}
+		else {
+			pic.loadFromFile("truck1.png");
+		}
+	}
+	out.setTexture(pic);
+	out.setPosition(getmX(), getmY()*40);
 	window.draw(out);
 }
 int getnextmod1500(int x, int sp)
 {
 	x = x + sp;
-	if (x < 0)
+	if (x < -80)
 		return x + 1500;
 	else if (x > 1500)
 		return x - 1500;
@@ -97,7 +115,23 @@ void CBIRD::setspr(int type) {
 	out.setTexture(texture);
 }
 
-void CBIRD::draw(sf::RenderWindow& window) {
+void CBIRD::draw(sf::RenderWindow& window,int type) {
+	sf::Texture texture;
+	if (type == 1) {
+		if (getspeed() > 0) {
+			texture.loadFromFile("bird.png");
+		}
+		else
+			texture.loadFromFile("bird1.png");
+	}
+	else {
+		if (getspeed() > 0) {
+			texture.loadFromFile("dino.png");
+		}
+		else
+			texture.loadFromFile("dino1.png");
+	}
+	out.setTexture(texture);
 	out.setPosition(getmX(), getmY() * 40);
 	window.draw(out);
 }

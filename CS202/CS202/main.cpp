@@ -52,8 +52,10 @@
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works!");
-	CarLane lane(1, 5, 10, -10);
+	CarLane lane(2, 5, 10, 20);
+	AniLane alane(1, 4, 20, 15);
 	CLight l(true);
+	CLight a(false);
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -65,11 +67,13 @@ int main()
 		}
 		window.clear();
 		lane.draw(window);
-		
+		alane.draw(window);
 		window.display();
 
 		Sleep(100);
+		alane.move(a);
 		lane.move(l);
+		l.update();
 		/*if (crash(b, c) == true) {
 			window.close();
 		}*/

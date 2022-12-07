@@ -17,7 +17,7 @@ CarLane::CarLane(int ty, int num, int y, int sp) {
 	int dis = 1500 / num;
 	for (int i = 0; i < num; i++) {
 		CCar c(dis * i, y, sp);
-		c.setspr(ty);
+		//c.setspr(ty);
 		l1.push_back(c);
 	}
 }
@@ -27,7 +27,31 @@ void CarLane::move(CLight l) {
 	}
 }
 void CarLane::draw(sf::RenderWindow& window) {
+	
 	for (int i = 0; i < number; i++) {
-		l1[i].draw(window);
+		//l1[i].setspr(type);
+		l1[i].draw(window,type);
+	}
+}
+
+AniLane::AniLane(int ty, int num, int y, int sp) {
+	type = ty; number = num; yL = y; speed = sp;
+	int dis = 1500 / num;
+	for (int i = 0; i < num; i++) {
+		CBIRD c(dis * i, y, sp);
+		//c.setspr(ty);
+		l1.push_back(c);
+	}
+}
+void AniLane::move(CLight l) {
+	for (int i = 0; i < number; i++) {
+		l1[i].move(l);
+	}
+}
+void AniLane::draw(sf::RenderWindow& window) {
+
+	for (int i = 0; i < number; i++) {
+		//l1[i].setspr(type);
+		l1[i].draw(window, type);
 	}
 }

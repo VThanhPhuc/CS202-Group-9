@@ -17,12 +17,12 @@ protected:
 	bool isVisible;
 
 	double objScale;
-
+	sf::Sprite out;
 	sf::SoundBuffer buffer;
 	sf::Sound sound;
 public:
 	virtual void move(CLight l);
-	virtual void draw(sf::RenderWindow& window) = 0;
+	virtual void draw(sf::RenderWindow& window, int type) = 0;
 	virtual void tell() = 0;
 
 	bool CheckOutWindow(sf::RenderWindow& window);
@@ -41,11 +41,10 @@ int getnextmod1500(int x, int sp);
 class CCar : public COBJECT
 {
 private:
-	sf::Sprite out;
 
 public:
 	CCar(int x, int y, int sp);
-	void draw(sf::RenderWindow& window);
+	void draw(sf::RenderWindow& window, int type);
 	void move(CLight l);
 	sf::Sprite getObj();
 	void setspr(int type);
@@ -54,11 +53,11 @@ public:
 
 class CBIRD :public COBJECT {
 private:
-	sf::Sprite out;
+	
 
 public:
 	CBIRD(int x, int y, int sp);
-	void draw(sf::RenderWindow& window);
+	void draw(sf::RenderWindow& window, int type);
 	void move(CLight l);
 	sf::Sprite getObj();
 	void setspr(int type);

@@ -1,6 +1,6 @@
 #pragma once
 #pragma once
-#include "COBJECT.h"
+#include "Vehicle.h"
 #include "People.h"
 #include "Menu.h"
 enum GAME_STATUS { MENU, PLAYING, GAMEOVER, PAUSE, SETTING };
@@ -14,6 +14,10 @@ private:
 	GAME_STATUS game_state;
 	GAME_STATUS preGame_state;
 
+
+
+
+
 	//window
 	sf::RenderWindow* window;
 	sf::Event ev;
@@ -21,7 +25,6 @@ private:
 
 	// obiect
 	Menu m;
-	
 
 	// private function
 	void initializeVariable();

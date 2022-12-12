@@ -5,6 +5,7 @@
 #include <iostream>
 #include <Windows.h>
 #include "Light.h"
+#include "Constants.h"
 using namespace std;
 
 class COBJECT
@@ -24,6 +25,16 @@ protected:
 	sf::SoundBuffer buffer;
 	sf::Sound sound;
 public:
+	friend class CROAD;
+	friend class CPEOPLE;
+
+	COBJECT(float x, float y);
+	COBJECT(float x, float y, int direction);
+
+
+
+	void shiftObject(char shift); // use char: U(up), D(down)
+
 	
 
 	

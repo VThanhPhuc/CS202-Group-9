@@ -9,6 +9,35 @@
 #include "Light.h"
 using namespace std;
 
+COBJECT::COBJECT(float x, float y)
+{
+	mX = x;
+	mY = y;
+	direction = 0;
+	speed = 0;
+	isVisible = true;
+}
+
+COBJECT::COBJECT(float x, float y, int direction = 1)
+{
+	mX = x;
+	mY = y;
+	this->direction = direction;
+	speed = 0;
+}
+
+
+void COBJECT::shiftObject(char shift)
+{
+	if (shift == 'U' || shift == 'u')
+	{
+		out.move(0, -Constants::ShiftVelocity);
+	}
+	else if (shift == 'd' || shift == 'D')
+	{
+		out.move(0, Constants::ShiftVelocity);
+	}
+}
 /* old source
 void CCar::setspr(int type) {
 	sf::Texture texture;

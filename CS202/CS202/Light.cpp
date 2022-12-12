@@ -5,22 +5,93 @@
 #include "Light.h"
 
 using namespace std;
-
-CLight::CLight(bool a) {
-	avail = a;
-	number = 10;
-	on = true;
+CLight::CLight()
+{
+	traffic = false;
 }
-void CLight::update() {
-	number--;
-	if (number < 0) {
-		on = !on;
-		number = 10;
+CLight::CLight(float x, float y)
+{
+	mX = x + 10;
+	mY = y + 10;
+	traffic = true;
+	diff = rand() % 6 - 1;
+	green();
+}
+int CLight::statusLight()
+{
+	return status;
+}
+void CLight::red()
+{
+	status = 0;
+	clo.restart();
+}
+void CLight::green()
+{
+	status = 2;
+	clo.restart();
+}
+void CLight::yellow()
+{
+	status = 1;
+	clo.restart();
+}
+void CLight::update(sf::RenderWindow& window)
+{
+
+	switch (status)
+	{
+	case 0:
+		if (clo.getElapsedTime().asSeconds() >= 4 + diff) green();
+		break;
+	case 1:
+		if (clo.getElapsedTime().asSeconds() >= 3 + diff) red();
+		break;
+	case 2:
+		if (clo.getElapsedTime().asSeconds() >= 10 + diff) yellow();
+		break;
+	default:
+		break;
 	}
 }
-bool CLight::geton() {
-	return on;
+void CLight::draw(sf::RenderWindow& window)
+{
+	window.draw(out);
 }
-bool CLight::getstatus() {
-	return avail;
+void CLight::shiftObject(char shift)
+{
+	if (shift == 'U' || shift == 'u')
+	{
+		out.move(0, Constants::ShiftVelocity);
+	}
+	else if (shift == 'd' || shift == 'D')
+	{
+		out.move(0, -Constants::ShiftVelocity);
+	}
+
+	mX = out.getPosition().x;
+	mY = out.getPosition().y;
 }
+
+bool CLight::Traffic()
+{
+	return traffic;
+}
+//CLight::CLight(bool a) {
+//	avail = a;
+//	number = 10;
+//	on = true;
+//}
+//void CLight::update() {
+//	number--;
+//	if (number < 0) {
+//		on = !on;
+//		number = 10;
+//	}
+//}
+//bool CLight::geton() {
+//	return on;
+//}
+//bool CLight::getstatus() {
+//	return avail;
+//}

@@ -35,7 +35,17 @@ public:
 
 	void shiftObject(char shift); // use char: U(up), D(down)
 
-	
+	// virtual
+	virtual void move(float x, float y);
+	virtual void draw(sf::RenderWindow& window);
+	virtual int type() = 0;
+	virtual void setVisible(bool);
+	//virtual void tell() = 0;
+
+	bool CheckOutWindow(sf::RenderWindow& window);
+
+
+	sf::Vector2f getPos();
 
 	
 };

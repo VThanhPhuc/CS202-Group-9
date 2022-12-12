@@ -38,6 +38,37 @@ void COBJECT::shiftObject(char shift)
 		out.move(0, Constants::ShiftVelocity);
 	}
 }
+
+void COBJECT::move(float x, float y)
+{
+	out.move(direction * Constants::VelcocityX * speed, 0);
+}
+
+void COBJECT::setVisible(bool vis)
+{
+	isVisible = true;
+}
+
+
+sf::Vector2f COBJECT::getPos()
+{
+	return sf::Vector2f(mX, mY);
+}
+
+void COBJECT::draw(sf::RenderWindow& window)
+{
+	if (CheckOutWindow(window) == 0)
+	{
+		window.draw(out);
+	}
+}
+
+
+bool COBJECT::CheckOutWindow(sf::RenderWindow& window) // check if sprite is in window or not
+{
+	return (direction == 1 && (out.getPosition().x >= window.getSize().x || out.getPosition().y >= window.getSize().y))
+		|| (direction == -1 && (out.getPosition().x <= -Constants::widthVehicle || out.getPosition().y >= window.getSize().y));
+}
 /* old source
 void CCar::setspr(int type) {
 	sf::Texture texture;

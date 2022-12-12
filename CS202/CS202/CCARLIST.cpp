@@ -104,3 +104,29 @@ void CCARLIST::update(float mX, float mY, sf::RenderWindow& window, CLight& l)
 	}
 
 }
+void CCARLIST::shiftObject(char shift)
+{
+	for (auto i : carlist)
+	{
+		i->shiftObject(shift);
+	}
+}
+
+void CCARLIST::draw(sf::RenderWindow& window)
+{
+	for (auto i : carlist)
+	{
+		i->draw(window);
+	}
+
+}
+
+CCARLIST::~CCARLIST()
+{
+	while (!carlist.empty())
+	{
+		COBJECT* temp = carlist.front();
+		carlist.pop_front();
+		delete temp;
+	}
+}

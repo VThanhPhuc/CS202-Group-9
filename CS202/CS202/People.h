@@ -1,9 +1,46 @@
 #pragma once
-#include"Vehicle.h"
 
-#define screenheight 1920
-#define screenwidth 1980
+#include "COBJECT.h"
+#include "CARLANE.h"
 
+
+class CPEOPLE
+{
+private:
+	float mX, mY;
+	bool mState;
+
+	sf::RenderWindow* window;
+
+
+	sf::Texture* texture;
+	sf::Sprite sprite;
+public:
+	//CPEOPLE();
+	CPEOPLE(sf::RenderWindow* window, int x, int y);
+	
+
+	void moveUp();
+	void moveDown();
+	void moveRight();
+	void moveLeft();
+
+
+	//bool isImpact(CVEHICLE*&);
+	//bool isImpact(CANIMAL*&);
+	bool isImpact(COBJECT*& obj);
+	bool isFinish();
+	bool isDead();
+	void die();
+	int getmX();
+	int getmY();
+	void draw(sf::RenderWindow& window);
+	void Control();
+	bool isNearRoad(CROAD& road);
+	sf::Sprite getObj();
+};
+
+/*
 //<<<<<<< Updated upstream
 class CPEOPLE
 {
@@ -30,6 +67,13 @@ public:
 	void Control(int step);
 	sf::Sprite getObj();
 };
+*/
+
+
+
+
+
+
 //=======
 //class CPEOPLE
 //{

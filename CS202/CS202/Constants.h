@@ -6,7 +6,7 @@ using namespace std;
 namespace Constants
 {
 	//window
-	const float Height_screen = 700;
+	const float Height_screen = 1000;
 	const float width_screen = 1500;
 
 	// velocity

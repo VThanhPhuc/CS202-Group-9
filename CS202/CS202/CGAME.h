@@ -1,8 +1,11 @@
 #pragma once
 #pragma once
-#include "Vehicle.h"
+#include "COBJECT.h"
 #include "People.h"
 #include "Menu.h"
+#include "Constants.h"
+#include "CROADLIST.h"
+#include "COBJECT.h"
 enum GAME_STATUS { MENU, PLAYING, GAMEOVER, PAUSE, SETTING };
 
 class CGAME
@@ -15,7 +18,9 @@ private:
 	GAME_STATUS preGame_state;
 
 
-
+	// game obj
+	CPEOPLE* player;
+	CROADLIST* roadli;
 
 
 	//window
@@ -23,8 +28,7 @@ private:
 	sf::Event ev;
 	sf::VideoMode videoMode;
 
-	// obiect
-	Menu m;
+	//Menu gui;
 
 	// private function
 	void initializeVariable();
@@ -33,11 +37,21 @@ private:
 
 public:
 	// Constructor | destructor
-	// CGAME();
-	// ~CGAME();
+	CGAME();
+	~CGAME();
+
 
 	//Accessors
 	const bool running() const;
+
+	// functions
+	bool checkMove();
+	void pollEvent();
+	void update();
+	void render();
+	void run();
+
+	// save to file | load from file
 
 };
 

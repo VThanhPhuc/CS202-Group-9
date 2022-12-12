@@ -1,5 +1,5 @@
 #include "Menu.h"
-void InnitMenuBackground()
+void Menu::InnitMenuBackground()
 {
 	if (!this->t.loadFromFile("universe.png"))
 	{
@@ -23,14 +23,14 @@ void InnitMenuBackground()
 	this->button_exit.setSize(sf::Vector2f(200, 200));
 	this->button_exit.setPosition(400, 600);
 }
-void draw_menu(sf::RenderWindow& window)
+void Menu::draw_menu(sf::RenderWindow& window)
 {
 	InnitMenuBackground();
 	window.draw(this->MenuBackground);
 	window.draw(this->button_start);
 	window.draw(this->button_exit);
 }
-void draw_gameplay(sf::RenderWindow& window)
+void Menu::draw_gameplay(sf::RenderWindow& window)
 {
 	if (!this->b_button.loadFromFile("b_button.png"))
 	{
@@ -44,7 +44,7 @@ void draw_gameplay(sf::RenderWindow& window)
 	this->button_exit.setPosition(-1000, -1000);
 	window.draw(this->button_back);
 }
-int IsMouseOver(sf::RenderWindow& window)
+int Menu::IsMouseOver(sf::RenderWindow& window)
 {
 	float mouseX = sf::Mouse::getPosition(window).x;
 	float mouseY = sf::Mouse::getPosition(window).y;
@@ -59,7 +59,7 @@ int IsMouseOver(sf::RenderWindow& window)
 	}
 	return 0;
 }
-int CheckMouseGamePlay(sf::RenderWindow& window)
+int Menu::CheckMouseGamePlay(sf::RenderWindow& window)
 {
 	float mouseX = sf::Mouse::getPosition(window).x;
 	float mouseY = sf::Mouse::getPosition(window).y;

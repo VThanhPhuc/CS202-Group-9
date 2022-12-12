@@ -1,5 +1,7 @@
 #pragma once
-#include "Vehicle.h"
+#include "COBJECT.h"
+#include "SFML/Graphics.hpp"
+#include <iostream>
 
 class Menu
 {

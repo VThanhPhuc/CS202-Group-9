@@ -6,6 +6,7 @@
 #include <Windows.h>
 #include "Light.h"
 #include "Constants.h"
+#include "LoadPic.h"
 using namespace std;
 
 class COBJECT

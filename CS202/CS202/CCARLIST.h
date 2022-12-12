@@ -14,6 +14,14 @@ private:
 	CARDIR dir;
 	bool playing;
 public:
+	CCARLIST();
+	void initGame(float mX, float mY);
+	
+	void update(float mX, float mY, sf::RenderWindow& window, CLight& l);
+
+	CCAR* createCar(float mX, float mY);
+
+	deque<COBJECT*>* getCarList();
 	
 	
 };

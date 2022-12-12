@@ -7,7 +7,30 @@
 #include "Light.h"
 using namespace std;
 
+class COBJECT
+{
+protected:
+	friend class CPEOPLE;
+	friend class CGAME;
+	float mX, mY;
+	int speed;
 
+	bool isVisible;
+
+	int direction;
+
+	sf::Texture* texture;
+	sf::Sprite out;
+	sf::SoundBuffer buffer;
+	sf::Sound sound;
+public:
+	
+
+	
+};
+
+
+/*  old source
 class COBJECT
 {
 protected:
@@ -63,6 +86,11 @@ public:
 	void setspr(int type);
 	void tell(){};
 };
+*/
+
+
+
+
 //bool crash(CCar b, CCar c);
 
 //class CVEHICLE {

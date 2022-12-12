@@ -9,6 +9,7 @@
 #include "Light.h"
 using namespace std;
 
+/* old source
 void CCar::setspr(int type) {
 	sf::Texture texture;
 	if (type == 1) {
@@ -147,6 +148,7 @@ sf::Sprite CBIRD::getObj() {
 void CBIRD::move(CLight l) {
 	COBJECT::move(l);
 }
+*/
 
 /*
 void CBIRD::draw(sf::RenderWindow& window) {

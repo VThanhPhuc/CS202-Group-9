@@ -10,3 +10,18 @@ void LoadPic::initTexture(string texFileName, bool isplayer)
 	texture[texFileName].setSmooth(true);
 	cout << file << "load successfully" << endl;
 }
+
+LoadPic::LoadPic()
+{
+	//load road
+	initTexture("Pavement_bottom");
+
+	//load people
+	initTexture("person", 1);
+
+	//load object
+	initTexture("car");
+	initTexture("car1");
+	initTexture("truck");
+	initTexture("truck1");
+}

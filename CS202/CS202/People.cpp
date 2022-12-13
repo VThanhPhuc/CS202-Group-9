@@ -1,12 +1,22 @@
 #include "People.h"
-CPEOPLE::CPEOPLE(sf::RenderWindow* window, int x, int y) :window(window), mX(x), mY(y)
-{
-	texture = texture = &LoadPic::GetIns().texture["person"];
-	sprite.setTexture(*texture);
-	sprite.setOrigin(50, 50);
-	sprite.setPosition(mX, mY);
 
-	mState = 1;
+CPEOPLE::CPEOPLE()
+{
+	mX = 750;
+	mY = 500;
+	mState = true; //1 is alive, 0 is dead
+}
+CPEOPLE::CPEOPLE(sf::RenderWindow* window, float x, float y)
+{
+	mX = x;
+	mY = y;
+	this->window = window;
+	texture = &LoadPic::GetIns().texture["person"];
+
+	sprite.setTexture(*texture);
+	//sprite.setOrigin(50, 50);
+	sprite.setPosition(mX, mY);
+	mState = true;
 }
 bool CPEOPLE::isImpact(COBJECT*& obj)
 {
@@ -110,38 +120,41 @@ void CPEOPLE::moveLeft()
 void CPEOPLE::moveUp()
 {
 	cout << "Up" << endl;
-	--mY;
-	if (mY < 0)
+	sprite.move(0, -Constants::HeightRoad);
+	if (sprite.getPosition().y < 0)
 	{
-		mY = 0;
+		sprite.move(0, Constants::HeightRoad);
 	}
 }
 void CPEOPLE::moveDown()
 {
 	cout << "Down" << endl;
-	++mY;
-	if (mY > Constants::Height_screen) 
-		mY = Constants::Height_screen-Constants::height_people;
+	sprite.move(0, Constants::HeightRoad);
+	if (sprite.getPosition().y > (Constants::Height_screen - Constants::HeightRoad))
+	{
+		sprite.move(0, -Constants::HeightRoad);
+	}
 }
 void CPEOPLE::moveRight()
 {
 	cout << "Right" << endl;
-	++mX;
-	if (mX > Constants::WidthRoad - 100)
+	sprite.move(Constants::width_person, 0);
+	if (sprite.getPosition().x > (Constants::WidthRoad - Constants::width_person))
 	{
-		mX = Constants::WidthRoad - Constants::width_people;
+		sprite.move(-Constants::width_person, 0);
 	}
 
 }
 void CPEOPLE::moveLeft()
 {
 	cout << "Left" << endl;
-	--mX;
-	if (mX < 0)
+	sprite.move(-Constants::width_person, 0);
+	if (sprite.getPosition().x < 0)
 	{
-		mX = 0;
+		sprite.move(Constants::width_person, 0);
 	}
 }
+
 
 
 

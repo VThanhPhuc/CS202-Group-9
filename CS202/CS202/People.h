@@ -16,8 +16,8 @@ private:
 	sf::Texture* texture;
 	sf::Sprite sprite;
 public:
-	//CPEOPLE();
-	CPEOPLE(sf::RenderWindow* window, int x, int y);
+	CPEOPLE();
+	CPEOPLE(sf::RenderWindow* window, float x, float y);
 	
 
 	void moveUp();

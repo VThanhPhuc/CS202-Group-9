@@ -89,7 +89,7 @@ int main()
 	c11->draw(window);*/
 
 	//a.draw(window);
-	/*while (window.isOpen())
+	while (window.isOpen())
 	{
 		sf::Event ev;
 		c1->draw(window);
@@ -123,7 +123,7 @@ int main()
 
 		window.display();
 
-	}*/
+	}
 
 
 	/* CGAME game;
@@ -132,8 +132,5 @@ int main()
 	cout << "OK to out!";
 	return 0; */
 	//
-	CGAME game;
-	game.run();
-	system("pause");
-	return 0;
+	
 }

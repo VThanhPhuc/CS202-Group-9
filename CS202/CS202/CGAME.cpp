@@ -99,44 +99,82 @@ bool CGAME::checkMove() {
 void CGAME::pollEvent()
 {
 	game_state = PLAYING;
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	while (this->window->pollEvent(this->ev))
 	{
-		player->moveUp();
-		roadli->shiftObj('U');
-		//if (!checkMove()) {
-			//roadli->shiftObj('D');
-		//}
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-	{
-		player->moveDown();
-		roadli->shiftObj('D');
-		//if (!checkMove())
-		//{
-			//roadli->shiftObj('U');
-		//}
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-	{
-		player->moveLeft();
-		/*if (!checkMove())
+		switch (this->ev.type)
 		{
-			player->moveRight();
-		}*/
+		case sf::Event::Closed:
+			this->window->close();
+			break;
+		case sf::Event::KeyReleased:
+			switch (ev.key.code) {
+			case sf::Keyboard::Up:
+				player->moveUp();
+				break;
+			case sf::Keyboard::Right:
+				player->moveRight();
+				break;
+			case sf::Keyboard::Down:
+				player->moveDown();
+				break;
+			case sf::Keyboard::Left:
+				player->moveLeft();
+				break;
+			case sf::Keyboard::Escape:
+				window->close();
+				/*if (game_state == MENU)
+					choiceMenu(gui->getChoice());
+				else if (game_state == GAMEOVER)
+					choiceGameOver(gui->getChoice());
+				else if (game_state == PAUSE)
+					choicePause(gui->getChoice());
+				else if (game_state == SETTING)
+					choiceSetting(gui->getChoice());
+				*/
+				break;
+			}
+			break;
+		}
+	}
+	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	//{
+	//	player->moveUp();
+	//	roadli->shiftObj('U');
+	//	//if (!checkMove()) {
+	//		//roadli->shiftObj('D');
+	//	//}
+	//}
+	//else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+	//{
+	//	player->moveDown();
+	//	roadli->shiftObj('D');
+	//	//if (!checkMove())
+	//	//{
+	//		//roadli->shiftObj('U');
+	//	//}
+	//}
+	//else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	//{
+	//	player->moveLeft();
+	//	/*if (!checkMove())
+	//	{
+	//		player->moveRight();
+	//	}*/
+	//
+	//}
+	//else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+	//{
+	//	player->moveRight(); 
+	//	/*if (!checkMove())
+	//	{
+	//		player->moveLeft();
+	//	}*/
+	//}
+	//else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+	//{
+	//	return;
+	//}
 
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-	{
-		player->moveRight();
-		/*if (!checkMove())
-		{
-			player->moveLeft();
-		}*/
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-	{
-		return;
-	}
 
 }
 

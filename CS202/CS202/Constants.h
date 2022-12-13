@@ -29,9 +29,9 @@ namespace Constants
 	const int car = 1;
 	const int animal = 2;
 
-	//people
-	const int width_people = 100;
-	const int height_people = 100;
+	//Person
+	const float width_person = 50;
+	const float height_person = 100;
 
 
 	const float Width_hiddenRoad = 1500;

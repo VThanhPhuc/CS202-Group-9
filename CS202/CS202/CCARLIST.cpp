@@ -1,4 +1,3 @@
-#include "CCARLIST.h"
 #include <SFML/Audio.hpp>
 #include <iostream>
 #include <Windows.h>
@@ -21,9 +20,11 @@ CCARLIST::CCARLIST()
 
 void CCARLIST::initGame(float mX, float mY)
 {
-	while (carlist.size() < 12)
+	int i = 0;
+	while (carlist.size() < 4)
 	{
-		carlist.push_front(createCar(mX, mY));
+		carlist.push_front(createCar(mX, mY, i));
+		++i;
 	}
 }
 
@@ -32,13 +33,16 @@ deque<COBJECT*>* CCARLIST::getCarList()
 	return &carlist;
 }
 
-CCAR* CCARLIST::createCar(float mX, float mY)
+CCAR* CCARLIST::createCar(float mX, float mY, int index)
 {
+
 	if (dir == TORIGHT)
 	{
-		while (mX < Constants::WidthRoad)
+		mX = Constants::WidthRoad / 4 * index;
+
+		/*while (mX < Constants::WidthRoad)
 		{
-			mX += 20;
+			mX += ;
 		}
 		if (!carlist.empty())
 		{
@@ -47,10 +51,14 @@ CCAR* CCARLIST::createCar(float mX, float mY)
 				mX += 20;
 			}
 		}
+		*/
 
 	}
 	else if (dir == TOLEFT)
 	{
+		mX = Constants::WidthRoad / 4 * index;
+
+		/*
 		while (mX > -150)
 		{
 			mX -= 20;
@@ -62,7 +70,7 @@ CCAR* CCARLIST::createCar(float mX, float mY)
 				mX -= 20;
 			}
 		}
-
+		*/
 	}
 
 	return new CCAR(Constants::Cartype[type], mX, mY, 2, 2 * dir - 1);
@@ -78,7 +86,8 @@ void CCARLIST::update(float mX, float mY, sf::RenderWindow& window, CLight& l)
 	else {
 		for (auto i : carlist)
 		{
-			if (l.Traffic())
+			i->move(12, 0);
+			/*if (l.Traffic())
 			{
 				if (l.statusLight() == 2)
 				{
@@ -92,7 +101,7 @@ void CCARLIST::update(float mX, float mY, sf::RenderWindow& window, CLight& l)
 			else
 			{
 				i->move(0, 0);
-			}
+			}*/
 		}
 	}
 	while (!carlist.empty() && carlist.back()->CheckOutWindow(window))
@@ -104,6 +113,8 @@ void CCARLIST::update(float mX, float mY, sf::RenderWindow& window, CLight& l)
 	}
 
 }
+
+
 void CCARLIST::shiftObject(char shift)
 {
 	for (auto i : carlist)

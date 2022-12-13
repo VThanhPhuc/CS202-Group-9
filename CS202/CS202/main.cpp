@@ -1,8 +1,8 @@
 #include "Background.h"
 #include "People.h"
-#include "Vehicle.h"
+#include "CARLANE.h"
 #include "Light.h"
-#include "CLane.h"
+#include "CGAME.h"
 //
 //int main()
 //{
@@ -51,32 +51,9 @@
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works!");
-	CarLane lane(2, 5, 10, 20);
-	AniLane alane(1, 4, 20, 15);
-	CLight l(true);
-	CLight a(false);
-	while (window.isOpen())
-	{
-		sf::Event event;
-		while (window.pollEvent(event))
-		{
-			if (event.type == sf::Event::Closed)
-				window.close();
-
-		}
-		window.clear();
-		lane.draw(window);
-		alane.draw(window);
-		window.display();
-
-		Sleep(100);
-		alane.move(a);
-		lane.move(l);
-		l.update();
-		/*if (crash(b, c) == true) {
-			window.close();
-		}*/
-	}
+	//
+	CGAME game;
+	game.run();
+	system("pause");
 	return 0;
 }

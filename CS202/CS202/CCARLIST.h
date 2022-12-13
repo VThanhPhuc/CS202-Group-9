@@ -20,7 +20,7 @@ public:
 	void draw(sf::RenderWindow& window);
 	void update(float mX, float mY, sf::RenderWindow& window, CLight& l);
 
-	CCAR* createCar(float mX, float mY);
+	CCAR* createCar(float mX, float mY, int index);
 
 	deque<COBJECT*>* getCarList();
 	int direction();

@@ -1,6 +1,5 @@
 #include "CARLANE.h"
 
-
 CARLANE::CARLANE(sf::Vector2f pos) : CROAD()
 {
 	// create texture
@@ -32,7 +31,6 @@ CARLANE::CARLANE(float index) : CROAD()
 
 
 	if (rand() % 6 == 0) light = CLight(mX, mY);
-	//carli.initGame(mX, mY);
 }
 
 CARLANE::CARLANE(float x, float y, bool traffic) :CROAD(x, y)

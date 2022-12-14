@@ -52,7 +52,9 @@
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(1500, 1000), "sfml works");
-	CROAD* c1;
+	CPEOPLE a(&window, 0, 500);
+	CLight l;
+	CCARLIST b; CROAD* c1;
 	c1 = new CARLANE(1);
 	CROAD* c2;
 	c2 = new CARLANE(2);
@@ -75,7 +77,6 @@ int main()
 	CROAD* c11;
 	c11 = new CARLANE(11);
 	window.clear();
-	CPEOPLE a(&window, 0, 0);
 	//c1->draw(window);
 	/*c2->draw(window);
 	c3->draw(window);
@@ -88,7 +89,7 @@ int main()
 	c10->draw(window);
 	c11->draw(window);*/
 
-	//a.draw(window);
+	a.draw(window);
 	while (window.isOpen())
 	{
 		sf::Event ev;
@@ -103,7 +104,10 @@ int main()
 		c9->draw(window);
 		c10->draw(window);
 		c11->draw(window);
+		b.draw(window);
 		a.draw(window);
+		b.update(0, 0, window, l);
+		deque<COBJECT*>* cur = b.getCarList();
 		while (window.pollEvent(ev))
 		{
 			switch (ev.type)
@@ -117,6 +121,15 @@ int main()
 				else if (ev.key.code == sf::Keyboard::Down) a.moveDown();
 				else if (ev.key.code == sf::Keyboard::Left) a.moveLeft();
 				else if (ev.key.code == sf::Keyboard::Right) a.moveRight();
+				break;
+			}
+		}
+
+		for (long i = 0; i < cur->size(); ++i)
+		{
+			if (a.isImpact(cur->at(i)))
+			{
+				std::cout << "die" << endl;
 				break;
 			}
 		}

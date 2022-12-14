@@ -9,5 +9,5 @@ public:
 
 	CCAR(string FileTextureName, float x, float y, int speed, int direction);
 
-	void move(float x, float y);
+	void move(float x, float y, float frac = 1);
 };

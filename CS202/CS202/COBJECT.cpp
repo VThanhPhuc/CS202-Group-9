@@ -39,9 +39,9 @@ void COBJECT::shiftObject(char shift)
 	}
 }
 
-void COBJECT::move(float x, float y)
+void COBJECT::move(float x, float y, float frac)
 {
-	out.move(direction * Constants::VelcocityX * speed, 0);
+	out.move(direction * Constants::VelcocityX * speed * frac, 0);
 }
 
 void COBJECT::setVisible(bool vis)

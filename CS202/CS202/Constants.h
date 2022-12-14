@@ -16,13 +16,14 @@ namespace Constants
 	const int widthVehicle = 80;
 	const int heightVehicle = 80;
 
+
 	// Lane
-	const int MAX_ROAD = 12;
+	const int MAX_ROAD = 25;
 	const float WidthRoad = 1500;
 	const float HeightRoad = 100;
 
 	//Car
-	const int NCar = 15; // number of car
+	const int NCar = 25; // number of car
 	const string Cartype[] = { "car1","car","truck","truck1" };
 
 	// type

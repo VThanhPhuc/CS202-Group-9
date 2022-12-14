@@ -20,11 +20,11 @@ CCARLIST::CCARLIST()
 
 void CCARLIST::initGame(float mX, float mY)
 {
-	int i = 0;
-	while (carlist.size() < 4)
+	/*int i = 0;*/
+	while (carlist.size() < Constants::NCar)
 	{
-		carlist.push_front(createCar(mX, mY, i));
-		++i;
+		carlist.push_front(createCar(mX, mY));
+
 	}
 }
 
@@ -32,84 +32,83 @@ deque<COBJECT*>* CCARLIST::getCarList()
 {
 	return &carlist;
 }
-
-CCAR* CCARLIST::createCar(float mX, float mY, int index)
+CCAR* CCARLIST::createCar(float mX, float mY)
 {
 
-	if (dir == TORIGHT)
+	if (dir == TOLEFT)
 	{
-		mX = Constants::WidthRoad / 4 * index;
+		//mX = Constants::WidthRoad / 4 * index;
 
-		/*while (mX < Constants::WidthRoad)
+		while (mX < Constants::WidthRoad + 100)
 		{
-			mX += ;
+			mX += Constants::WidthRoad;
 		}
 		if (!carlist.empty())
 		{
-			while (mX < carlist.front()->getPos().x + 100)
+			while (mX < (carlist.front()->getPos().x + Constants::WidthRoad / 4 + 10))
 			{
-				mX += 20;
+				mX += Constants::WidthRoad;
 			}
 		}
-		*/
 
 	}
-	else if (dir == TOLEFT)
+	else if (dir == TORIGHT)
 	{
-		mX = Constants::WidthRoad / 4 * index;
+		//mX = Constants::WidthRoad / 4 * index;
 
-		/*
-		while (mX > -150)
+
+		while (mX > -100)
 		{
-			mX -= 20;
+			mX -= Constants::WidthRoad / 4;
 		}
 		if (!carlist.empty())
 		{
-			while (mX > carlist.front()->getPos().x - 200)
+			while (mX > (carlist.front()->getPos().x - Constants::WidthRoad / 4 - 10))
 			{
-				mX -= 20;
+				mX -= Constants::WidthRoad / 4;
 			}
 		}
-		*/
+
 	}
 
-	return new CCAR(Constants::Cartype[type], mX, mY, 2, 2 * dir - 1);
+	return new CCAR(Constants::Cartype[type], mX, mY, 1, 2 * dir - 1);
 }
 
 
 void CCARLIST::update(float mX, float mY, sf::RenderWindow& window, CLight& l)
 {
-	if (carlist.empty())
+	for (auto i : carlist)
 	{
-		initGame(mX, mY);
-	}
-	else {
-		for (auto i : carlist)
+
+		if (l.Traffic())
 		{
-			i->move(12, 0);
-			/*if (l.Traffic())
+			if (l.statusLight() == 2)
 			{
-				if (l.statusLight() == 2)
-				{
-					i->move(0, 0);
-				}
-				else if (l.statusLight() == 1)
-				{
-					i->move(0, 0);
-				}
+				i->move(0, 0, 0.5);
 			}
-			else
+			else if (l.statusLight() == 1)
 			{
-				i->move(0, 0);
-			}*/
+				i->move(0, 0, 0.2);
+			}
+			else if (l.statusLight() == 0)
+			{
+				i->move(0, 0, 0);
+			}
 		}
+		else
+		{
+			i->move(0, 0);
+		}
+
 	}
+	if (carlist.empty()) initGame(mX, mY);
 	while (!carlist.empty() && carlist.back()->CheckOutWindow(window))
 	{
 
 		COBJECT* tmp = carlist.back();
 		carlist.pop_back();
 		delete tmp;
+
 	}
 
 }

@@ -70,6 +70,8 @@ void CROADLIST::draw(sf::RenderWindow& window)
 	for (auto it : roadList)
 	{
 		it->draw(window);
+		player->draw(window);
+
 		it->drawSubObj(window);
 	}
 }

@@ -16,7 +16,7 @@ CCAR::CCAR(string FileTextureName, float x, float y, int speed, int direction) :
 	out.setPosition(mX, mY);
 }
 
-void CCAR::move(float x, float y)
+void CCAR::move(float x, float y, float frac)
 {
-	COBJECT::move(x, y);
+	COBJECT::move(x, y, frac);
 }

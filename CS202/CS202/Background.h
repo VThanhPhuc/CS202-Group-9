@@ -8,7 +8,7 @@ class Background
 {
 private:
 	void loadTexture();// Loads the textures onto the game objects
-
+	void blur_loadTexture();
 	// The elements that make up the background
 	sf::RectangleShape rectTopRoad;
 	sf::RectangleShape rectBottomRoad;
@@ -26,7 +26,15 @@ private:
 public:
 	Background();
 	void draw(sf::RenderWindow& window);
-
+	void blur_draw(sf::RenderWindow& window)
+	{
+		this->blur_loadTexture();
+		this->draw(window);
+	}
+	void reload()
+	{
+		this->loadTexture();
+	}
 	sf::RectangleShape m_rectTopPavement; // Public so the bounds can be checked
 
 };

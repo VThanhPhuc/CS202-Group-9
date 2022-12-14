@@ -10,9 +10,7 @@ protected:
 	float mX;
 	float mY;
 
-
 	bool playing;
-
 
 	sf::Texture* texture;
 	sf::Sprite out;

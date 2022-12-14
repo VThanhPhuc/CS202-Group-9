@@ -9,7 +9,7 @@ CARLANE::CARLANE(sf::Vector2f pos) : CROAD()
 	// main
 	mX = pos.x;
 	mY = pos.y /*- Constants::HeightRoad + Constants::HeightRoad*/;
-	if (rand() % 6 == 0)
+	if (rand() % Constants::numLights == 0)
 	{
 		light = CLight(mX, mY);
 	}
@@ -30,7 +30,7 @@ CARLANE::CARLANE(float index) : CROAD()
 
 
 
-	if (rand() % 6 == 0) light = CLight(mX, mY);
+	if (rand() % Constants::numLights == 0) light = CLight(mX, mY);
 }
 
 CARLANE::CARLANE(float x, float y, bool traffic) :CROAD(x, y)

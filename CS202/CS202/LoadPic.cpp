@@ -24,4 +24,7 @@ LoadPic::LoadPic()
 	initTexture("car1");
 	initTexture("truck");
 	initTexture("truck1");
+
+	//load light
+	initTexture("light");
 }

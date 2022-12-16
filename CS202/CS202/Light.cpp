@@ -15,6 +15,12 @@ CLight::CLight(float x, float y)
 	mY = y + 10;
 	traffic = true;
 	diff = rand() % 6 - 1;
+
+	texture = &LoadPic::GetIns().texture[Constants::lightname];
+	out.setTexture(*texture);
+	/*out.setOrigin(0, height);*/
+	out.setPosition(mX, mY);
+
 	green();
 }
 int CLight::statusLight()
@@ -24,16 +30,19 @@ int CLight::statusLight()
 void CLight::red()
 {
 	status = 0;
+	out.setTextureRect(sf::IntRect(width * status, 0, width, height));
 	clo.restart();
 }
 void CLight::green()
 {
 	status = 2;
+	out.setTextureRect(sf::IntRect(width * status, 0, width, height));
 	clo.restart();
 }
 void CLight::yellow()
 {
 	status = 1;
+	out.setTextureRect(sf::IntRect(width * status, 0, width, height));
 	clo.restart();
 }
 void CLight::update(sf::RenderWindow& window)

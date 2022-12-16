@@ -9,12 +9,15 @@
 #include <random>
 
 #include "Constants.h"
+#include "LoadPic.h"
 
 using namespace std;
 
 
 class CLight {
 private:
+	int width = 60, height = 180;
+
 	float mX;
 	float mY;
 	int status;

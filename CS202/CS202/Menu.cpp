@@ -293,5 +293,6 @@ void Menu::Menu_control(sf::RenderWindow& window, sf::Event event, Background d,
 		cout << "Exit" << endl;
 		window.close();
 		}
+		else cout << "No" << endl;
 	}
 }

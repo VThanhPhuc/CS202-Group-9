@@ -288,5 +288,10 @@ void Menu::Menu_control(sf::RenderWindow& window, sf::Event event, Background d,
 				if (i == 1) break;
 			}
 		}
+		else if (this->Start_Play(window) == 2)
+		{
+		cout << "Exit" << endl;
+		window.close();
+		}
 	}
 }

@@ -148,15 +148,6 @@ void Menu::Menu_control(sf::RenderWindow& window, sf::Event event, Background d,
 				//p.draw(window);
 				//window.display();
 				int i = 0;
-				//b.move(l);
-				//c.move(l);
-				//p.Control(10,window);
-				/*if (p.isImpact(b) == true)
-				{
-					cout << "Dung" << endl;
-					break;
-				}*/
-
 				window.clear();
 				a.draw(window);
 				while (window.isOpen())

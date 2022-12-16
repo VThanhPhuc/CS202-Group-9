@@ -36,6 +36,7 @@ namespace Constants
 
 	//number of lights
 	const int numLights = 6;
+	const string lightname = "light";
 
 	const float Width_hiddenRoad = 1500;
 	const float Height_HiddenRoad = 100;

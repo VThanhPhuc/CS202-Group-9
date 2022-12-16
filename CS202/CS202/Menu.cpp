@@ -240,51 +240,6 @@ void Menu::Menu_control(sf::RenderWindow& window, sf::Event event, Background d,
 					window.display();
 					if (i == 1) break;
 				}
-				//while (window.pollEvent(event))
-				//{
-				//	if (event.type == sf::Event::Closed)
-				//		window.close();
-				//	if (event.key.code == sf::Keyboard::Escape)
-				//	{
-				//		cout << "A" << endl;
-				//		while (window.isOpen())
-				//		{
-				//			window.clear();
-				//			d.blur_draw(window);
-				//			this->Draw_Menu_In_game(window);
-				//			window.display();
-				//			int i1 = 0;
-				//			while (window.pollEvent(event))
-				//			{
-				//				if (event.type == sf::Event::Closed)
-				//				{
-				//					window.close();
-				//				}
-				//				if (event.type == sf::Event::MouseButtonPressed)
-				//				{
-				//					if (this->CheckMouseGamePlay(window) == 1)
-				//					{
-				//						cout << "1" << endl;
-				//						d.reload();
-				//						i1 = 1;
-				//						i = 1;
-				//						break;
-				//					}
-				//					else if (this->CheckMouseGamePlay(window) == 2)
-				//					{
-				//						cout << "2" << endl;
-				//						d.reload();
-				//						i1 = 1;
-				//						break;
-				//					}
-				//				}
-				//			}
-				//			if (i1 == 1) break;
-				//		}
-				//		//i = 1;
-				//		break;
-				//	}
-				//}
 				if (i == 1) break;
 			}
 		}

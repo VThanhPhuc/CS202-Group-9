@@ -30,10 +30,6 @@ void Menu::draw_menu(sf::RenderWindow& window)
 	window.draw(this->button_start);
 	window.draw(this->button_exit);
 }
-void Menu::draw_gameplay(sf::RenderWindow& window)
-{
-
-}
 int Menu::Start_Play(sf::RenderWindow& window)
 {
 	float mouseX = sf::Mouse::getPosition(window).x;

@@ -140,13 +140,6 @@ void Menu::Menu_control(sf::RenderWindow& window, sf::Event event, Background d,
 			c11 = new CARLANE(11);
 			while (window.isOpen())
 			{
-				//window.clear();
-				//d.draw(window);
-				//this->draw_gameplay(window);
-				//b.draw(window);
-				//c.draw(window);
-				//p.draw(window);
-				//window.display();
 				int i = 0;
 				window.clear();
 				a.draw(window);

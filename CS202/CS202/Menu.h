@@ -20,7 +20,6 @@ private:
 public:
 	void InnitMenuBackground();
 	void draw_menu(sf::RenderWindow& window);
-	void draw_gameplay(sf::RenderWindow& window);
 	int Start_Play(sf::RenderWindow& window);
 	int CheckMouseGamePlay(sf::RenderWindow& window);
 	void Draw_Menu_In_game(sf::RenderWindow& window);

@@ -18,7 +18,7 @@ CLight::CLight(float x, float y)
 
 	texture = &LoadPic::GetIns().texture[Constants::lightname];
 	out.setTexture(*texture);
-	/*out.setOrigin(0, height);*/
+	out.setOrigin(0, height);
 	out.setPosition(mX, mY);
 
 	green();

@@ -53,7 +53,7 @@ int main()
 {
 	sf::RenderWindow window(sf::VideoMode(1500, 1000), "sfml works");
 	CPEOPLE a(&window, 0, 500);
-	CLight l;
+	CLight l(0, 200);
 	CCARLIST b; CROAD* c1;
 	c1 = new CARLANE(1);
 	CROAD* c2;
@@ -107,6 +107,8 @@ int main()
 		b.draw(window);
 		a.draw(window);
 		b.update(0, 0, window, l);
+		l.draw(window);
+		l.update(window);
 		deque<COBJECT*>* cur = b.getCarList();
 		while (window.pollEvent(ev))
 		{

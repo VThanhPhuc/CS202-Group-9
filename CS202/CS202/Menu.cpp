@@ -111,6 +111,182 @@ void Menu::Menu_control(sf::RenderWindow& window, sf::Event event, Background d,
 		window.close();
 	if (event.type == sf::Event::MouseButtonPressed)
 	{
+		if (this->Start_Play(window) == 1)
+		{
+			cout << "Start" << endl;
+			CPEOPLE a(&window, 0, 500);
+			CLight l;
+			CCARLIST b; CROAD* c1;
+			c1 = new CARLANE(1);
+			CROAD* c2;
+			c2 = new CARLANE(2);
+			CROAD* c3;
+			c3 = new CARLANE(3);
+			CROAD* c4;
+			c4 = new CARLANE(4);
+			CROAD* c5;
+			c5 = new CARLANE(5);
+			CROAD* c6;
+			c6 = new CARLANE(6);
+			CROAD* c7;
+			c7 = new CARLANE(7);
+			CROAD* c8;
+			c8 = new CARLANE(8);
+			CROAD* c9;
+			c9 = new CARLANE(9);
+			CROAD* c10;
+			c10 = new CARLANE(10);
+			CROAD* c11;
+			c11 = new CARLANE(11);
+			while (window.isOpen())
+			{
+				//window.clear();
+				//d.draw(window);
+				//this->draw_gameplay(window);
+				//b.draw(window);
+				//c.draw(window);
+				//p.draw(window);
+				//window.display();
+				int i = 0;
+				//b.move(l);
+				//c.move(l);
+				//p.Control(10,window);
+				/*if (p.isImpact(b) == true)
+				{
+					cout << "Dung" << endl;
+					break;
+				}*/
 
+				window.clear();
+				a.draw(window);
+				while (window.isOpen())
+				{
+					sf::Event ev;
+					window.clear();
+					c1->draw(window);
+					c2->draw(window);
+					c3->draw(window);
+					c4->draw(window);
+					c5->draw(window);
+					c6->draw(window);
+					c7->draw(window);
+					c8->draw(window);
+					c9->draw(window);
+					c10->draw(window);
+					c11->draw(window);
+					b.draw(window);
+					a.draw(window);
+					b.update(0, 0, window, l);
+					deque<COBJECT*>* cur = b.getCarList();
+					while (window.pollEvent(ev))
+					{
+						switch (ev.type)
+						{
+						case sf::Event::Closed:
+							window.close();
+							break;
+						case sf::Event::KeyPressed:
+							if (ev.key.code == sf::Keyboard::Up) a.moveUp();
+							else if (ev.key.code == sf::Keyboard::Down) a.moveDown();
+							else if (ev.key.code == sf::Keyboard::Left) a.moveLeft();
+							else if (ev.key.code == sf::Keyboard::Right) a.moveRight();
+							else if (ev.key.code == sf::Keyboard::Escape)
+							{
+								while (window.isOpen())
+								{
+									window.clear();
+									d.blur_draw(window);
+									this->Draw_Menu_In_game(window);
+									window.display();
+									int i1 = 0;
+									while (window.pollEvent(event))
+									{
+										if (event.type == sf::Event::Closed)
+										{
+											window.close();
+										}
+										if (event.type == sf::Event::MouseButtonPressed)
+										{
+											if (this->CheckMouseGamePlay(window) == 1)
+											{
+												d.reload();
+												i1 = 1;
+												i = 1;
+												break;
+											}
+											else if (this->CheckMouseGamePlay(window) == 2)
+											{
+												d.reload();
+												i1 = 1;
+												break;
+											}
+										}
+									}
+									if (i1 == 1) break;
+								}
+							}
+							break;
+						}
+					}
+
+					for (long i = 0; i < cur->size(); ++i)
+					{
+						if (a.isImpact(cur->at(i)))
+						{
+							std::cout << "die" << endl;
+							break;
+						}
+					}
+					window.display();
+					if (i == 1) break;
+				}
+				//while (window.pollEvent(event))
+				//{
+				//	if (event.type == sf::Event::Closed)
+				//		window.close();
+				//	if (event.key.code == sf::Keyboard::Escape)
+				//	{
+				//		cout << "A" << endl;
+				//		while (window.isOpen())
+				//		{
+				//			window.clear();
+				//			d.blur_draw(window);
+				//			this->Draw_Menu_In_game(window);
+				//			window.display();
+				//			int i1 = 0;
+				//			while (window.pollEvent(event))
+				//			{
+				//				if (event.type == sf::Event::Closed)
+				//				{
+				//					window.close();
+				//				}
+				//				if (event.type == sf::Event::MouseButtonPressed)
+				//				{
+				//					if (this->CheckMouseGamePlay(window) == 1)
+				//					{
+				//						cout << "1" << endl;
+				//						d.reload();
+				//						i1 = 1;
+				//						i = 1;
+				//						break;
+				//					}
+				//					else if (this->CheckMouseGamePlay(window) == 2)
+				//					{
+				//						cout << "2" << endl;
+				//						d.reload();
+				//						i1 = 1;
+				//						break;
+				//					}
+				//				}
+				//			}
+				//			if (i1 == 1) break;
+				//		}
+				//		//i = 1;
+				//		break;
+				//	}
+				//}
+				if (i == 1) break;
+			}
+		}
 	}
 }

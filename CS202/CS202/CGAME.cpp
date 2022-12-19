@@ -122,49 +122,91 @@ void CGAME::pollEvent()
 	if (game_state != PLAYING) return;
 	while (this->window->pollEvent(this->ev))
 	{
-		switch (ev.type)
+		//switch (this->ev.type)
+		//{
+		//case sf::Event::KeyPressed:
+		//	switch (ev.key.code)
+		//	{
+		//	case sf::Keyboard::Up:
+		//	{
+		//		player->moveUp();
+		//		roadli->shiftObj('U');
+		//		if (!checkMove()) {
+		//			roadli->shiftObj('D');
+		//		}
+		//		break;
+		//	}
+		//	case sf::Keyboard::Down:
+		//	{
+		//		player->moveDown();
+		//		roadli->shiftObj('D');
+		//		if (!checkMove())
+		//		{
+		//			roadli->shiftObj('U');
+		//		}
+		//		break;
+		//	}
+		//	case sf::Keyboard::Right:
+		//	{
+		//		player->moveRight();
+		//		//if (!checkMove())
+		//		//{
+		//		//	player->moveLeft();
+		//		//}
+		//		break;
+		//	}
+		//	case sf::Keyboard::Left:
+		//	{
+		//		player->moveLeft();
+		//		//if (!checkMove())
+		//		//{
+		//		//	player->moveRight();
+		//		//}
+		//		break;
+		//	}
+		//	}
+		//	break;
+		//}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 		{
-		case sf::Event::KeyPressed:
-			if (ev.key.code == sf::Keyboard::Up)
-			{
-				player->moveUp();
-				roadli->shiftObj('U');
-				if (!checkMove()) {
-					roadli->shiftObj('D');
-				}
-			}
-			else if (ev.key.code == sf::Keyboard::Down)
-			{
-				player->moveDown();
-				roadli->shiftObj('D');
-				if (!checkMove())
-				{
-					roadli->shiftObj('U');
-				}
-			}
-			else if (ev.key.code == sf::Keyboard::Left)
-			{
-				player->moveLeft();
-				//if (!checkMove())
-				//{
-				//	player->moveRight();
-				//}
-
-			}
-			else if (ev.key.code == sf::Keyboard::Right)
+			player->moveUp();
+			roadli->shiftObj('U');
+			//if (!checkMove()) {
+				//roadli->shiftObj('D');
+			//}
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+		{
+			player->moveDown();
+			roadli->shiftObj('D');
+			//if (!checkMove())
+			//{
+				//roadli->shiftObj('U');
+			//}
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+		{
+			player->moveLeft();
+			/*if (!checkMove())
 			{
 				player->moveRight();
-				//if (!checkMove())
-				//{
-				//	player->moveLeft();
-				//}
-			}
-			else if (ev.key.code == sf::Keyboard::Escape)
+			}*/
+
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+		{
+			player->moveRight();
+			/*if (!checkMove())
 			{
-				return;
-			}
-		}	
+				player->moveLeft();
+			}*/
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+		{
+			return;
+		}
 	}
+	
 }
 
 bool CGAME::checkMove() {
@@ -179,6 +221,7 @@ bool CGAME::checkMove() {
 				if (collisionType == true)
 				{
 					player->die();
+					cout << "dead" << endl;
 					render();
 					game_state = GAMEOVER;
 					//Sleep(2000);
@@ -188,7 +231,6 @@ bool CGAME::checkMove() {
 				return false;
 			}
 		}
-
 	}
 	return true;
 }

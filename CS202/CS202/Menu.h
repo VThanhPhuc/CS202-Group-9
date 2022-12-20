@@ -1,15 +1,139 @@
 #pragma once
-#include "Vehicle.h"
-
+#include "Background.h"
+#include "People.h"
+#include "CCAR.h"
+//class TextBox
+//{
+//public:
+//	TextBox()
+//	{
+//
+//	}
+//
+//	TextBox(int size, sf::Color color, bool sel) {
+//		textbox.setCharacterSize(size);
+//		textbox.setColor(color);
+//		IsSelected = sel;
+//		if (sel)
+//		{
+//			textbox.setString("_");
+//		}
+//		else
+//		{
+//			textbox.setString("");
+//		}
+//	}
+//
+//	void setFont(sf::Font& font) {
+//		textbox.setFont(font);
+//	}
+//
+//	void setPosition(sf::Vector2f pos)
+//	{
+//		textbox.setPosition(pos);
+//	}
+//
+//	void setLimit(bool ToF,int lim)
+//	{
+//		hasLimit = ToF;
+//		limit = lim;
+//	}
+//
+//	void setSelected(bool sel)
+//	{
+//		IsSelected = sel;
+//		if (!sel)
+//		{
+//			std::string t = text.str();
+//			std::string newT = "";
+//			for (int i = 0; i < t.length() - 1; i++){
+//				newT += t[i];
+//			}
+//			textbox.setString(newT);
+//		}
+//	}
+//
+//	string getText()
+//	{
+//		return text.str();
+//	}
+//
+//	void drawTo(sf::RenderWindow& window)
+//	{
+//		window.draw(textbox);
+//	}
+//
+//	void typeOn(sf::Event input) {
+//		if (IsSelected)
+//		{
+//			int charTyped = input.text.unicode;
+//			if (charTyped < 128)
+//			{
+//				if (hasLimit)
+//				{
+//					if (text.str().length() <= limit)
+//					{
+//						inputlogic(charTyped);
+//					}
+//					else if (text.str().length() > limit && charTyped == DELETE_KEY)
+//					{
+//						deleteLastChar();
+//					}
+//				}
+//				else {
+//					inputlogic(charTyped);
+//				}
+//			}
+//		}
+//	}
+//private:
+//	sf::Text textbox;
+//	std::ostringstream text;
+//	bool IsSelected = false;
+//	bool hasLimit = false;
+//	int limit;
+//
+//	void inputlogic(int charTyped)
+//	{
+//		if (charTyped != DELETE_KEY && charTyped != ENTER_KEY && charTyped != ESCAPE_KEY)
+//			text << static_cast<char>(charTyped);
+//		else if (charTyped == DELETE_KEY)
+//		{
+//			if (text.str().length() > 0)
+//			{
+//				deleteLastChar();
+//			}
+//		}
+//		textbox.setString(text.str() + "_");
+//	}
+//
+//	void deleteLastChar()
+//	{
+//		std::string t = text.str();
+//		std::string newT = "";
+//		for (int i = 0; i < t.length() - 1; i++)
+//		{
+//			newT += t[i];
+//		}
+//		text.str("");
+//		text << newT;
+//
+//		textbox.setString(text.str());
+//	}
+//};
 class Menu
 {
 private:
 	sf::Sprite MenuBackground;
 	sf::RectangleShape button_start; // begin the game
 	sf::RectangleShape button_exit; // quit the game
-	sf::RectangleShape button_back; //get back to the main
+	sf::RectangleShape button_back; //get back to the menu
 	sf::RectangleShape menu_in_game; // menu
 	sf::RectangleShape button_resume;
+
+	sf::RectangleShape continue_button;
+	sf::RectangleShape button_back1;
+	sf::RectangleShape you_lose1;
 
 	sf::Texture t;
 	sf::Texture exit_button;
@@ -17,6 +141,9 @@ private:
 	sf::Texture b_button;
 	sf::Texture menu_;
 	sf::Texture resume;
+	sf::Texture continue_p;
+	sf::Texture b1_button;
+	sf::Texture you_lose;
 public:
 	void InnitMenuBackground();
 	void draw_menu(sf::RenderWindow& window);
@@ -24,194 +151,8 @@ public:
 	int CheckMouseGamePlay(sf::RenderWindow& window);
 	void Draw_Menu_In_game(sf::RenderWindow& window);
 	void Menu_control(sf::RenderWindow& window, sf::Event event, Background d);
-	void Begin()
-	{
-		sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works!");
-		CCAR b("car.png", 100, 100, 10, 10);
-		Background d;
-		while (window.isOpen())
-		{
-			sf::Event event;
-			while (window.pollEvent(event))
-			{
-				if (event.type == sf::Event::Closed)
-					window.close();
-				if (event.type == sf::Event::MouseButtonPressed)
-				{
-					this->Menu_control(window, event, d);
-				}
-
-			}
-			window.clear();
-			this->draw_menu(window);
-			window.display();
-		}
-	}
-	void PlayGame(sf::RenderWindow& window, Background d, int& return1)
-	{
-		if (return1 == 1) return;
-		cout << "Start" << endl;
-		CPEOPLE a(&window, 0, 500);
-		CLight l;
-		CCARLIST b; CROAD* c1;
-		c1 = new CARLANE(1);
-		CROAD* c2;
-		c2 = new CARLANE(2);
-		CROAD* c3;
-		c3 = new CARLANE(3);
-		CROAD* c4;
-		c4 = new CARLANE(4);
-		CROAD* c5;
-		c5 = new CARLANE(5);
-		CROAD* c6;
-		c6 = new CARLANE(6);
-		CROAD* c7;
-		c7 = new CARLANE(7);
-		CROAD* c8;
-		c8 = new CARLANE(8);
-		CROAD* c9;
-		c9 = new CARLANE(9);
-		CROAD* c10;
-		c10 = new CARLANE(10);
-		CROAD* c11;
-		c11 = new CARLANE(11);
-		while (window.isOpen())
-		{
-			int i = 0;
-			window.clear();
-			a.draw(window);
-			while (window.isOpen())
-			{
-				sf::Event ev;
-				window.clear();
-				c1->draw(window);
-				c2->draw(window);
-				c3->draw(window);
-				c4->draw(window);
-				c5->draw(window);
-				c6->draw(window);
-				c7->draw(window);
-				c8->draw(window);
-				c9->draw(window);
-				c10->draw(window);
-				c11->draw(window);
-				b.draw(window);
-				a.draw(window);
-				b.update(0, 0, window, l);
-				deque<COBJECT*>* cur = b.getCarList();
-				while (window.pollEvent(ev))
-				{
-					switch (ev.type)
-					{
-					case sf::Event::Closed:
-						window.close();
-						break;
-					case sf::Event::KeyPressed:
-						if (ev.key.code == sf::Keyboard::Up) a.moveUp();
-						else if (ev.key.code == sf::Keyboard::Down) a.moveDown();
-						else if (ev.key.code == sf::Keyboard::Left) a.moveLeft();
-						else if (ev.key.code == sf::Keyboard::Right) a.moveRight();
-						else if (ev.key.code == sf::Keyboard::Escape)
-						{
-							while (window.isOpen())
-							{
-								window.clear();
-								d.blur_draw(window);
-								this->Draw_Menu_In_game(window);
-								window.display();
-								int i1 = 0;
-								while (window.pollEvent(ev))
-								{
-									if (ev.type == sf::Event::Closed)
-									{
-										window.close();
-									}
-									if (ev.type == sf::Event::MouseButtonPressed)
-									{
-										if (this->CheckMouseGamePlay(window) == 1)
-										{
-											d.reload();
-											i1 = 1;
-											i = 1;
-											return1 = 1;
-											break;
-										}
-										else if (this->CheckMouseGamePlay(window) == 2)
-										{
-											d.reload();
-											i1 = 1;
-											break;
-										}
-									}
-								}
-								if (i1 == 1) break;
-							}
-						}
-						break;
-					}
-				}
-				for (long i = 0; i < cur->size(); ++i)
-				{
-					int f1 = 0;
-					if (a.isImpact(cur->at(i)))
-					{
-						f1 = 1;
-						std::cout << "die" << endl;
-						int k = 0;
-						while (window.isOpen())
-						{
-							if (return1 == 1) return;
-							window.clear();
-							this->LoseGame(window);
-							window.display();
-							while (window.pollEvent(ev))
-							{
-								if (ev.type == sf::Event::Closed)
-								{
-									window.close();
-								}
-								if (ev.type == sf::Event::MouseButtonPressed)
-								{
-									if (this->ChoiceLoseGame(window) == 1)
-									{
-										cout << "Yes" << endl;
-										this->PlayGame(window, d, return1);
-										if (return1 == 1) return;
-										k = 1;
-										i = 0;
-										break;
-									}
-									else if (this->ChoiceLoseGame(window) == 2)
-									{
-										cout << "Yes1" << endl;
-										k = 1;
-										i = 1;
-										return1 = 1;
-										break;
-									}
-								}
-							}
-							if (k == 1 && i == 1)
-							{
-								return;
-							}
-							else if (k == 1 && i == 0)
-							{
-								break;
-							}
-						}
-						if (k == 1 && i == 0)
-						{
-							window.clear();
-							break;
-						}
-						break;
-					}
-				}
-				window.display();
-				if (i == 1) break;
-			}
-			if (i == 1) break;
-		}
-	}
+	void LoseGame(sf::RenderWindow& window);
+	int ChoiceLoseGame(sf::RenderWindow& window);
+	void Begin();
+	void PlayGame(sf::RenderWindow& window, Background d, int& return1);
 };

@@ -21,7 +21,7 @@ void CGAME::initGame()
 	delete roadli;
 	delete player;
 
-	player = new CPEOPLE(this->window, 750, 200);
+	player = new CPEOPLE(this->window, 750, 700);
 	roadli = new CROADLIST(player);
 	roadli->initRoad();
 
@@ -122,51 +122,6 @@ void CGAME::pollEvent()
 	if (game_state != PLAYING) return;
 	while (this->window->pollEvent(this->ev))
 	{
-		//switch (this->ev.type)
-		//{
-		//case sf::Event::KeyPressed:
-		//	switch (ev.key.code)
-		//	{
-		//	case sf::Keyboard::Up:
-		//	{
-		//		player->moveUp();
-		//		roadli->shiftObj('U');
-		//		if (!checkMove()) {
-		//			roadli->shiftObj('D');
-		//		}
-		//		break;
-		//	}
-		//	case sf::Keyboard::Down:
-		//	{
-		//		player->moveDown();
-		//		roadli->shiftObj('D');
-		//		if (!checkMove())
-		//		{
-		//			roadli->shiftObj('U');
-		//		}
-		//		break;
-		//	}
-		//	case sf::Keyboard::Right:
-		//	{
-		//		player->moveRight();
-		//		//if (!checkMove())
-		//		//{
-		//		//	player->moveLeft();
-		//		//}
-		//		break;
-		//	}
-		//	case sf::Keyboard::Left:
-		//	{
-		//		player->moveLeft();
-		//		//if (!checkMove())
-		//		//{
-		//		//	player->moveRight();
-		//		//}
-		//		break;
-		//	}
-		//	}
-		//	break;
-		//}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 		{
 			player->moveUp();
@@ -206,7 +161,7 @@ void CGAME::pollEvent()
 			return;
 		}
 	}
-	
+
 }
 
 bool CGAME::checkMove() {
@@ -281,7 +236,7 @@ void CGAME::initWindow()
 void CGAME::initGame()
 {
 	peo = new CPEOPLE(955, 1080);
-	
+
 	// init vehicle, animal
 
 	game_state = PLAYING;

@@ -23,5 +23,5 @@ public:
 	int Start_Play(sf::RenderWindow& window);
 	int CheckMouseGamePlay(sf::RenderWindow& window);
 	void Draw_Menu_In_game(sf::RenderWindow& window);
-	void Menu_control(sf::RenderWindow& window, sf::Event event, Background d, CCar b);
+	void Menu_control(sf::RenderWindow& window, sf::Event event, Background d);
 };

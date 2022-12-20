@@ -38,14 +38,13 @@ CROAD* CROADLIST::createRoad(sf::Vector2f pos)
 CROAD* CROADLIST::createRoad(float index)
 {
 
-	//RoadType type = RoadType(rand() % LAST);
+	RoadType type = RoadType(rand() % LAST);
 	int diff = 1;
 
-	//if (type == LANE)
-	//{
-	return new CARLANE(index - diff);
-	//}
-
+	if (type == LANE)
+	{
+		return new CARLANE(index - diff);
+	}
 }
 
 
@@ -96,6 +95,5 @@ void CROADLIST::update(sf::RenderWindow& window)
 	for (auto it : roadList)
 	{
 		it->update(window);
-
 	}
 }

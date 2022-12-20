@@ -11,11 +11,9 @@ void CGAME::initWindow()
 	this->videoMode.height = Constants::Height_screen;
 	this->videoMode.width = Constants::width_screen;
 
-	this->window = new sf::RenderWindow(this->videoMode, "sfml works!", sf::Style::Titlebar | sf::Style::Close);
+	this->window = new sf::RenderWindow(this->videoMode, "Crossy Road!", sf::Style::Titlebar | sf::Style::Close);
 	this->window->setFramerateLimit(60);
 	this->window->setVerticalSyncEnabled(true);
-
-
 }
 
 void CGAME::initGame()
@@ -23,22 +21,12 @@ void CGAME::initGame()
 	delete roadli;
 	delete player;
 
-	player = new CPEOPLE(this->window, 750, 500);
+	player = new CPEOPLE(this->window, 750, 200);
 	roadli = new CROADLIST(player);
 	roadli->initRoad();
 
-
-
 	game_state = PLAYING;
 }
-
-// accessors
-const bool CGAME::running() const
-{
-	return this->window->isOpen();
-}
-
-
 
 CGAME::CGAME()
 {
@@ -59,17 +47,168 @@ CGAME::~CGAME()
 	delete this->window;
 }
 
+// accessors
+const bool CGAME::running() const
+{
+	return this->window->isOpen();
+}
+
+void CGAME::run()
+{
+	while (running())
+	{
+		update();
+
+		render();
+	}
+}
+
 void CGAME::update() {
 	pollEvent();
 	if (roadli)
 	{
-		//if (game_state == PLAYING)
-		//{
-		checkMove();
-		roadli->update(*this->window);
-		//}
+		if (game_state == PLAYING)
+		{
+			checkMove();
+			roadli->update(*this->window);
+		}
 	}
 }
+
+void CGAME::pollEvent()
+{
+	game_state = PLAYING;
+
+	//while (this->window->pollEvent(this->ev))
+	//{
+	//	if (game_state == PLAYING) continue;
+	//	switch (this->ev.type)
+	//	{
+	//	case sf::Event::Closed:
+	//		this->window->close();
+	//		break;
+	//	case sf::Event::KeyReleased:
+	//		switch (ev.key.code) 
+	//		{
+	//		case sf::Keyboard::Up:
+	//			player->moveUp();
+	//			break;
+	//		case sf::Keyboard::Right:
+	//			player->moveRight();
+	//			break;
+	//		case sf::Keyboard::Down:
+	//			player->moveDown();
+	//			break;
+	//		case sf::Keyboard::Left:
+	//			player->moveLeft();
+	//			break;
+	//		case sf::Keyboard::Escape:
+	//			window->close();
+	//			/*if (game_state == MENU)
+	//				choiceMenu(gui->getChoice());
+	//			else if (game_state == GAMEOVER)
+	//				choiceGameOver(gui->getChoice());
+	//			else if (game_state == PAUSE)
+	//				choicePause(gui->getChoice());
+	//			else if (game_state == SETTING)
+	//				choiceSetting(gui->getChoice());
+	//			*/
+	//			break;
+	//		}
+	//		break;
+	//	}
+	//}
+
+	if (game_state != PLAYING) return;
+	while (this->window->pollEvent(this->ev))
+	{
+		//switch (this->ev.type)
+		//{
+		//case sf::Event::KeyPressed:
+		//	switch (ev.key.code)
+		//	{
+		//	case sf::Keyboard::Up:
+		//	{
+		//		player->moveUp();
+		//		roadli->shiftObj('U');
+		//		if (!checkMove()) {
+		//			roadli->shiftObj('D');
+		//		}
+		//		break;
+		//	}
+		//	case sf::Keyboard::Down:
+		//	{
+		//		player->moveDown();
+		//		roadli->shiftObj('D');
+		//		if (!checkMove())
+		//		{
+		//			roadli->shiftObj('U');
+		//		}
+		//		break;
+		//	}
+		//	case sf::Keyboard::Right:
+		//	{
+		//		player->moveRight();
+		//		//if (!checkMove())
+		//		//{
+		//		//	player->moveLeft();
+		//		//}
+		//		break;
+		//	}
+		//	case sf::Keyboard::Left:
+		//	{
+		//		player->moveLeft();
+		//		//if (!checkMove())
+		//		//{
+		//		//	player->moveRight();
+		//		//}
+		//		break;
+		//	}
+		//	}
+		//	break;
+		//}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+		{
+			player->moveUp();
+			roadli->shiftObj('U');
+			//if (!checkMove()) {
+				//roadli->shiftObj('D');
+			//}
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+		{
+			player->moveDown();
+			roadli->shiftObj('D');
+			//if (!checkMove())
+			//{
+				//roadli->shiftObj('U');
+			//}
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+		{
+			player->moveLeft();
+			/*if (!checkMove())
+			{
+				player->moveRight();
+			}*/
+
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+		{
+			player->moveRight();
+			/*if (!checkMove())
+			{
+				player->moveLeft();
+			}*/
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+		{
+			return;
+		}
+	}
+	
+}
+
 bool CGAME::checkMove() {
 	for (auto road : roadli->roadList) {
 		if (road->getObjLi() != NULL)
@@ -82,6 +221,7 @@ bool CGAME::checkMove() {
 				if (collisionType == true)
 				{
 					player->die();
+					cout << "dead" << endl;
 					render();
 					game_state = GAMEOVER;
 					//Sleep(2000);
@@ -91,102 +231,8 @@ bool CGAME::checkMove() {
 				return false;
 			}
 		}
-
 	}
 	return true;
-}
-
-void CGAME::pollEvent()
-{
-	game_state = PLAYING;
-	while (this->window->pollEvent(this->ev))
-	{
-		switch (this->ev.type)
-		{
-		case sf::Event::Closed:
-			this->window->close();
-			break;
-		case sf::Event::KeyReleased:
-			switch (ev.key.code) {
-			case sf::Keyboard::Up:
-				player->moveUp();
-				break;
-			case sf::Keyboard::Right:
-				player->moveRight();
-				break;
-			case sf::Keyboard::Down:
-				player->moveDown();
-				break;
-			case sf::Keyboard::Left:
-				player->moveLeft();
-				break;
-			case sf::Keyboard::Escape:
-				window->close();
-				/*if (game_state == MENU)
-					choiceMenu(gui->getChoice());
-				else if (game_state == GAMEOVER)
-					choiceGameOver(gui->getChoice());
-				else if (game_state == PAUSE)
-					choicePause(gui->getChoice());
-				else if (game_state == SETTING)
-					choiceSetting(gui->getChoice());
-				*/
-				break;
-			}
-			break;
-		}
-	}
-	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-	//{
-	//	player->moveUp();
-	//	roadli->shiftObj('U');
-	//	//if (!checkMove()) {
-	//		//roadli->shiftObj('D');
-	//	//}
-	//}
-	//else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-	//{
-	//	player->moveDown();
-	//	roadli->shiftObj('D');
-	//	//if (!checkMove())
-	//	//{
-	//		//roadli->shiftObj('U');
-	//	//}
-	//}
-	//else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-	//{
-	//	player->moveLeft();
-	//	/*if (!checkMove())
-	//	{
-	//		player->moveRight();
-	//	}*/
-	//
-	//}
-	//else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-	//{
-	//	player->moveRight(); 
-	//	/*if (!checkMove())
-	//	{
-	//		player->moveLeft();
-	//	}*/
-	//}
-	//else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-	//{
-	//	return;
-	//}
-
-
-}
-
-void CGAME::run()
-{
-	while (running())
-	{
-
-		update();
-
-		render();
-	}
 }
 
 void CGAME::render()

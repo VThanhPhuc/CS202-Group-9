@@ -22,7 +22,7 @@ CARLANE::CARLANE(float index) : CROAD()
 	mX = 0;
 	mY = index * Constants::HeightRoad - Constants::Height_HiddenRoad;
 
-	// crate texture
+	// create texture
 
 	texture = &LoadPic::GetIns().texture[file];
 	out.setTexture(*texture);

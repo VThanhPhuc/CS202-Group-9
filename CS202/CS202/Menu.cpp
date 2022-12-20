@@ -1,4 +1,5 @@
 #include "Menu.h"
+#include "CGAME.h"
 void Menu::InnitMenuBackground()
 {
 	if (!this->t.loadFromFile("universe.png"))
@@ -22,59 +23,21 @@ void Menu::InnitMenuBackground()
 	this->button_exit.setTexture(&this->exit_button);
 	this->button_exit.setSize(sf::Vector2f(200, 200));
 	this->button_exit.setPosition(200, 600);
-}
-void Menu::draw_menu(sf::RenderWindow& window)
-{
-	InnitMenuBackground();
-	window.draw(this->MenuBackground);
-	window.draw(this->button_start);
-	window.draw(this->button_exit);
-}
-int Menu::Start_Play(sf::RenderWindow& window)
-{
-	float mouseX = sf::Mouse::getPosition(window).x;
-	float mouseY = sf::Mouse::getPosition(window).y;
+	if (!this->continue_p.loadFromFile("continue_notification.png"))
+	{
+		cout << "Can not load" << endl;
+	};
+	this->continue_button.setTexture(&this->continue_p);
+	this->continue_button.setSize(sf::Vector2f(150, 150));
+	this->continue_button.setPosition(600, 450);
 
-	if (mouseX >= button_start.getPosition().x && mouseX <= (button_start.getPosition().x + 200) && mouseY <= (button_start.getPosition().y + 200) && mouseY >= button_start.getPosition().y)
+	if (!this->b1_button.loadFromFile("Menu_notification.png"))
 	{
-		cout << mouseX << endl;
-		cout << mouseY << endl;
-		cout << button_start.getPosition().x << endl;
-		cout << button_start.getPosition().y << endl;
-		return 1;
-	}
-	if (mouseX >= button_exit.getPosition().x && mouseX <= (button_exit.getPosition().x + 200) && mouseY <= (button_exit.getPosition().y + 200) && mouseY >= button_exit.getPosition().y)
-	{
-		return 2;
-	}
-	return 0;
-}
-int Menu::CheckMouseGamePlay(sf::RenderWindow& window)
-{
-	float mouseX = sf::Mouse::getPosition(window).x;
-	float mouseY = sf::Mouse::getPosition(window).y;
-
-	if (mouseX >= button_back.getPosition().x && mouseX <= (button_back.getPosition().x + 100) && mouseY <= (button_back.getPosition().y + 100) && mouseY >= button_back.getPosition().y)
-	{
-		cout << mouseX << endl;
-		cout << mouseY << endl;
-		cout << button_back.getPosition().x << endl;
-		cout << button_back.getPosition().y << endl;
-		return 1;
-	}
-	else if (mouseX >= button_resume.getPosition().x && mouseX <= (button_resume.getPosition().x + 100) && mouseY <= (button_resume.getPosition().y + 100) && mouseY >= button_resume.getPosition().y)
-	{
-		cout << button_resume.getPosition().x << endl;
-		cout << button_resume.getPosition().y << endl;
-		return 2;
-	}
-	return 0;
-}
-void Menu::Draw_Menu_In_game(sf::RenderWindow& window)
-{
-
-	this->button_start.setPosition(-1000, -1000);
-	this->button_exit.setPosition(-1000, -1000);
+		cout << "Can not load" << endl;
+	};
+	this->button_back1.setTexture(&this->b1_button);
+	this->button_back1.setSize(sf::Vector2f(150, 150));
+	this->button_back1.setPosition(1000, 450);
 
 
 	if (!this->menu_.loadFromFile("Menu_game.png"))
@@ -101,9 +64,271 @@ void Menu::Draw_Menu_In_game(sf::RenderWindow& window)
 	this->button_resume.setSize(sf::Vector2f(100, 100));
 	this->button_resume.setPosition(800, 400);
 
+	if (!this->you_lose.loadFromFile("Lose_Notification.png"))
+	{
+		cout << "Can not load" << endl;
+	}
+	this->you_lose1.setTexture(&this->you_lose);
+	this->you_lose1.setSize(sf::Vector2f(400, 400));
+	this->you_lose1.setPosition(675, 30);
+
+}
+void Menu::draw_menu(sf::RenderWindow& window)
+{
+	InnitMenuBackground();
+	window.draw(this->MenuBackground);
+	window.draw(this->button_start);
+	window.draw(this->button_exit);
+}
+int Menu::Start_Play(sf::RenderWindow& window)
+{
+	float mouseX = sf::Mouse::getPosition(window).x;
+	float mouseY = sf::Mouse::getPosition(window).y;
+
+	if (mouseX >= button_start.getPosition().x && mouseX <= (button_start.getPosition().x + 200) && mouseY <= (button_start.getPosition().y + 200) && mouseY >= button_start.getPosition().y)
+	{
+		return 1;
+	}
+	if (mouseX >= button_exit.getPosition().x && mouseX <= (button_exit.getPosition().x + 200) && mouseY <= (button_exit.getPosition().y + 200) && mouseY >= button_exit.getPosition().y)
+	{
+		return 2;
+	}
+	return 0;
+}
+void Menu::LoseGame(sf::RenderWindow& window)
+{
+	window.draw(this->continue_button);
+	window.draw(this->button_back1);
+	window.draw(this->you_lose1);
+}
+int Menu::CheckMouseGamePlay(sf::RenderWindow& window)
+{
+	float mouseX = sf::Mouse::getPosition(window).x;
+	float mouseY = sf::Mouse::getPosition(window).y;
+
+	if (mouseX >= button_back.getPosition().x && mouseX <= (button_back.getPosition().x + 100) && mouseY <= (button_back.getPosition().y + 100) && mouseY >= button_back.getPosition().y)
+	{
+		return 1;
+	}
+	else if (mouseX >= button_resume.getPosition().x && mouseX <= (button_resume.getPosition().x + 100) && mouseY <= (button_resume.getPosition().y + 100) && mouseY >= button_resume.getPosition().y)
+	{
+		return 2;
+	}
+	return 0;
+}
+int Menu::ChoiceLoseGame(sf::RenderWindow& window)
+{
+	float mouseX = sf::Mouse::getPosition(window).x;
+	float mouseY = sf::Mouse::getPosition(window).y;
+
+	if (mouseX >= this->continue_button.getPosition().x && mouseX <= (this->continue_button.getPosition().x + 150) && mouseY <= (this->continue_button.getPosition().y + 150) && mouseY >= this->continue_button.getPosition().y)
+	{
+		return 1;
+	}
+	else if (mouseX >= this->button_back1.getPosition().x && mouseX <= (this->button_back1.getPosition().x + 150) && mouseY <= (this->button_back1.getPosition().y + 150) && mouseY >= button_resume.getPosition().y)
+	{
+		return 2;
+	}
+	return 0;
+}
+void Menu::Draw_Menu_In_game(sf::RenderWindow& window)
+{
+
+	this->button_start.setPosition(-1000, -1000);
+	this->button_exit.setPosition(-1000, -1000);
 	window.draw(this->menu_in_game);
 	window.draw(this->button_back);
 	window.draw(this->button_resume);
+}
+void Menu::Begin()
+{
+	sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works!");
+	CCAR b("car.png", 100, 100, 10, 10);
+	Background d;
+	while (window.isOpen())
+	{
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+				window.close();
+			if (event.type == sf::Event::MouseButtonPressed)
+			{
+				this->Menu_control(window, event, d);
+			}
+
+		}
+		window.clear();
+		this->draw_menu(window);
+		window.display();
+	}
+}
+void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1)
+{
+	if (return1 == 1) return;
+	cout << "Start" << endl;
+	CPEOPLE a(&window, 0, 500);
+	CLight l;
+	CCARLIST b; CROAD* c1;
+	c1 = new CARLANE(1);
+	CROAD* c2;
+	c2 = new CARLANE(2);
+	CROAD* c3;
+	c3 = new CARLANE(3);
+	CROAD* c4;
+	c4 = new CARLANE(4);
+	CROAD* c5;
+	c5 = new CARLANE(5);
+	CROAD* c6;
+	c6 = new CARLANE(6);
+	CROAD* c7;
+	c7 = new CARLANE(7);
+	CROAD* c8;
+	c8 = new CARLANE(8);
+	CROAD* c9;
+	c9 = new CARLANE(9);
+	CROAD* c10;
+	c10 = new CARLANE(10);
+	CROAD* c11;
+	c11 = new CARLANE(11);
+	while (window.isOpen())
+	{
+		int i = 0;
+		window.clear();
+		a.draw(window);
+		while (window.isOpen())
+		{
+			sf::Event ev;
+			window.clear();
+			c1->draw(window);
+			c2->draw(window);
+			c3->draw(window);
+			c4->draw(window);
+			c5->draw(window);
+			c6->draw(window);
+			c7->draw(window);
+			c8->draw(window);
+			c9->draw(window);
+			c10->draw(window);
+			c11->draw(window);
+			b.draw(window);
+			a.draw(window);
+			b.update(0, 0, window, l);
+			deque<COBJECT*>* cur = b.getCarList();
+			while (window.pollEvent(ev))
+			{
+				switch (ev.type)
+				{
+				case sf::Event::Closed:
+					window.close();
+					break;
+				case sf::Event::KeyPressed:
+					if (ev.key.code == sf::Keyboard::Up) a.moveUp();
+					else if (ev.key.code == sf::Keyboard::Down) a.moveDown();
+					else if (ev.key.code == sf::Keyboard::Left) a.moveLeft();
+					else if (ev.key.code == sf::Keyboard::Right) a.moveRight();
+					else if (ev.key.code == sf::Keyboard::Escape)
+					{
+						while (window.isOpen())
+						{
+							window.clear();
+							d.blur_draw(window);
+							this->Draw_Menu_In_game(window);
+							window.display();
+							int i1 = 0;
+							while (window.pollEvent(ev))
+							{
+								if (ev.type == sf::Event::Closed)
+								{
+									window.close();
+								}
+								if (ev.type == sf::Event::MouseButtonPressed)
+								{
+									if (this->CheckMouseGamePlay(window) == 1)
+									{
+										d.reload();
+										i1 = 1;
+										i = 1;
+										return1 = 1;
+										break;
+									}
+									else if (this->CheckMouseGamePlay(window) == 2)
+									{
+										d.reload();
+										i1 = 1;
+										break;
+									}
+								}
+							}
+							if (i1 == 1) break;
+						}
+					}
+					break;
+				}
+			}
+			for (long i = 0; i < cur->size(); ++i)
+			{
+				int f1 = 0;
+				if (a.isImpact(cur->at(i)))
+				{
+					f1 = 1;
+					std::cout << "die" << endl;
+					int k = 0;
+					while (window.isOpen())
+					{
+						if (return1 == 1) return;
+						window.clear();
+						this->LoseGame(window);
+						window.display();
+						while (window.pollEvent(ev))
+						{
+							if (ev.type == sf::Event::Closed)
+							{
+								window.close();
+							}
+							if (ev.type == sf::Event::MouseButtonPressed)
+							{
+								if (this->ChoiceLoseGame(window) == 1)
+								{
+									cout << "Yes" << endl;
+									this->PlayGame(window, d, return1);
+									if (return1 == 1) return;
+									k = 1;
+									i = 0;
+									break;
+								}
+								else if (this->ChoiceLoseGame(window) == 2)
+								{
+									cout << "Yes1" << endl;
+									k = 1;
+									i = 1;
+									return1 = 1;
+									break;
+								}
+							}
+						}
+						if (k == 1 && i == 1)
+						{
+							return;
+						}
+						else if (k == 1 && i == 0)
+						{
+							break;
+						}
+					}
+					if (k == 1 && i == 0)
+					{
+						window.clear();
+						break;
+					}
+					break;
+				}
+			}
+			window.display();
+			if (i == 1) break;
+		}
+		if (i == 1) break;
+	}
 }
 void Menu::Menu_control(sf::RenderWindow& window, sf::Event event, Background d)
 {

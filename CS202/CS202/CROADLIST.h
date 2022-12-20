@@ -15,7 +15,7 @@ private:
 
 	float mX;
 	float mY;
-
+	float mY_origin;
 
 public:
 	CROADLIST(CPEOPLE* player);
@@ -34,4 +34,4 @@ public:
 	// save to file | load from file
 
 };
-
+ 

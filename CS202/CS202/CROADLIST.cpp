@@ -4,7 +4,7 @@ CROADLIST::CROADLIST(CPEOPLE* player)
 {
 	this->player = player;
 	mX = mY = 0;
-	//mY_Origin = Constants::Height_HiddenRoad / 1.2;
+	mY_origin = Constants::Height_HiddenRoad;
 }
 
 CROADLIST::~CROADLIST()
@@ -53,15 +53,15 @@ void CROADLIST::shiftObj(char shift)
 	if (shift == 'U' || shift == 'u')
 	{
 		mY += Constants::ShiftVelocity;
+		if (mY > mY_origin)
+			mY_origin = mY;
 		for (auto it : roadList) it->shiftObject(shift);
-
 	}
-	else if ((shift == 'D' || shift == 'd'))
+	else if ((shift == 'D' || shift == 'd') && ((mY_origin - mY) <= Constants::Height_HiddenRoad))
 	{
 		mY -= Constants::ShiftVelocity;
 		for (auto it : roadList) it->shiftObject(shift);
 	}
-
 }
 
 void CROADLIST::draw(sf::RenderWindow& window)

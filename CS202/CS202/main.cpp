@@ -1,4 +1,3 @@
-#include "Background.h"
 #include "People.h"
 #include "CARLANE.h"
 #include "Light.h"

@@ -18,3 +18,4 @@ CANIMAL::CANIMAL(string FileTextureName, float x, float y, int speed, int direct
 void CANIMAL::move(float x, float y, float frac)
 {
 	COBJECT::move(x, y, frac);
+}

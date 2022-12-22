@@ -28,8 +28,6 @@ public:
 	void moveLeft();
 	void shiftObj();
 
-	//bool isImpact(CVEHICLE*&);
-	//bool isImpact(CANIMAL*&);
 	bool isImpact(COBJECT*& obj);
 	bool isFinish();
 	bool isDead();

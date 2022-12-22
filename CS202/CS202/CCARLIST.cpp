@@ -34,9 +34,10 @@ deque<COBJECT*>* CCARLIST::getCarList()
 }
 CCAR* CCARLIST::createCar(float mX, float mY)
 {
-
+	string t = "1";
 	if (dir == TOLEFT)
 	{
+		t = "0";
 		//mX = Constants::WidthRoad / 4 * index;
 
 		while (mX < Constants::WidthRoad + 100)
@@ -71,7 +72,7 @@ CCAR* CCARLIST::createCar(float mX, float mY)
 
 	}
 
-	return new CCAR(Constants::Cartype[type], mX, mY, 1, 2 * dir - 1);
+	return new CCAR(Constants::Cartype[type] + t, mX, mY, Constants::speedCar[type], 2 * dir - 1);
 }
 
 

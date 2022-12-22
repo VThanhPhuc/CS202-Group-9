@@ -139,17 +139,34 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Background.cpp" />
+    <ClCompile Include="CANIMAL.cpp" />
+    <ClCompile Include="CANIMALLIST.cpp" />
+    <ClCompile Include="CARLANE.cpp" />
+    <ClCompile Include="CCAR.cpp" />
+    <ClCompile Include="CCARLIST.cpp" />
     <ClCompile Include="CGAME.cpp" />
+    <ClCompile Include="CGRASS.cpp" />
+    <ClCompile Include="CROAD.cpp" />
+    <ClCompile Include="CROADLIST.cpp" />
     <ClCompile Include="Light.cpp" />
+    <ClCompile Include="LoadPic.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="People.cpp" />
     <ClCompile Include="COBJECT.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Background.h" />
+    <ClInclude Include="CANIMAL.h" />
+    <ClInclude Include="CANIMALLIST.h" />
+    <ClInclude Include="CARLANE.h" />
+    <ClInclude Include="CCAR.h" />
+    <ClInclude Include="CCARLIST.h" />
     <ClInclude Include="CGAME.h" />
+    <ClInclude Include="CGRASS.h" />
+    <ClInclude Include="Constants.h" />
+    <ClInclude Include="CROAD.h" />
+    <ClInclude Include="CROADLIST.h" />
     <ClInclude Include="Light.h" />
+    <ClInclude Include="LoadPic.h" />
     <ClInclude Include="People.h" />
     <ClInclude Include="COBJECT.h" />
   </ItemGroup>

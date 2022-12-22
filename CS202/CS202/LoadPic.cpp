@@ -15,15 +15,21 @@ LoadPic::LoadPic()
 {
 	//load road
 	initTexture("Pavement_bottom");
+	initTexture("river");
+	initTexture("Grass");
 
 	//load people
 	initTexture("person", 1);
 
 	//load object
-	initTexture("car");
+	initTexture("car0");
 	initTexture("car1");
-	initTexture("truck");
+	initTexture("truck0");
 	initTexture("truck1");
+	initTexture("bird1");
+	initTexture("bird0");
+	initTexture("dino1");
+	initTexture("dino0");
 
 	//load light
 	initTexture("light");

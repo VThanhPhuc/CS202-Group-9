@@ -13,9 +13,11 @@ namespace Constants
 	const float ShiftVelocity = 2;
 	const float VelcocityX = 10;
 
-	const int widthVehicle = 80;
-	const int heightVehicle = 80;
+	const int widthVehicle = 100;
+	const int heightVehicle = 100;
 
+	const int widthAnimal = 100;
+	const int heightAnimal = 100;
 
 	// Lane
 	const int MAX_ROAD = 12;
@@ -23,9 +25,12 @@ namespace Constants
 	const float HeightRoad = 100;
 
 	//Car
-	const int NCar = 30; // number of car
-	const string Cartype[] = { "car1","car","truck","truck1" };
-
+	const int NCar = 25; // number of cars
+	const int NAnimal = 25; //number of animals
+	const string Cartype[] = { "car","truck" };
+	const int speedCar[] = { 1,1 };
+	const string Animaltype[] = { "bird", "dino" };
+	const int speedAni[] = { 1,1 };
 	// type
 	const int car = 1;
 	const int animal = 2;

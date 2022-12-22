@@ -29,14 +29,7 @@ COBJECT::COBJECT(float x, float y, int direction = 1)
 
 void COBJECT::shiftObject(char shift)
 {
-	if (shift == 'U' || shift == 'u')
-	{
-		out.move(0, -Constants::ShiftVelocity);
-	}
-	else if (shift == 'd' || shift == 'D')
-	{
-		out.move(0, Constants::ShiftVelocity);
-	}
+	out.move(0, Constants::ShiftVelocity);
 }
 
 void COBJECT::move(float x, float y, float frac)

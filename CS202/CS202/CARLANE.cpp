@@ -1,4 +1,5 @@
 #include "CARLANE.h"
+#include <fstream>
 
 CARLANE::CARLANE(sf::Vector2f pos) : CROAD()
 {
@@ -78,4 +79,12 @@ void CARLANE::update(sf::RenderWindow& window)
 deque<COBJECT*>* CARLANE::getObjLi()
 {
 	return carli.getCarList();
+}
+
+void CARLANE::saveCarLane() {
+
+}
+
+void CARLANE::loadCarLane() {
+
 }

@@ -2,8 +2,9 @@
 #include <deque>
 #include "CARLANE.h"
 #include "People.h"
+#include "CGRASS.h"
 
-enum RoadType { LANE, LAST };
+enum RoadType { LANE, GRASS, LAST };
 
 class CROADLIST
 {

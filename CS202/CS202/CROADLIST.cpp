@@ -29,8 +29,11 @@ CROAD* CROADLIST::createRoad(sf::Vector2f pos)
 	RoadType type = RoadType(rand() % LAST);
 	if (type == LANE)
 	{
-
 		return new CARLANE(pos);
+	}
+	else if (type == GRASS)
+	{
+		return new CGRASS(pos);
 	}
 
 }
@@ -44,6 +47,10 @@ CROAD* CROADLIST::createRoad(float index)
 	if (type == LANE)
 	{
 		return new CARLANE(index - diff);
+	}
+	else if (type == GRASS)
+	{
+		return new CGRASS(index - diff);
 	}
 }
 

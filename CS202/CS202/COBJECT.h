@@ -24,7 +24,7 @@ protected:
 	sf::Texture* texture;
 	sf::Sprite out;
 	sf::SoundBuffer buffer;
-	sf::Sound sound;
+	//sf::Sound sound;
 public:
 	friend class CROAD;
 	friend class CPEOPLE;

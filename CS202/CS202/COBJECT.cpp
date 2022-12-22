@@ -18,7 +18,7 @@ COBJECT::COBJECT(float x, float y)
 	isVisible = true;
 }
 
-COBJECT::COBJECT(float x, float y, int direction = 1)
+COBJECT::COBJECT(float x, float y, int direction)
 {
 	mX = x;
 	mY = y;

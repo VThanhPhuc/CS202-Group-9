@@ -164,7 +164,7 @@ bool CGAME::checkMove() {
 					cout << "dead" << endl;
 					render();
 					game_state = GAMEOVER;
-					Sleep(2000);
+					//Sleep(2000);
 					//game_state = GAMEOVER;
 					return false;
 

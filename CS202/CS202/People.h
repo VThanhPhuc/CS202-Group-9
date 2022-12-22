@@ -7,6 +7,8 @@
 class CPEOPLE
 {
 private:
+	friend class CGAME;
+	friend class CLANE;
 	float mX, mY;
 	bool mState;
 

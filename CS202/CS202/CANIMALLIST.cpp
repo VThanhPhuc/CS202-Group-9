@@ -98,3 +98,29 @@ int CANIMALLIST::direction()
 }
 
 
+void CANIMALLIST::shiftObject(char shift)
+{
+	for (auto i : Anlist)
+	{
+		i->shiftObject(shift);
+	}
+}
+
+void CANIMALLIST::draw(sf::RenderWindow& window)
+{
+	for (auto i : Anlist)
+	{
+		i->draw(window);
+	}
+
+}
+
+CANIMALLIST::~CANIMALLIST()
+{
+	while (!Anlist.empty())
+	{
+		COBJECT* temp = Anlist.front();
+		Anlist.pop_front();
+		delete temp;
+	}
+}

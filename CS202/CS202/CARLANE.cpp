@@ -1,4 +1,5 @@
 #include "CARLANE.h"
+#include <fstream>
 
 CARLANE::CARLANE(sf::Vector2f pos) : CROAD()
 {

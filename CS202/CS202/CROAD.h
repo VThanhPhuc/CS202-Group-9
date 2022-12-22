@@ -2,6 +2,7 @@
 #include "Constants.h"
 #include "CCARLIST.h"
 #include "LoadPic.h"
+#include "CANIMALLIST.h"
 using namespace std;
 class CROAD
 {

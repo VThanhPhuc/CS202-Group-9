@@ -2,13 +2,12 @@
 
 CARLANE::CARLANE(sf::Vector2f pos) : CROAD()
 {
-	// create texture
-
-	texture = &LoadPic::GetIns().texture[file];
-	out.setTexture(*texture);
 	// main
 	mX = pos.x;
-	mY = pos.y /*- Constants::HeightRoad + Constants::HeightRoad*/;
+	mY = pos.y /*- Constants::HeightRoad*/;
+	texture = &LoadPic::GetIns().texture[file];
+	out.setTexture(*texture);
+	out.setPosition(mX, mY);
 	if (rand() % Constants::numLights == 0)
 	{
 		light = CLight(mX, mY);
@@ -20,15 +19,12 @@ CARLANE::CARLANE(float index) : CROAD()
 
 	// main
 	mX = 0;
-	mY = index * Constants::HeightRoad - Constants::Height_HiddenRoad;
+	mY = index * Constants::HeightRoad - 2 * Constants::Height_HiddenRoad;
 
 	// create texture
-
 	texture = &LoadPic::GetIns().texture[file];
 	out.setTexture(*texture);
 	out.setPosition(mX, mY);
-
-
 
 	if (rand() % Constants::numLights == 0) light = CLight(mX, mY);
 }

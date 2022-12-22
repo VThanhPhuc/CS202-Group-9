@@ -26,12 +26,12 @@ void CROADLIST::initRoad()
 
 CROAD* CROADLIST::createRoad(sf::Vector2f pos)
 {
-	//RoadType type = RoadType(rand() % LAST);
-	//if (type == LANE)
-	//{
+	RoadType type = RoadType(rand() % LAST);
+	if (type == LANE)
+	{
 
-	return new CARLANE(pos);
-	//}
+		return new CARLANE(pos);
+	}
 
 }
 
@@ -57,11 +57,11 @@ void CROADLIST::shiftObj(char shift)
 			mY_origin = mY;
 		for (auto it : roadList) it->shiftObject(shift);
 	}
-	else if ((shift == 'D' || shift == 'd') && ((mY_origin - mY) <= Constants::Height_HiddenRoad))
+	/*else if ((shift == 'D' || shift == 'd') && ((mY_origin - mY) <= Constants::Height_HiddenRoad))
 	{
 		mY -= Constants::ShiftVelocity;
 		for (auto it : roadList) it->shiftObject(shift);
-	}
+	}*/
 }
 
 void CROADLIST::draw(sf::RenderWindow& window)
@@ -77,12 +77,12 @@ void CROADLIST::draw(sf::RenderWindow& window)
 
 void CROADLIST::update(sf::RenderWindow& window)
 {
-	if (mX > 1500)
+	/*if (mY > Constants::Height_screen)
 	{
 		roadList.push_front(createRoad(roadList.front()->getPos() + sf::Vector2f(0, 100)));
 		roadList.front()->draw(window);
-		mX = 0;
-	}
+		mY = -200;
+	}*/
 	if (roadList.back()->checkoutwindow(window))
 	{
 		roadList.push_front(createRoad(roadList.front()->getPos()));

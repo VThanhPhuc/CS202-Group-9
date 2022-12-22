@@ -37,7 +37,6 @@ CGAME::CGAME()
 	this->initWindow();
 	initGame();
 
-	game_state = PLAYING;
 }
 
 CGAME::~CGAME()
@@ -120,46 +119,32 @@ void CGAME::pollEvent()
 	//}
 
 	if (game_state != PLAYING) return;
+	roadli->shiftObj('U');
+	player->shiftObj();
 	while (this->window->pollEvent(this->ev))
 	{
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 		{
 			player->moveUp();
-			roadli->shiftObj('U');
-			//if (!checkMove()) {
-				//roadli->shiftObj('D');
-			//}
-		}
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-		{
-			player->moveDown();
-			roadli->shiftObj('D');
-			//if (!checkMove())
-			//{
-				//roadli->shiftObj('U');
-			//}
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		{
 			player->moveLeft();
-			/*if (!checkMove())
-			{
-				player->moveRight();
-			}*/
-
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 		{
 			player->moveRight();
-			/*if (!checkMove())
-			{
-				player->moveLeft();
-			}*/
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+		{
+			player->moveDown();
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 		{
 			return;
 		}
+
+		break;
 	}
 
 }
@@ -179,11 +164,11 @@ bool CGAME::checkMove() {
 					cout << "dead" << endl;
 					render();
 					game_state = GAMEOVER;
-					//Sleep(2000);
+					Sleep(2000);
 					//game_state = GAMEOVER;
+					return false;
 
 				}
-				return false;
 			}
 		}
 	}
@@ -215,36 +200,3 @@ void CGAME::render()
 
 	this->window->display();
 }
-/*
-void CGAME::initializeVariable()
-{
-	srand((unsigned)time(0));
-	this->window = nullptr;
-}
-
-void CGAME::initWindow()
-{
-	this->videoMode.height = 1080;
-	this->videoMode.width = 1920;
-
-	this->window = new sf::RenderWindow(this->videoMode, "sfml works!", sf::Style::Titlebar | sf::Style::Fullscreen);
-	this->window->setFramerateLimit(60);
-	this->window->setVerticalSyncEnabled(true);
-
-}
-
-void CGAME::initGame()
-{
-	peo = new CPEOPLE(955, 1080);
-
-	// init vehicle, animal
-
-	game_state = PLAYING;
-}
-
-// accessors
-const bool CGAME::running() const
-{
-	return this->window->isOpen();
-}
-*/

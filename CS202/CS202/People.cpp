@@ -62,6 +62,11 @@ int CPEOPLE::getmY()
 	return mY;
 }
 
+void CPEOPLE::shiftObj()
+{
+	sprite.move(0, Constants::ShiftVelocity);
+}
+
 void CPEOPLE::draw(sf::RenderWindow& window)
 {
 

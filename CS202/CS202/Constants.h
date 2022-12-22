@@ -10,8 +10,8 @@ namespace Constants
 	const float width_screen = 1500;
 
 	// velocity
-	const float ShiftVelocity = 100;
-	const float VelcocityX = 1;
+	const float ShiftVelocity = 2;
+	const float VelcocityX = 10;
 
 	const int widthVehicle = 80;
 	const int heightVehicle = 80;

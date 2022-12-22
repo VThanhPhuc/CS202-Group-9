@@ -24,7 +24,7 @@ public:
 	void moveDown();
 	void moveRight();
 	void moveLeft();
-
+	void shiftObj();
 
 	//bool isImpact(CVEHICLE*&);
 	//bool isImpact(CANIMAL*&);

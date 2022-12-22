@@ -69,14 +69,7 @@ void CLight::draw(sf::RenderWindow& window)
 }
 void CLight::shiftObject(char shift)
 {
-	if (shift == 'U' || shift == 'u')
-	{
-		out.move(0, Constants::ShiftVelocity);
-	}
-	else if (shift == 'd' || shift == 'D')
-	{
-		out.move(0, -Constants::ShiftVelocity);
-	}
+	out.move(0, Constants::ShiftVelocity);
 
 	mX = out.getPosition().x;
 	mY = out.getPosition().y;

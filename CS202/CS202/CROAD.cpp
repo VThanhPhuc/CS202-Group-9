@@ -34,17 +34,11 @@ void CROAD::draw(sf::RenderWindow& window)
 
 void CROAD::shiftObject(char shift)
 {
-	if (shift == 'U' || shift == 'u')
-	{
-		out.move(0, Constants::ShiftVelocity);
-	}
-	else if (shift == 'd' || shift == 'D')
-	{
-		out.move(0, -Constants::ShiftVelocity);
-	}
+	out.move(0, Constants::ShiftVelocity);
 
-	mX = out.getPosition().x;
-	mY = out.getPosition().y;
+
+	/*mX = out.getPosition().x;
+	mY = out.getPosition().y;*/
 	shiftObj(shift);
 	//out.setPosition(mX, mY);
 }

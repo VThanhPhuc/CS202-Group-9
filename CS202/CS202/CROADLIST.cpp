@@ -40,7 +40,6 @@ CROAD* CROADLIST::createRoad(sf::Vector2f pos)
 
 CROAD* CROADLIST::createRoad(float index)
 {
-
 	RoadType type = RoadType(rand() % LAST);
 	int diff = 1;
 
@@ -48,7 +47,7 @@ CROAD* CROADLIST::createRoad(float index)
 	{
 		return new CARLANE(index - diff);
 	}
-	else if (type == GRASS)
+	else if(type == GRASS)
 	{
 		return new CGRASS(index - diff);
 	}
@@ -76,6 +75,8 @@ void CROADLIST::draw(sf::RenderWindow& window)
 		player->draw(window);
 
 		it->drawSubObj(window);
+
+
 	}
 }
 

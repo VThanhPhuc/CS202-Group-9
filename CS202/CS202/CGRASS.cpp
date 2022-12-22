@@ -1,30 +1,59 @@
-#pragma once
-#include "Light.h"
-#include "CANIMAL.h"
-#include <deque>
-#include <random>
-enum ANITYPE { bird, dino, LASTTY };
-
-enum ANIDIR { TLEFT, TRIGHT, LASTDI };
-
-class CANIMALLIST
+#include "CGRASS.h"
+CGRASS::CGRASS(sf::Vector2f pos) : CROAD()
 {
-private:
-	deque<COBJECT*> Anlist;
-	ANITYPE type;
-	ANIDIR dir;
-	bool playing;
-public:
-	CANIMALLIST();
-	void initGame(float mX, float mY);
-	void shiftObject(char shift);
-	void draw(sf::RenderWindow& window);
-	void update(float mX, float mY, sf::RenderWindow& window);
+	// main
+	mX = pos.x;
+	mY = pos.y /*- Constants::HeightRoad*/;
+	texture = &LoadPic::GetIns().texture[file];
+	out.setTexture(*texture);
+	out.setPosition(mX, mY);
+}
 
-	CANIMAL* createAnimal(float mX, float mY);
+CGRASS::CGRASS(float index) : CROAD()
+{
 
-	deque<COBJECT*>* getAniList();
-	int direction();
-	~CANIMALLIST();
-};
+	// main
+	mX = 0;
+	mY = index * Constants::HeightRoad - 2 * Constants::Height_HiddenRoad;
 
+	// create texture
+	texture = &LoadPic::GetIns().texture[file];
+	out.setTexture(*texture);
+	out.setPosition(mX, mY);
+
+}
+
+CGRASS::CGRASS(float x, float y) :CROAD(x, y)
+{
+	// create texture
+	texture = &LoadPic::GetIns().texture[file];
+	out.setTexture(*texture);
+	out.setPosition(mX, mY);
+
+}
+
+CGRASS::~CGRASS()
+{
+	Animali.~CANIMALLIST();
+}
+
+void CGRASS::drawSubObj(sf::RenderWindow& window)
+{
+	Animali.draw(window);
+}
+
+void CGRASS::shiftObj(char shift)
+{
+	Animali.shiftObject(shift);
+}
+
+void CGRASS::update(sf::RenderWindow& window)
+{
+	Animali.update(mX, mY, window);
+}
+
+
+deque<COBJECT*>* CGRASS::getObjLi()
+{
+	return Animali.getAniList();
+}

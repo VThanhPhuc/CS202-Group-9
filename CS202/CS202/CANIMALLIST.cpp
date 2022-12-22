@@ -71,7 +71,7 @@ CANIMAL* CANIMALLIST::createAnimal(float mX, float mY)
 
 	}
 
-	return new CANIMAL(Constants::Animaltype[type] + t, mX, mY, Constants::speedAni[type], 2 * dir - 1);
+	return new CANIMAL(Constants::Animaltype[type]+t, mX, mY, Constants::speedAni[type], 2 * dir - 1);
 }
 
 

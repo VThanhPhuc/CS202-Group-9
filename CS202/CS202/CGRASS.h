@@ -1,6 +1,6 @@
 #pragma once
 #include "CROAD.h"
-class CGRASS : public CROAD
+class CGRASS : public CROAD 
 {
 private:
 	const string file = "Grass";

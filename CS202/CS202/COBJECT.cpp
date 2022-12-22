@@ -59,8 +59,10 @@ void COBJECT::draw(sf::RenderWindow& window)
 
 bool COBJECT::CheckOutWindow(sf::RenderWindow& window) // check if sprite is in window or not
 {
-	return (direction == 1 && (out.getPosition().x >= Constants::width_screen + 50 || out.getPosition().y >= Constants::Height_screen + 100))
-		|| (direction == -1 && (out.getPosition().x <= -Constants::widthVehicle - 50 || out.getPosition().y >= Constants::Height_screen + 100));
+	return (direction == 1 && (out.getPosition().x >= Constants::width_screen +50 || out.getPosition().y >= Constants::Height_screen+100))
+		|| (direction == -1 && (out.getPosition().x <= -Constants::widthVehicle-50 || out.getPosition().y >= Constants::Height_screen + 100));
+	/*return (out.getPosition().x <= -2*Constants::widthVehicle) || (out.getPosition().x >= 2*Constants::widthVehicle + Constants::WidthRoad)
+		|| (out.getPosition().y <= -3 * Constants::HeightRoad - 50) || (out.getPosition().y >= Constants::HeightRoad + Constants::Height_screen + 5);*/
 }
 /* old source
 void CCar::setspr(int type) {

@@ -27,7 +27,6 @@ public:
 	//sound
 
 	//save to file
-	void saveCarLane();
-	void loadCarLane();
+
 };
 

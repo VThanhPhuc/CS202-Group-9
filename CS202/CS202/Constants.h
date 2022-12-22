@@ -27,9 +27,9 @@ namespace Constants
 	//Car
 	const int NCar = 25; // number of cars
 	const int NAnimal = 25; //number of animals
-	const string Cartype[] = { "car","truck" };
-	const int speedCar[] = { 1,1 };
-	const string Animaltype[] = { "bird", "dino" };
+	const string Cartype[] = {"car","truck" };
+	const int speedCar[] = {1,1 };
+	const string Animaltype[] = {"bird", "dino" };
 	const int speedAni[] = { 1,1 };
 	// type
 	const int car = 1;

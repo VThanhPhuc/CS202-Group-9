@@ -143,7 +143,7 @@ void CGAME::pollEvent()
 		{
 			return;
 		}
-
+		
 		break;
 	}
 
@@ -151,10 +151,8 @@ void CGAME::pollEvent()
 
 bool CGAME::checkMove() {
 	for (auto road : roadli->roadList) {
-		if (road->getObjLi() != NULL)
-		{
 			deque<COBJECT*>* curRoad = road->getObjLi();
-
+			// wrong
 			for (long i = 0; i < curRoad->size(); i++)
 			{
 				bool collisionType = player->isImpact(curRoad->at(i));
@@ -170,7 +168,6 @@ bool CGAME::checkMove() {
 
 				}
 			}
-		}
 	}
 	return true;
 }

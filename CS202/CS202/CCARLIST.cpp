@@ -24,7 +24,6 @@ void CCARLIST::initGame(float mX, float mY)
 	while (carlist.size() < Constants::NCar)
 	{
 		carlist.push_front(createCar(mX, mY));
-
 	}
 }
 
@@ -46,7 +45,7 @@ CCAR* CCARLIST::createCar(float mX, float mY)
 		}
 		if (!carlist.empty())
 		{
-			while (mX < (carlist.front()->getPos().x + 2 * Constants::widthVehicle + 10))
+			while (mX < (carlist.front()->getPos().x + 2*Constants::widthVehicle + 10))
 			{
 				mX += Constants::widthVehicle;
 			}
@@ -58,7 +57,7 @@ CCAR* CCARLIST::createCar(float mX, float mY)
 		//mX = Constants::WidthRoad / 4 * index;
 
 
-		while (mX > (-Constants::widthVehicle - 50))
+		while (mX > (-Constants::widthVehicle-50))
 		{
 			mX -= Constants::widthVehicle;
 		}
@@ -72,7 +71,7 @@ CCAR* CCARLIST::createCar(float mX, float mY)
 
 	}
 
-	return new CCAR(Constants::Cartype[type] + t, mX, mY, Constants::speedCar[type], 2 * dir - 1);
+	return new CCAR(Constants::Cartype[type]+t, mX, mY, Constants::speedCar[type], 2 * dir - 1);
 }
 
 
@@ -112,6 +111,10 @@ void CCARLIST::update(float mX, float mY, sf::RenderWindow& window, CLight& l)
 
 	}
 
+}
+int CCARLIST::direction()
+{
+	return dir;
 }
 
 

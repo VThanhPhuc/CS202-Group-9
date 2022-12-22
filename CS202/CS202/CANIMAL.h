@@ -11,3 +11,4 @@ public:
 
 	void move(float x, float y, float frac = 1);
 };
+

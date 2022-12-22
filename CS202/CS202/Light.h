@@ -41,3 +41,14 @@ public:
 	bool Traffic();
 };
 
+//class CLight {
+//private:
+//	int number;
+//	bool on;
+//	bool avail;//1: car, 0: animal
+//public:
+//	CLight(bool a);
+//	void update();
+//	bool geton();
+//	bool getstatus();
+//};

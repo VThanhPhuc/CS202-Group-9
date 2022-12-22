@@ -3,7 +3,7 @@
 #include "CANIMAL.h"
 #include <deque>
 #include <random>
-enum ANITYPE { bird, dino, LASTTY };
+enum ANITYPE {bird, dino, LASTTY }; 
 
 enum ANIDIR { TLEFT, TRIGHT, LASTDI };
 
@@ -27,3 +27,4 @@ public:
 	int direction();
 	~CANIMALLIST();
 };
+

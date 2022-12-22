@@ -30,7 +30,7 @@ public:
 	friend class CPEOPLE;
 
 	COBJECT(float x, float y);
-	COBJECT(float x, float y, int direction =1 );
+	COBJECT(float x, float y, int direction = 1);
 
 
 

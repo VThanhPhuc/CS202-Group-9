@@ -1,5 +1,4 @@
 #include "CARLANE.h"
-#include <fstream>
 
 CARLANE::CARLANE(sf::Vector2f pos) : CROAD()
 {
@@ -20,7 +19,7 @@ CARLANE::CARLANE(float index) : CROAD()
 
 	// main
 	mX = 0;
-	mY = index * Constants::HeightRoad - 2 * Constants::Height_HiddenRoad;
+	mY = index * Constants::HeightRoad - 2*Constants::Height_HiddenRoad;
 
 	// create texture
 	texture = &LoadPic::GetIns().texture[file];
@@ -76,15 +75,8 @@ void CARLANE::update(sf::RenderWindow& window)
 	carli.update(mX, mY, window, light);
 }
 
+
 deque<COBJECT*>* CARLANE::getObjLi()
 {
 	return carli.getCarList();
-}
-
-void CARLANE::saveCarLane() {
-
-}
-
-void CARLANE::loadCarLane() {
-
 }

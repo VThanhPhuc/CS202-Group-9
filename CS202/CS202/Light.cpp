@@ -69,8 +69,8 @@ void CLight::draw(sf::RenderWindow& window)
 }
 void CLight::shiftObject(char shift)
 {
-	out.move(0, Constants::ShiftVelocity);
 
+	out.move(0, Constants::ShiftVelocity);
 	mX = out.getPosition().x;
 	mY = out.getPosition().y;
 }

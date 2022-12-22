@@ -79,3 +79,11 @@ deque<COBJECT*>* CARLANE::getObjLi()
 {
 	return carli.getCarList();
 }
+
+void CARLANE::saveCarLane() {
+
+}
+
+void CARLANE::loadCarLane() {
+
+}

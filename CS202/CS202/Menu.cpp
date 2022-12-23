@@ -42,60 +42,60 @@ void Menu::draw_menu(sf::RenderWindow& window)
 	InnitMenuBackground();
 	window.draw(this->MenuBackground);
 }
-int Menu::Start_Play(sf::RenderWindow& window)
-{
-	float mouseX = sf::Mouse::getPosition(window).x;
-	float mouseY = sf::Mouse::getPosition(window).y;
-
-	if (mouseX >= button_start.getPosition().x && mouseX <= (button_start.getPosition().x + 200) && mouseY <= (button_start.getPosition().y + 200) && mouseY >= button_start.getPosition().y)
-	{
-		return 1;
-	}
-	if (mouseX >= button_exit.getPosition().x && mouseX <= (button_exit.getPosition().x + 200) && mouseY <= (button_exit.getPosition().y + 200) && mouseY >= button_exit.getPosition().y)
-	{
-		return 2;
-	}
-	return 0;
-}
+//int Menu::Start_Play(sf::RenderWindow& window)
+//{
+//	float mouseX = sf::Mouse::getPosition(window).x;
+//	float mouseY = sf::Mouse::getPosition(window).y;
+//
+//	if (mouseX >= button_start.getPosition().x && mouseX <= (button_start.getPosition().x + 200) && mouseY <= (button_start.getPosition().y + 200) && mouseY >= button_start.getPosition().y)
+//	{
+//		return 1;
+//	}
+//	if (mouseX >= button_exit.getPosition().x && mouseX <= (button_exit.getPosition().x + 200) && mouseY <= (button_exit.getPosition().y + 200) && mouseY >= button_exit.getPosition().y)
+//	{
+//		return 2;
+//	}
+//	return 0;
+//}
 void Menu::LoseGame(sf::RenderWindow& window)
 {
 	window.draw(this->you_lose1);
 }
-int Menu::CheckMouseGamePlay(sf::RenderWindow& window)
-{
-	float mouseX = sf::Mouse::getPosition(window).x;
-	float mouseY = sf::Mouse::getPosition(window).y;
-
-	if (mouseX >= button_back.getPosition().x && mouseX <= (button_back.getPosition().x + 100) && mouseY <= (button_back.getPosition().y + 100) && mouseY >= button_back.getPosition().y)
-	{
-		return 1;
-	}
-	else if (mouseX >= button_resume.getPosition().x && mouseX <= (button_resume.getPosition().x + 100) && mouseY <= (button_resume.getPosition().y + 100) && mouseY >= button_resume.getPosition().y)
-	{
-		return 2;
-	}
-	return 0;
-}
-int Menu::ChoiceLoseGame(sf::RenderWindow& window)
-{
-	float mouseX = sf::Mouse::getPosition(window).x;
-	float mouseY = sf::Mouse::getPosition(window).y;
-
-	if (mouseX >= this->continue_button.getPosition().x && mouseX <= (this->continue_button.getPosition().x + 150) && mouseY <= (this->continue_button.getPosition().y + 150) && mouseY >= this->continue_button.getPosition().y)
-	{
-		return 1;
-	}
-	else if (mouseX >= this->button_back1.getPosition().x && mouseX <= (this->button_back1.getPosition().x + 150) && mouseY <= (this->button_back1.getPosition().y + 150) && mouseY >= button_resume.getPosition().y)
-	{
-		return 2;
-	}
-	return 0;
-}
+//int Menu::CheckMouseGamePlay(sf::RenderWindow& window)
+//{
+//	float mouseX = sf::Mouse::getPosition(window).x;
+//	float mouseY = sf::Mouse::getPosition(window).y;
+//
+//	if (mouseX >= button_back.getPosition().x && mouseX <= (button_back.getPosition().x + 100) && mouseY <= (button_back.getPosition().y + 100) && mouseY >= button_back.getPosition().y)
+//	{
+//		return 1;
+//	}
+//	else if (mouseX >= button_resume.getPosition().x && mouseX <= (button_resume.getPosition().x + 100) && mouseY <= (button_resume.getPosition().y + 100) && mouseY >= button_resume.getPosition().y)
+//	{
+//		return 2;
+//	}
+//	return 0;
+//}
+//int Menu::ChoiceLoseGame(sf::RenderWindow& window)
+//{
+//	float mouseX = sf::Mouse::getPosition(window).x;
+//	float mouseY = sf::Mouse::getPosition(window).y;
+//
+//	if (mouseX >= this->continue_button.getPosition().x && mouseX <= (this->continue_button.getPosition().x + 150) && mouseY <= (this->continue_button.getPosition().y + 150) && mouseY >= this->continue_button.getPosition().y)
+//	{
+//		return 1;
+//	}
+//	else if (mouseX >= this->button_back1.getPosition().x && mouseX <= (this->button_back1.getPosition().x + 150) && mouseY <= (this->button_back1.getPosition().y + 150) && mouseY >= button_resume.getPosition().y)
+//	{
+//		return 2;
+//	}
+//	return 0;
+//}
 void Menu::Draw_Menu_In_game(sf::RenderWindow& window)
 {
 
-	this->button_start.setPosition(-1000, -1000);
-	this->button_exit.setPosition(-1000, -1000);
+	//this->button_start.setPosition(-1000, -1000);
+	//this->button_exit.setPosition(-1000, -1000);
 	window.draw(this->menu_in_game);
 }
 void Menu::Begin()

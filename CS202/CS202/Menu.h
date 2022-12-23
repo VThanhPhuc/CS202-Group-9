@@ -4,6 +4,9 @@
 #include "CCAR.h"
 #include "textbox.h"
 #include "button.h"
+#include "CGAME.h"
+#include "COBJECT.h"
+#include "CROADLIST.h"
 #include "SFML/Graphics.hpp"
 class Menu
 {
@@ -31,8 +34,42 @@ private:
 	sf::Texture b1_button;
 	sf::Texture you_lose;
 	sf::Texture instruct;
-public:
 
+
+	sf::RenderWindow* window;
+	sf::Event ev;
+	sf::VideoMode videoMode;
+	// game obj
+	CPEOPLE* player;
+	CROADLIST* roadli;
+	// private function
+	void initializeVariable()
+	{
+		srand((unsigned)time(0));
+		this->window = nullptr;
+	}
+	void initGame()
+	{
+		delete roadli;
+		delete player;
+
+		player = new CPEOPLE(this->window, 750, 700);
+		roadli = new CROADLIST(player);
+		roadli->initRoad();
+	}
+
+public:
+	Menu()
+	{
+		initializeVariable();
+		//initGame();
+	}
+	~Menu()
+	{
+		delete roadli;
+		delete player;
+		delete this->window;
+	}
 	void InnitMenuBackground();
 	void draw_menu(sf::RenderWindow& window);
 	int Start_Play(sf::RenderWindow& window);

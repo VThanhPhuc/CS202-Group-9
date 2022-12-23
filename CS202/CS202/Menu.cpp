@@ -9,39 +9,8 @@ void Menu::InnitMenuBackground()
 	{
 		cout << "Can not load" << endl;
 	};
-	if (!this->s_button.loadFromFile("s_button.png"))
-	{
-		cout << "Can not load" << endl;
-	};
-	if (!this->exit_button.loadFromFile("exit_button.png"/*,sf::IntRect(100,100,200,200))*/))
-	{
-		cout << "Can not load" << endl;
-	};
+
 	this->MenuBackground.setTexture(t);
-
-	this->button_start.setTexture(&this->s_button);
-	this->button_start.setSize(sf::Vector2f(200, 200));
-	this->button_start.setPosition(200, 200);
-
-	this->button_exit.setTexture(&this->exit_button);
-	this->button_exit.setSize(sf::Vector2f(200, 200));
-	this->button_exit.setPosition(200, 600);
-	if (!this->continue_p.loadFromFile("continue_notification.png"))
-	{
-		cout << "Can not load" << endl;
-	};
-	this->continue_button.setTexture(&this->continue_p);
-	this->continue_button.setSize(sf::Vector2f(150, 150));
-	this->continue_button.setPosition(600, 450);
-
-	if (!this->b1_button.loadFromFile("Menu_notification.png"))
-	{
-		cout << "Can not load" << endl;
-	};
-	this->button_back1.setTexture(&this->b1_button);
-	this->button_back1.setSize(sf::Vector2f(150, 150));
-	this->button_back1.setPosition(1000, 450);
-
 
 	if (!this->menu_.loadFromFile("Menu_game.png"))
 	{
@@ -50,22 +19,6 @@ void Menu::InnitMenuBackground()
 	this->menu_in_game.setTexture(&this->menu_);
 	this->menu_in_game.setSize(sf::Vector2f(700, 600));
 	this->menu_in_game.setPosition(500, 200);
-
-	if (!this->b_button.loadFromFile("b_button.png"))
-	{
-		cout << "Can not load" << endl;
-	};
-	this->button_back.setTexture(&this->b_button);
-	this->button_back.setSize(sf::Vector2f(100, 100));
-	this->button_back.setPosition(800, 500);
-
-	if (!this->resume.loadFromFile("s_button.png"))
-	{
-		cout << "Can not load" << endl;
-	};
-	this->button_resume.setTexture(&this->resume);
-	this->button_resume.setSize(sf::Vector2f(100, 100));
-	this->button_resume.setPosition(800, 400);
 
 	if (!this->you_lose.loadFromFile("Lose_Notification.png"))
 	{
@@ -88,8 +41,6 @@ void Menu::draw_menu(sf::RenderWindow& window)
 {
 	InnitMenuBackground();
 	window.draw(this->MenuBackground);
-	//window.draw(this->button_start);
-	//window.draw(this->button_exit);
 }
 int Menu::Start_Play(sf::RenderWindow& window)
 {
@@ -108,8 +59,6 @@ int Menu::Start_Play(sf::RenderWindow& window)
 }
 void Menu::LoseGame(sf::RenderWindow& window)
 {
-	//window.draw(this->continue_button);
-	//window.draw(this->button_back1);
 	window.draw(this->you_lose1);
 }
 int Menu::CheckMouseGamePlay(sf::RenderWindow& window)
@@ -397,18 +346,16 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1)
 								}
 								if (ev.type == sf::Event::MouseButtonPressed)
 								{
-									if (/*this->ChoiceLoseGame(window) == 1*/ resume.isMouseOver(window))
+									if (resume.isMouseOver(window))
 									{
-										cout << "Yes" << endl;
 										this->PlayGame(window, d, return1);
 										if (return1 == 1) return;
 										k = 1;
 										i = 0;
 										break;
 									}
-									else if (/*this->ChoiceLoseGame(window) == 2*/ EXIT.isMouseOver(window))
+									else if (EXIT.isMouseOver(window))
 									{
-										cout << "Yes1" << endl;
 										k = 1;
 										i = 1;
 										return1 = 1;
@@ -454,16 +401,13 @@ void Menu::Menu_control(sf::RenderWindow& window, sf::Event event, Background d,
 	if (event.type == sf::Event::MouseButtonPressed)
 	{
 		int return1 = 0;
-		if (/*this->Start_Play(window) == 1*/ b1.isMouseOver(window))
+		if (b1.isMouseOver(window))
 		{
-			cout << "Start" << endl;
 			this->PlayGame(window, d, return1);
 		}
-		else if (/*this->Start_Play(window) == 2*/ exit1.isMouseOver(window))
+		else if (exit1.isMouseOver(window))
 		{
-			cout << "Exit" << endl;
 			window.close();
 		}
-		else cout << "No" << endl;
 	}
 }

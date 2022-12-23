@@ -1,5 +1,5 @@
 #include "Menu.h"
-#include "CGAME.h"
+#include "CROADLIST.h"
 #include "time.h"
 #include <chrono>
 
@@ -148,13 +148,16 @@ void Menu::Draw_Menu_In_game(sf::RenderWindow& window)
 	this->button_start.setPosition(-1000, -1000);
 	this->button_exit.setPosition(-1000, -1000);
 	window.draw(this->menu_in_game);
-	//window.draw(this->button_back);
-	//window.draw(this->button_resume);
 }
 void Menu::Begin()
 {
-	sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works!");
-	CCAR b("car.png", 100, 100, 10, 10);
+	this->videoMode.height = 1000;
+	this->videoMode.width = 1920;
+
+	this->window = new sf::RenderWindow(this->videoMode, "Crossy Road!", sf::Style::Titlebar | sf::Style::Close);
+	this->window->setFramerateLimit(60);
+	this->window->setVerticalSyncEnabled(true);
+
 	Background d;
 	sf::Font font;
 	if (!font.loadFromFile("ayar.ttf"))
@@ -171,74 +174,51 @@ void Menu::Begin()
 	exit1.setPosition({ 100,600 });
 	exit1.setFont(font);
 
-	while (window.isOpen())
+	while (window->isOpen())
 	{
 		sf::Event event;
-		while (window.pollEvent(event))
+		while (window->pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed)
-				window.close();
+				window->close();
 			if (event.type == sf::Event::MouseMoved)
 			{
-				if (play.isMouseOver(window))
+				if (play.isMouseOver(*this->window))
 				{
 					play.setBackColor(sf::Color::White);
 				}
-				else if (!play.isMouseOver(window))
+				else if (!play.isMouseOver(*this->window))
 				{
 					play.setBackColor(sf::Color::Green);
 				}
 
-				if (exit1.isMouseOver(window))
+				if (exit1.isMouseOver(*this->window))
 				{
 					exit1.setBackColor(sf::Color::White);
 				}
-				else if (!exit1.isMouseOver(window))
+				else if (!exit1.isMouseOver(*this->window))
 				{
 					exit1.setBackColor(sf::Color::Green);
 				}
 			}
 			if (event.type == sf::Event::MouseButtonPressed)
 			{
-				this->Menu_control(window, event, d, play, exit1);
+				this->Menu_control(*this->window, event, d, play, exit1);
 			}
 
 		}
-		window.clear();
-		this->draw_menu(window);
-		play.drawTo(window);
-		exit1.drawTo(window);
-		window.display();
+		window->clear();
+		this->draw_menu(*this->window);
+		play.drawTo(*this->window);
+		exit1.drawTo(*this->window);
+		window->display();
 	}
 }
 void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1)
 {
+	initGame();
 	if (return1 == 1) return;
 	cout << "Start" << endl;
-	CPEOPLE a(&window, 790, 900);
-	CLight l;
-	CCARLIST b; CROAD* c1;
-	c1 = new CARLANE(1);
-	CROAD* c2;
-	c2 = new CARLANE(2);
-	CROAD* c3;
-	c3 = new CARLANE(3);
-	CROAD* c4;
-	c4 = new CARLANE(4);
-	CROAD* c5;
-	c5 = new CARLANE(5);
-	CROAD* c6;
-	c6 = new CARLANE(6);
-	CROAD* c7;
-	c7 = new CARLANE(7);
-	CROAD* c8;
-	c8 = new CARLANE(8);
-	CROAD* c9;
-	c9 = new CARLANE(9);
-	CROAD* c10;
-	c10 = new CARLANE(10);
-	CROAD* c11;
-	c11 = new CARLANE(11);
 	sf::Font font;
 	if (!font.loadFromFile("ayar.ttf"))
 	{
@@ -252,28 +232,14 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1)
 	{
 		int i = 0;
 		window.clear();
-		a.draw(window);
 		while (window.isOpen())
 		{
-			sf::Event ev;
 			window.clear();
-			c1->draw(window);
-			c2->draw(window);
-			c3->draw(window);
-			c4->draw(window);
-			c5->draw(window);
-			c6->draw(window);
-			c7->draw(window);
-			c8->draw(window);
-			c9->draw(window);
-			c10->draw(window);
-			c11->draw(window);
-			b.draw(window);
-			a.draw(window);
+			roadli->draw(*this->window);
+			roadli->shiftObj('U');
+			player->shiftObj();
 			window.draw(this->instruction);
 			Point.drawTo(window);
-			b.update(0, 0, window, l);
-			deque<COBJECT*>* cur = b.getCarList();
 			while (window.pollEvent(ev))
 			{
 				switch (ev.type)
@@ -284,13 +250,12 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1)
 				case sf::Event::KeyPressed:
 					if (ev.key.code == sf::Keyboard::Up)
 					{
-						a.moveUp();
+						player->moveUp();
 						point++;
 						Point.SetText("Point : " + to_string(point));
 					}
-					/*else if (ev.key.code == sf::Keyboard::Down) a.moveDown();*/
-					else if (ev.key.code == sf::Keyboard::Left) a.moveLeft();
-					else if (ev.key.code == sf::Keyboard::Right) a.moveRight();
+					else if (ev.key.code == sf::Keyboard::Left) player->moveLeft();
+					else if (ev.key.code == sf::Keyboard::Right) player->moveRight();
 					else if (ev.key.code == sf::Keyboard::Escape)
 					{
 						while (window.isOpen())
@@ -346,7 +311,7 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1)
 								}
 								if (ev.type == sf::Event::MouseButtonPressed)
 								{
-									if (/*this->CheckMouseGamePlay(window) == 1*/ EXIT.isMouseOver(window))
+									if (EXIT.isMouseOver(window))
 									{
 										d.reload();
 										i1 = 1;
@@ -354,7 +319,7 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1)
 										return1 = 1;
 										break;
 									}
-									else if (/*this->CheckMouseGamePlay(window) == 2*/ resume.isMouseOver(window))
+									else if (resume.isMouseOver(window))
 									{
 										d.reload();
 										i1 = 1;
@@ -380,96 +345,101 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1)
 					break;
 				}
 			}
-			for (long i = 0; i < cur->size(); ++i)
+			for (auto road : roadli->roadList)
 			{
-				int f1 = 0;
-				if (a.isImpact(cur->at(i)))
+				deque<COBJECT*>* cur = road->getObjLi();
+				for (long i = 0; i < cur->size(); ++i)
 				{
-					f1 = 1;
-					std::cout << "die" << endl;
-					int k = 0;
-					while (window.isOpen())
+					int f1 = 0;
+					if (player->isImpact(cur->at(i)))
 					{
-						if (return1 == 1) return;
-
-						Button resume("PLAY AGAIN", { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
-						resume.setPosition({ 500,450 });
-						resume.setFont(font);
-
-						Button EXIT("EXIT", { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
-						EXIT.setPosition({ 1000,450 });
-						EXIT.setFont(font);
-
-						while (window.pollEvent(ev))
+						f1 = 1;
+						std::cout << "die" << endl;
+						int k = 0;
+						while (window.isOpen())
 						{
-							if (ev.type == sf::Event::Closed)
-							{
-								window.close();
-							}
-							if (ev.type == sf::Event::MouseMoved)
-							{
-								if (resume.isMouseOver(window))
-								{
-									resume.setBackColor(sf::Color::White);
-								}
-								else if (!resume.isMouseOver(window))
-								{
-									resume.setBackColor(sf::Color::Green);
-								}
+							if (return1 == 1) return;
 
-								if (EXIT.isMouseOver(window))
-								{
-									EXIT.setBackColor(sf::Color::White);
-								}
-								else if (!EXIT.isMouseOver(window))
-								{
-									EXIT.setBackColor(sf::Color::Green);
-								}
+							Button resume("PLAY AGAIN", { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
+							resume.setPosition({ 500,450 });
+							resume.setFont(font);
 
-							}
-							if (ev.type == sf::Event::MouseButtonPressed)
+							Button EXIT("EXIT", { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
+							EXIT.setPosition({ 1000,450 });
+							EXIT.setFont(font);
+
+							while (window.pollEvent(ev))
 							{
-								if (/*this->ChoiceLoseGame(window) == 1*/ resume.isMouseOver(window))
+								if (ev.type == sf::Event::Closed)
 								{
-									cout << "Yes" << endl;
-									this->PlayGame(window, d, return1);
-									if (return1 == 1) return;
-									k = 1;
-									i = 0;
-									break;
+									window.close();
 								}
-								else if (/*this->ChoiceLoseGame(window) == 2*/ EXIT.isMouseOver(window))
+								if (ev.type == sf::Event::MouseMoved)
 								{
-									cout << "Yes1" << endl;
-									k = 1;
-									i = 1;
-									return1 = 1;
-									break;
+									if (resume.isMouseOver(window))
+									{
+										resume.setBackColor(sf::Color::White);
+									}
+									else if (!resume.isMouseOver(window))
+									{
+										resume.setBackColor(sf::Color::Green);
+									}
+
+									if (EXIT.isMouseOver(window))
+									{
+										EXIT.setBackColor(sf::Color::White);
+									}
+									else if (!EXIT.isMouseOver(window))
+									{
+										EXIT.setBackColor(sf::Color::Green);
+									}
+
 								}
+								if (ev.type == sf::Event::MouseButtonPressed)
+								{
+									if (/*this->ChoiceLoseGame(window) == 1*/ resume.isMouseOver(window))
+									{
+										cout << "Yes" << endl;
+										this->PlayGame(window, d, return1);
+										if (return1 == 1) return;
+										k = 1;
+										i = 0;
+										break;
+									}
+									else if (/*this->ChoiceLoseGame(window) == 2*/ EXIT.isMouseOver(window))
+									{
+										cout << "Yes1" << endl;
+										k = 1;
+										i = 1;
+										return1 = 1;
+										break;
+									}
+								}
+							}
+							window.clear();
+							this->LoseGame(window);
+							resume.drawTo(window);
+							EXIT.drawTo(window);
+							window.display();
+							if (k == 1 && i == 1)
+							{
+								return;
+							}
+							else if (k == 1 && i == 0)
+							{
+								break;
 							}
 						}
-						window.clear();
-						this->LoseGame(window);
-						resume.drawTo(window);
-						EXIT.drawTo(window);
-						window.display();
-						if (k == 1 && i == 1)
+						if (k == 1 && i == 0)
 						{
-							return;
-						}
-						else if (k == 1 && i == 0)
-						{
+							window.clear();
 							break;
 						}
-					}
-					if (k == 1 && i == 0)
-					{
-						window.clear();
 						break;
 					}
-					break;
 				}
 			}
+			roadli->update(*this->window);
 			window.display();
 			if (i == 1) break;
 		}

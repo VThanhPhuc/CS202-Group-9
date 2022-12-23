@@ -75,7 +75,6 @@ void CPEOPLE::draw(sf::RenderWindow& window)
 
 void CPEOPLE::moveUp()
 {
-	cout << "Up" << endl;
 	sprite.move(0, -Constants::HeightRoad);
 	if (sprite.getPosition().y < 0)
 	{
@@ -84,7 +83,6 @@ void CPEOPLE::moveUp()
 }
 void CPEOPLE::moveDown()
 {
-	cout << "Down" << endl;
 	sprite.move(0, Constants::HeightRoad);
 	if (sprite.getPosition().y > (Constants::Height_screen - Constants::HeightRoad))
 	{
@@ -93,7 +91,6 @@ void CPEOPLE::moveDown()
 }
 void CPEOPLE::moveRight()
 {
-	cout << "Right" << endl;
 	sprite.move(Constants::width_person, 0);
 	if (sprite.getPosition().x > (Constants::WidthRoad - Constants::width_person))
 	{
@@ -103,7 +100,6 @@ void CPEOPLE::moveRight()
 }
 void CPEOPLE::moveLeft()
 {
-	cout << "Left" << endl;
 	sprite.move(-Constants::width_person, 0);
 	if (sprite.getPosition().x < 0)
 	{

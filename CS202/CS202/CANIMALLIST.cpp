@@ -45,7 +45,7 @@ CANIMAL* CANIMALLIST::createAnimal(float mX, float mY)
 		}
 		if (!Anlist.empty())
 		{
-			while (mX < (Anlist.front()->getPos().x + 2 * Constants::widthAnimal + 10))
+			while (mX < (Anlist.front()->getPos().x + 4 * Constants::widthAnimal + 10))
 			{
 				mX += Constants::widthAnimal;
 			}
@@ -63,7 +63,7 @@ CANIMAL* CANIMALLIST::createAnimal(float mX, float mY)
 		}
 		if (!Anlist.empty())
 		{
-			while (mX > (Anlist.front()->getPos().x - 2 * Constants::widthAnimal - 10))
+			while (mX > (Anlist.front()->getPos().x - 4 * Constants::widthAnimal - 10))
 			{
 				mX -= Constants::widthAnimal;
 			}

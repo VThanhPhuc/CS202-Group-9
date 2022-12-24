@@ -45,7 +45,7 @@ CCAR* CCARLIST::createCar(float mX, float mY)
 		}
 		if (!carlist.empty())
 		{
-			while (mX < (carlist.front()->getPos().x + 2*Constants::widthVehicle + 10))
+			while (mX < (carlist.front()->getPos().x + 3*Constants::widthVehicle + 10))
 			{
 				mX += Constants::widthVehicle;
 			}
@@ -57,20 +57,19 @@ CCAR* CCARLIST::createCar(float mX, float mY)
 		//mX = Constants::WidthRoad / 4 * index;
 
 
-		while (mX > (-Constants::widthVehicle-50))
+		while (mX > (-Constants::widthVehicle-100))
 		{
 			mX -= Constants::widthVehicle;
 		}
 		if (!carlist.empty())
 		{
-			while (mX > (carlist.front()->getPos().x - 2 * Constants::widthVehicle - 10))
+			while (mX > (carlist.front()->getPos().x - 3 * Constants::widthVehicle - 10))
 			{
 				mX -= Constants::widthVehicle;
 			}
 		}
 
 	}
-
 	return new CCAR(Constants::Cartype[type]+t, mX, mY, Constants::speedCar[type], 2 * dir - 1);
 }
 
@@ -84,11 +83,11 @@ void CCARLIST::update(float mX, float mY, sf::RenderWindow& window, CLight& l)
 		{
 			if (l.statusLight() == 2)
 			{
-				i->move(0, 0, 0.5);
+				i->move(0, 0, 0.3);
 			}
 			else if (l.statusLight() == 1)
 			{
-				i->move(0, 0, 0.2);
+				i->move(0, 0, 0.15);
 			}
 			else if (l.statusLight() == 0)
 			{

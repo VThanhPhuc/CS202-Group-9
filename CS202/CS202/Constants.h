@@ -10,8 +10,8 @@ namespace Constants
 	const float width_screen = 1500;
 
 	// velocity
-	const float ShiftVelocity = 2;
-	const float VelcocityX = 4.5;
+	const float ShiftVelocity = 0.8;
+	const float VelcocityX = 3.5;
 
 	const int widthVehicle = 100;
 	const int heightVehicle = 100;
@@ -27,8 +27,8 @@ namespace Constants
 	//Car
 	const int NCar = 25; // number of cars
 	const int NAnimal = 25; //number of animals
-	const string Cartype[] = {"car","truck" };
-	const int speedCar[] = {1,1 };
+	const string Cartype[] = {"car","truck", "pickup"};
+	const int speedCar[] = {1,1, 1 };
 	const string Animaltype[] = {"bird", "dino" };
 	const int speedAni[] = { 1,1 };
 	// type

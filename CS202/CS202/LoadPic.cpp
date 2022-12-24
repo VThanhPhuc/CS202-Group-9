@@ -30,6 +30,8 @@ LoadPic::LoadPic()
 	initTexture("bird0");
 	initTexture("dino1");
 	initTexture("dino0");
+	initTexture("pickup1");
+	initTexture("pickup0");
 
 	//load light
 	initTexture("light");

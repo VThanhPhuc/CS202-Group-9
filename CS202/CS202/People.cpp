@@ -11,7 +11,7 @@ CPEOPLE::CPEOPLE(sf::RenderWindow* window, float x, float y)
 	mX = x;
 	mY = y;
 	this->window = window;
-	texture = &LoadPic::GetIns().texture["person"];
+	texture = &LoadPic::GetIns().texture["boyback"];
 
 	sprite.setTexture(*texture);
 	//sprite.setOrigin(50, 50);

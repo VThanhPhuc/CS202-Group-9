@@ -19,7 +19,7 @@ LoadPic::LoadPic()
 	initTexture("Grass");
 
 	//load people
-	initTexture("person", 1);
+	initTexture("boyback", 1);
 
 	//load object
 	initTexture("car0");

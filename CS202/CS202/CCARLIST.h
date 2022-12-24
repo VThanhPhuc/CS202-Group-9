@@ -3,7 +3,7 @@
 #include "CCAR.h"
 #include <deque>
 #include <random>
-enum CARTYPE {car, truck, pickup, LASTTYPE }; // LASTTYPE is to determine the number of cartypes.
+enum CARTYPE {car, truck, pickup, race, LASTTYPE }; // LASTTYPE is to determine the number of cartypes.
 
 enum CARDIR { TOLEFT, TORIGHT, LASTDIR }; // LASTDIR is to determine the number of CARDIR
 

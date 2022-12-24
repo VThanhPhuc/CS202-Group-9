@@ -73,10 +73,7 @@ void CROADLIST::draw(sf::RenderWindow& window)
 	{
 		it->draw(window);
 		player->draw(window);
-
 		it->drawSubObj(window);
-
-
 	}
 }
 

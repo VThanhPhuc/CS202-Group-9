@@ -131,7 +131,6 @@ void CCARLIST::draw(sf::RenderWindow& window)
 	{
 		i->draw(window);
 	}
-
 }
 
 CCARLIST::~CCARLIST()

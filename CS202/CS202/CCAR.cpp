@@ -13,7 +13,7 @@ CCAR::CCAR(string FileTextureName, float x, float y, int speed, int direction) :
 
 	texture = &LoadPic::GetIns().texture[FileTextureName];
 	out.setTexture(*texture);
-	out.setPosition(mX, mY);
+	out.setPosition(mX, mY + 10);
 }
 
 void CCAR::move(float x, float y, float frac)

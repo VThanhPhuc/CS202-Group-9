@@ -8,6 +8,7 @@ class CROAD
 {
 protected:
 	friend class CGAME;
+	friend class Menu;
 	float mX;
 	float mY;
 

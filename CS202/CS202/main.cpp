@@ -3,6 +3,7 @@
 #include "Light.h"
 #include "CGAME.h"
 #include "Background.h"
+#include "Menu.h"
 int main()
 {
 	Menu c1;

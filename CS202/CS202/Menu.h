@@ -10,7 +10,7 @@
 #include "SFML/Graphics.hpp"
 class Menu
 {
-private:
+protected:
 	sf::Sprite MenuBackground;
 	//sf::RectangleShape button_start; // begin the game
 	//sf::RectangleShape button_exit; // quit the game

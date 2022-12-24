@@ -1,9 +1,10 @@
 #pragma once
-#include "Constants.h"
+
 #include "Background.h"
 #include "string"
 #include "sstream"
 #include "iostream"
+#include "Constants.h"
 class TextBox
 {
 public:
@@ -36,7 +37,7 @@ public:
 		textbox.setPosition(pos);
 	}
 
-	void setLimit(bool ToF,int lim)
+	void setLimit(bool ToF, int lim)
 	{
 		hasLimit = ToF;
 		limit = lim - 1;
@@ -49,7 +50,7 @@ public:
 		{
 			std::string t = text.str();
 			std::string newT = "";
-			for (int i = 0; i < t.length() ; i++){
+			for (int i = 0; i < t.length(); i++) {
 				newT += t[i];
 			}
 			textbox.setString(newT);

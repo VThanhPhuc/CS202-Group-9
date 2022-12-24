@@ -9,6 +9,7 @@ class CROADLIST
 {
 private:
 	friend class CGAME;
+	friend class Menu;
 	deque<CROAD*> roadList;
 
 	CPEOPLE* player;
@@ -34,4 +35,3 @@ public:
 	// save to file | load from file
 
 };
- 

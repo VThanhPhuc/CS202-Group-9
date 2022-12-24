@@ -25,7 +25,7 @@ void Background::draw(sf::RenderWindow& window)
 {
 	//top
 	window.draw(m_rectTopPavement);
-	
+
 
 	rectBottomRoad.setPosition(sf::Vector2f(0, 100));
 	rectCentralRes.setPosition(sf::Vector2f(0, 200));
@@ -78,32 +78,4 @@ void Background::loadTexture()
 	m_rectTopPavement.setTexture(&m_texTopPavement);
 	rectRiver.setTexture(&m_texRiver);
 
-}
-void  Background::blur_loadTexture()
-{
-	m_texBottomPavement.loadFromFile("blur_background/Pavement_bottom.png");
-	m_texCentralRes.loadFromFile("blur_background/CenteralRes.png");
-	m_texTopPavement.loadFromFile("blur_background/Pavement_top.png");
-	m_texRoad.loadFromFile("blur_background/Road.png");
-	m_texRiver.loadFromFile("blur_background/river.png");
-
-
-	rectBottomPavement.setTexture(&m_texBottomPavement);
-	rectCentralRes.setTexture(&m_texCentralRes);
-	rectTopRoad.setTexture(&m_texTopPavement);
-	rectBottomRoad.setTexture(&m_texRoad);
-	m_rectTopPavement.setTexture(&m_texTopPavement);
-	rectRiver.setTexture(&m_texRiver);
-
-}
-
-void Background::blur_draw(sf::RenderWindow & window)
-{
-	this->blur_loadTexture();
-	this->draw(window);
-}
-
-void Background::reload()
-{
-	this->loadTexture();
 }

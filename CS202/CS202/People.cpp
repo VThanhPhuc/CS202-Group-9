@@ -109,7 +109,6 @@ void CPEOPLE::moveLeft()
 
 
 
-
 void CPEOPLE::Control()
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up))

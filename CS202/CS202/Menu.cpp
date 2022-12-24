@@ -2,7 +2,7 @@
 #include "CROADLIST.h"
 #include "time.h"
 #include <chrono>
-
+using namespace std::chrono;
 void Menu::InnitMenuBackground()
 {
 	if (!this->t.loadFromFile("universe.png"))
@@ -205,6 +205,11 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1)
 					}
 					else if (ev.key.code == sf::Keyboard::Left) player->moveLeft();
 					else if (ev.key.code == sf::Keyboard::Right) player->moveRight();
+					else if (ev.key.code == sf::Keyboard::Down) { 
+						player->moveDown();
+						point--;
+						Point.SetText("Point : " + to_string(point));
+					}
 					else if (ev.key.code == sf::Keyboard::Escape)
 					{
 						while (window.isOpen())
@@ -302,6 +307,7 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1)
 					int f1 = 0;
 					if (player->isImpact(cur->at(i)))
 					{
+						
 						f1 = 1;
 						std::cout << "die" << endl;
 						int k = 0;

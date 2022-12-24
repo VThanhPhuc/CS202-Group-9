@@ -1,7 +1,9 @@
 #include "Menu.h"
+#include<iostream>
 #include "CROADLIST.h"
 #include "time.h"
 #include <chrono>
+using namespace std;
 using namespace std::chrono;
 void Menu::InnitMenuBackground()
 {
@@ -179,6 +181,7 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1)
 	Point.setFont(font);
 	while (window.isOpen())
 	{
+		auto start = high_resolution_clock::now();
 		int i = 0;
 		window.clear();
 		while (window.isOpen())
@@ -302,10 +305,13 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1)
 			for (auto road : roadli->roadList)
 			{
 				deque<COBJECT*>* cur = road->getObjLi();
+				auto stop = high_resolution_clock::now();
+				auto duration = duration_cast<microseconds>(stop - start);
+				double count = duration.count()/pow(10,7)*3.6;
 				for (long i = 0; i < cur->size(); ++i)
 				{
 					int f1 = 0;
-					if (player->isImpact(cur->at(i)))
+					if (player->isImpact(cur->at(i))||point+0.8<count)
 					{
 						
 						f1 = 1;

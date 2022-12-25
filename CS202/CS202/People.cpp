@@ -9,7 +9,7 @@ CPEOPLE::CPEOPLE()
 CPEOPLE::CPEOPLE(sf::RenderWindow* window, float x, float y)
 {
 	mX = x;
-	mY = y;
+	mY = y+5;
 	this->window = window;
 	texture = &LoadPic::GetIns().texture["boyback"];
 

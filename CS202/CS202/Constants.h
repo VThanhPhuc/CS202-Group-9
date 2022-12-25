@@ -11,7 +11,7 @@ namespace Constants
 
 	// velocity
 	const float ShiftVelocity = 0.8;
-	const float VelcocityX = 3.5;
+	const float VelcocityX = 3.3;
 
 	const int widthVehicle = 100;
 	const int heightVehicle = 100;

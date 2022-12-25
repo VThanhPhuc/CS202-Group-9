@@ -12,7 +12,7 @@ CLight::CLight()
 CLight::CLight(float x, float y)
 {
 	mX = x + 10;
-	mY = y + 10;
+	mY = y + 50;
 	traffic = true;
 	diff = rand() % 6 - 1;
 

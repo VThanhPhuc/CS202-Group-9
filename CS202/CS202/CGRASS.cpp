@@ -57,3 +57,8 @@ deque<COBJECT*>* CGRASS::getObjLi()
 {
 	return Animali.getAniList();
 }
+
+bool CGRASS::isCarlane()
+{
+	return false;
+}

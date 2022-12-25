@@ -80,3 +80,8 @@ deque<COBJECT*>* CARLANE::getObjLi()
 {
 	return carli.getCarList();
 }
+
+bool CARLANE::isCarlane()
+{
+	return true;
+}

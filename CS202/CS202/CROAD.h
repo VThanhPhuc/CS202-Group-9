@@ -46,6 +46,6 @@ public:
 	virtual deque<COBJECT*>* getObjLi() = 0;
 
 	//save to file
-
+	void save(ofstream& fout);
 };
 

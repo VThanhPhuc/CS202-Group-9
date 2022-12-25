@@ -57,3 +57,11 @@ sf::Vector2f CROAD::getPos()
 {
 	return sf::Vector2f(mX, mY);
 }
+
+void CROAD::save(ofstream& fout)
+{
+	bool isCarlane = this->isCarlane();
+	fout.write((char*)&isCarlane, sizeof(isCarlane));
+	fout.write((char*)&mX, sizeof(mX));
+	fout.write((char*)&mY, sizeof(mY));
+}

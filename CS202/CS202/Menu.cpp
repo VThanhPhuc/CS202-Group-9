@@ -192,7 +192,7 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 	{
 		cout << " Fail to load";
 	}
-	int point = 0;
+	int point = getpoint();
 	Button Point("Point : " + to_string(point), { 200,50 }, 20, sf::Color::Green, sf::Color::Red);
 	Point.setPosition({ 1600,100 });
 	Point.setFont(font);
@@ -317,6 +317,7 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 									}
 									else if (save.isMouseOver(window))
 									{
+										setpoint(point);
 										this->save();
 										d.reload();
 										i1 = 1;
@@ -468,6 +469,7 @@ void Menu::save()
 	if (fout)
 	{
 		player->save(fout);
+		fout.write((char*)&point, sizeof(point));
 		roadli->save(fout);
 		fout.close();
 		cout << "Saving data successfully\n";
@@ -484,6 +486,7 @@ void Menu::load()
 	if (fin)
 	{
 		player->load(fin);
+		fin.read((char*)&point, sizeof(point));
 		roadli->load(fin);
 		fin.close();
 		cout << "Loading data successfully\n";
@@ -491,4 +494,14 @@ void Menu::load()
 	}
 	else
 		cout << "Cannot read file!\n";
+}
+
+int Menu::getpoint()
+{
+	return point;
+}
+
+void Menu::setpoint(int point)
+{
+	this->point = point;
 }

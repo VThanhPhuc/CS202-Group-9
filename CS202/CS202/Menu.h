@@ -42,6 +42,7 @@ protected:
 	// game obj
 	CPEOPLE* player;
 	CROADLIST* roadli;
+	int point;
 	// private function
 	void initializeVariable()
 	{
@@ -56,6 +57,7 @@ protected:
 		player = new CPEOPLE(this->window, 750, 700);
 		roadli = new CROADLIST(player);
 		roadli->initRoad();
+		point = 0;
 	}
 
 public:
@@ -84,4 +86,7 @@ public:
 	// save to file | load from file
 	void save();
 	void load();
+
+	int getpoint();
+	void setpoint(int point);
 };

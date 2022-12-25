@@ -75,11 +75,11 @@ public:
 	//int Start_Play(sf::RenderWindow& window);
 	//int CheckMouseGamePlay(sf::RenderWindow& window);
 	void Draw_Menu_In_game(sf::RenderWindow& window);
-	void Menu_control(sf::RenderWindow& window, sf::Event event, Background d, Button b1, Button exit1);
+	void Menu_control(sf::RenderWindow& window, sf::Event event, Background d, Button b1, Button exit1, Button load);
 	void LoseGame(sf::RenderWindow& window);
 	//int ChoiceLoseGame(sf::RenderWindow& window);
 	void Begin();
-	void PlayGame(sf::RenderWindow& window, Background d, int& return1);
+	void PlayGame(sf::RenderWindow& window, Background d, int& return1, bool playLoad);
 
 	// save to file | load from file
 	void save();

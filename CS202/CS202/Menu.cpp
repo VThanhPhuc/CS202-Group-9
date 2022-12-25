@@ -119,10 +119,13 @@ void Menu::Begin()
 	play.setPosition({ 100,400 });
 	play.setFont(font);
 
-
 	Button exit1("EXIT", { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
 	exit1.setPosition({ 100,600 });
 	exit1.setFont(font);
+
+	Button load("LOAD", { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
+	load.setPosition({ 100,800 });
+	load.setFont(font);
 
 	while (window->isOpen())
 	{
@@ -150,10 +153,19 @@ void Menu::Begin()
 				{
 					exit1.setBackColor(sf::Color::Green);
 				}
+
+				if (load.isMouseOver(*this->window))
+				{
+					load.setBackColor(sf::Color::White);
+				}
+				else if (!load.isMouseOver(*this->window))
+				{
+					load.setBackColor(sf::Color::Green);
+				}
 			}
 			if (event.type == sf::Event::MouseButtonPressed)
 			{
-				this->Menu_control(*this->window, event, d, play, exit1);
+				this->Menu_control(*this->window, event, d, play, exit1, load);
 			}
 
 		}
@@ -161,13 +173,19 @@ void Menu::Begin()
 		this->draw_menu(*this->window);
 		play.drawTo(*this->window);
 		exit1.drawTo(*this->window);
+		load.drawTo(*this->window);
 		window->display();
 	}
 }
-void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1)
+void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool playLoad)
 {
-	initGame();
+	if (playLoad)
+		this->load();
+	else
+		initGame();
+
 	if (return1 == 1) return;
+
 	cout << "Start" << endl;
 	sf::Font font;
 	if (!font.loadFromFile("ayar.ttf"))
@@ -227,6 +245,10 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1)
 							EXIT.setPosition({ 760,550 });
 							EXIT.setFont(font);
 
+							Button save("SAVE", { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
+							save.setPosition({ 760,640 });
+							save.setFont(font);
+
 							int i1 = 0;
 							while (window.pollEvent(ev))
 							{
@@ -263,6 +285,14 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1)
 										reset.setBackColor(sf::Color::Green);
 									}
 
+									if (save.isMouseOver(window))
+									{
+										save.setBackColor(sf::Color::White);
+									}
+									else if (!save.isMouseOver(window))
+									{
+										save.setBackColor(sf::Color::Green);
+									}
 								}
 								if (ev.type == sf::Event::MouseButtonPressed)
 								{
@@ -282,8 +312,15 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1)
 									}
 									else if (reset.isMouseOver(window))
 									{
-										this->PlayGame(window, d, return1);
+										this->PlayGame(window, d, return1, false);
 										if (return1 == 1) return;
+									}
+									else if (save.isMouseOver(window))
+									{
+										this->save();
+										d.reload();
+										i1 = 1;
+										break;
 									}
 								}
 								window.clear();
@@ -292,6 +329,7 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1)
 								reset.drawTo(window);
 								resume.drawTo(window);
 								EXIT.drawTo(window);
+								save.drawTo(window);
 								window.display();
 							}
 							if (i1 == 1) break;
@@ -355,7 +393,7 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1)
 								{
 									if (resume.isMouseOver(window))
 									{
-										this->PlayGame(window, d, return1);
+										this->PlayGame(window, d, return1, false);
 										if (return1 == 1) return;
 										k = 1;
 										i = 0;
@@ -400,7 +438,7 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1)
 		if (i == 1) break;
 	}
 }
-void Menu::Menu_control(sf::RenderWindow& window, sf::Event event, Background d, Button b1, Button exit1)
+void Menu::Menu_control(sf::RenderWindow& window, sf::Event event, Background d, Button b1, Button exit1, Button load)
 {
 
 	if (event.type == sf::Event::Closed)
@@ -410,11 +448,15 @@ void Menu::Menu_control(sf::RenderWindow& window, sf::Event event, Background d,
 		int return1 = 0;
 		if (b1.isMouseOver(window))
 		{
-			this->PlayGame(window, d, return1);
+			this->PlayGame(window, d, return1, false);
 		}
 		else if (exit1.isMouseOver(window))
 		{
 			window.close();
+		}
+		else if (load.isMouseOver(window))
+		{
+			this->PlayGame(window, d, return1, true);
 		}
 	}
 }
@@ -428,7 +470,7 @@ void Menu::save()
 		player->save(fout);
 		roadli->save(fout);
 		fout.close();
-		cout << "Saving successfully\n";
+		cout << "Saving data successfully\n";
 	}
 	else
 		cout << "Cannot save to file!\n";
@@ -444,7 +486,7 @@ void Menu::load()
 		player->load(fin);
 		roadli->load(fin);
 		fin.close();
-		cout << "Loading successfully\n";
+		cout << "Loading data successfully\n";
 		return;
 	}
 	else

@@ -38,5 +38,7 @@ public:
 	void Control();
 	bool isNearRoad(CROAD& road);
 	sf::Sprite getObj();
+	void save(ofstream& fout);
+	void load(ifstream& fin);
 };
 

@@ -150,3 +150,21 @@ sf::Sprite CPEOPLE::getObj()
 	return sprite;
 }
 
+void CPEOPLE::save(ofstream& fout)
+{
+	float x = sprite.getPosition().x;
+	fout.write((char*)&x, sizeof(x));
+
+	float y = sprite.getPosition().y;
+	fout.write((char*)&y, sizeof(y));
+}
+
+void CPEOPLE::load(ifstream& fin)
+{
+	float x, y;
+	fin.read((char*)&x, sizeof(x));
+	fin.read((char*)&y, sizeof(y));
+	mX = x;
+	mY = y;
+	sprite.setPosition(x, y);
+}

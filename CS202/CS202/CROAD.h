@@ -3,6 +3,7 @@
 #include "CCARLIST.h"
 #include "LoadPic.h"
 #include "CANIMALLIST.h"
+#include<fstream>
 using namespace std;
 class CROAD
 {

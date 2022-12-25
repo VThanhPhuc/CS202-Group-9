@@ -45,4 +45,7 @@ namespace Constants
 
 	const float Width_hiddenRoad = 1500;
 	const float Height_HiddenRoad = 100;
+
+	//save game
+	const std::string dataFile = "data.dat";
 }

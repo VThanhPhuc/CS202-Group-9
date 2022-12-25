@@ -64,4 +64,5 @@ void CROAD::save(ofstream& fout)
 	fout.write((char*)&isCarlane, sizeof(isCarlane));
 	fout.write((char*)&mX, sizeof(mX));
 	fout.write((char*)&mY, sizeof(mY));
+	saveLight(fout);
 }

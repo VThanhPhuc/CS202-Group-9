@@ -62,3 +62,9 @@ bool CGRASS::isCarlane()
 {
 	return false;
 }
+
+void CGRASS::saveLight(ofstream& fout)
+{
+	bool isLight = false;
+	fout.write((char*)&isLight, sizeof(isLight));
+}

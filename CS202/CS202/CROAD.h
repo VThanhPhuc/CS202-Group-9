@@ -42,6 +42,7 @@ public:
 	virtual void shiftObj(char shift) = 0;
 	virtual void update(sf::RenderWindow& window) = 0;
 	virtual bool isCarlane() = 0;
+	virtual void saveLight(ofstream& fout) = 0;
 
 	virtual deque<COBJECT*>* getObjLi() = 0;
 

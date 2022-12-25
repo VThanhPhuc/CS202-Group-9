@@ -22,6 +22,7 @@ public:
 	void shiftObj(char shift);
 	void update(sf::RenderWindow& window);
 	bool isCarlane();
+	void saveLight(ofstream& fout);
 
 	deque<COBJECT*>* getObjLi();
 

@@ -85,3 +85,9 @@ bool CARLANE::isCarlane()
 {
 	return true;
 }
+
+void CARLANE::saveLight(ofstream& fout)
+{
+	bool isLight = light.Traffic();
+	fout.write((char*)&isLight, sizeof(isLight));
+}

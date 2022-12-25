@@ -418,3 +418,35 @@ void Menu::Menu_control(sf::RenderWindow& window, sf::Event event, Background d,
 		}
 	}
 }
+
+void Menu::save()
+{
+	ofstream fout;
+	fout.open(Constants::dataFile, ios::binary);
+	if (fout)
+	{
+		player->save(fout);
+		roadli->save(fout);
+		fout.close();
+		cout << "Saving successfully\n";
+	}
+	else
+		cout << "Cannot save to file!\n";
+}
+
+void Menu::load()
+{
+	initGame();
+	ifstream fin;
+	fin.open(Constants::dataFile, ios::binary);
+	if (fin)
+	{
+		player->load(fin);
+		roadli->load(fin);
+		fin.close();
+		cout << "Loading successfully\n";
+		return;
+	}
+	else
+		cout << "Cannot read file!\n";
+}

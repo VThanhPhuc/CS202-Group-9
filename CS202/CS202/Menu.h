@@ -80,4 +80,8 @@ public:
 	//int ChoiceLoseGame(sf::RenderWindow& window);
 	void Begin();
 	void PlayGame(sf::RenderWindow& window, Background d, int& return1);
+
+	// save to file | load from file
+	void save();
+	void load();
 };

@@ -33,5 +33,6 @@ public:
 
 
 	// save to file | load from file
-
+	void save(ofstream& fout);
+	void load(ifstream& fin);
 };

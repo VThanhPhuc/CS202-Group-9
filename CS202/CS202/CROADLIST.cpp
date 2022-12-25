@@ -99,3 +99,35 @@ void CROADLIST::update(sf::RenderWindow& window)
 		it->update(window);
 	}
 }
+
+void  CROADLIST::save(ofstream& fout)
+{
+	fout.write((char*)&mY, sizeof(mY));
+	fout.write((char*)&mX, sizeof(mX));
+	fout.write((char*)&mY_origin, sizeof(mY_origin));
+
+	for (auto i : roadList)
+		i->save(fout);
+}
+
+void  CROADLIST::load(ifstream& fin)
+{
+	fin.read((char*)&mY, sizeof(mY));
+	fin.read((char*)&mX, sizeof(mX));
+	fin.read((char*)&mY_origin, sizeof(mY_origin));
+	while (!fin.eof())
+	{
+		float x, y;	
+		fin.read((char*)&x, sizeof(x));
+		fin.read((char*)&y, sizeof(y));
+
+		bool isCarlane, isLight;
+		fin.read((char*)&isCarlane, sizeof(isCarlane));
+		fin.read((char*)&isLight, sizeof(isLight));
+
+		if (isCarlane)
+			roadList.push_back(new CARLANE(x, y, isLight));
+		else
+			roadList.push_back(new CGRASS(x, y));
+	}
+}

@@ -1,7 +1,6 @@
 #include "People.h"
 #include "CARLANE.h"
 #include "Light.h"
-#include "CGAME.h"
 #include "Background.h"
 #include "Menu.h"
 int main()

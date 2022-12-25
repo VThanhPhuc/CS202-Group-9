@@ -20,7 +20,7 @@ CPEOPLE::CPEOPLE(sf::RenderWindow* window, float x, float y)
 }
 bool CPEOPLE::isImpact(COBJECT*& obj)
 {
-	if (sprite.getGlobalBounds().intersects(obj->out.getGlobalBounds()))
+	if (sprite.getGlobalBounds().intersects(obj->out.getGlobalBounds()) || sprite.getPosition().y >=Constants::Height_screen)
 	{
 		return true;
 	}

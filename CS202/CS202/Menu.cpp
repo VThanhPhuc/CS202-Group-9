@@ -3,6 +3,7 @@
 #include "time.h"
 #include <chrono>
 using namespace std::chrono;
+int CROAD::NumRoad = 0;
 void Menu::InnitMenuBackground()
 {
 	if (!this->t.loadFromFile("universe.png"))

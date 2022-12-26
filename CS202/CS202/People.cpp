@@ -164,5 +164,5 @@ void CPEOPLE::load(ifstream& fin)
 	float x, y;
 	fin.read((char*)&x, sizeof(x));
 	fin.read((char*)&y, sizeof(y));
-	sprite.setPosition(x, y);
+	sprite.setPosition(x, y+5);
 }

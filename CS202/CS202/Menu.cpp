@@ -487,7 +487,7 @@ void Menu::load()
 	{
 		player->load(fin);
 		fin.read((char*)&point, sizeof(point));
-		roadli->load(fin);
+		//roadli->load(fin);
 		fin.close();
 		cout << "Loading data successfully\n";
 		return;

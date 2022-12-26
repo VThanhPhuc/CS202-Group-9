@@ -155,7 +155,7 @@ void CPEOPLE::save(ofstream& fout)
 	float x = sprite.getPosition().x;
 	fout.write((char*)&x, sizeof(x));
 
-	float y = sprite.getPosition().y;
+	float y = mY;
 	fout.write((char*)&y, sizeof(y));
 }
 

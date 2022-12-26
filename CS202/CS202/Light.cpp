@@ -79,21 +79,3 @@ bool CLight::Traffic()
 {
 	return traffic;
 }
-//CLight::CLight(bool a) {
-//	avail = a;
-//	number = 10;
-//	on = true;
-//}
-//void CLight::update() {
-//	number--;
-//	if (number < 0) {
-//		on = !on;
-//		number = 10;
-//	}
-//}
-//bool CLight::geton() {
-//	return on;
-//}
-//bool CLight::getstatus() {
-//	return avail;
-//}

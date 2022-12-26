@@ -470,7 +470,7 @@ void Menu::save()
 	{
 		player->save(fout);
 		fout.write((char*)&point, sizeof(point));
-		roadli->save(fout);
+		//roadli->save(fout);
 		fout.close();
 		cout << "Saving data successfully\n";
 	}

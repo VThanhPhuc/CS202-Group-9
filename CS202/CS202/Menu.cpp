@@ -119,13 +119,13 @@ void Menu::Begin()
 	play.setPosition({ 100,400 });
 	play.setFont(font);
 
-	Button exit1("EXIT", { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
-	exit1.setPosition({ 100,600 });
-	exit1.setFont(font);
-
 	Button load("LOAD", { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
-	load.setPosition({ 100,800 });
+	load.setPosition({ 100,600 });
 	load.setFont(font);
+
+	Button exit1("EXIT", { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
+	exit1.setPosition({ 100,800 });
+	exit1.setFont(font);
 
 	while (window->isOpen())
 	{
@@ -237,17 +237,17 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 							resume.setPosition({ 760,370 });
 							resume.setFont(font);
 
+							Button save("SAVE", { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
+							save.setPosition({ 760,460 });
+							save.setFont(font);
+
 							Button reset("RESET", { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
-							reset.setPosition({ 760,460 });
+							reset.setPosition({ 760,550 });
 							reset.setFont(font);
 
 							Button EXIT("EXIT", { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
-							EXIT.setPosition({ 760,550 });
+							EXIT.setPosition({ 760,640 });
 							EXIT.setFont(font);
-
-							Button save("SAVE", { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
-							save.setPosition({ 760,640 });
-							save.setFont(font);
 
 							int i1 = 0;
 							while (window.pollEvent(ev))

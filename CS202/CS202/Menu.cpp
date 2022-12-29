@@ -196,6 +196,10 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 	Button Point("Point : " + to_string(point), { 200,50 }, 20, sf::Color::Green, sf::Color::Red);
 	Point.setPosition({ 1600,100 });
 	Point.setFont(font);
+
+	Button back("", { 400,Constants::Height_screen }, 20, sf::Color::Black, sf::Color::Black);
+	back.setPosition({ Constants::WidthRoad + 10,0 });
+
 	while (window.isOpen())
 	{
 		int i = 0;
@@ -206,6 +210,7 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 			roadli->draw(*this->window);
 			roadli->shiftObj('U');
 			player->shiftObj();
+			back.drawTo(window);
 			window.draw(this->instruction);
 			Point.drawTo(window);
 			while (window.pollEvent(ev))
@@ -470,7 +475,7 @@ void Menu::save()
 	{
 		player->save(fout);
 		fout.write((char*)&point, sizeof(point));
-		//roadli->save(fout);
+		roadli->save(fout);
 		fout.close();
 		cout << "Saving data successfully\n";
 	}
@@ -487,7 +492,7 @@ void Menu::load()
 	{
 		player->load(fin);
 		fin.read((char*)&point, sizeof(point));
-		//roadli->load(fin);
+		roadli->load(fin);
 		fin.close();
 		cout << "Loading data successfully\n";
 		return;

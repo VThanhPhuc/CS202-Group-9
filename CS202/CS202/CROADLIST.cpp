@@ -27,6 +27,7 @@ void CROADLIST::initRoad()
 CROAD* CROADLIST::createRoad(sf::Vector2f pos)
 {
 	RoadType type = RoadType(rand() % LAST);
+
 	if (type == LANE)
 	{
 		return new CARLANE(pos);
@@ -35,7 +36,6 @@ CROAD* CROADLIST::createRoad(sf::Vector2f pos)
 	{
 		return new CGRASS(pos);
 	}
-
 }
 
 CROAD* CROADLIST::createRoad(float index)
@@ -70,7 +70,7 @@ void CROADLIST::shiftObj(char shift)
 void CROADLIST::draw(sf::RenderWindow& window)
 {
 	for (auto it : roadList)
-	{
+	{	
 		it->draw(window);
 		player->draw(window);
 		it->drawSubObj(window);
@@ -126,8 +126,16 @@ void  CROADLIST::load(ifstream& fin)
 		fin.read((char*)&isLight, sizeof(isLight));
 
 		if (isCarlane)
-			roadList.push_back(new CARLANE(x, y, isLight));
+		{
+			CCARLIST carlist;
+			carlist.load(fin);
+			roadList.push_back(new CARLANE(x, y, isLight, carlist));
+		}
 		else
-			roadList.push_back(new CGRASS(x, y));
+		{
+			CANIMALLIST animallist;
+			animallist.load(fin);
+			roadList.push_back(new CGRASS(x, y, animallist));
+		}
 	}
 }

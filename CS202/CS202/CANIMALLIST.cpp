@@ -124,3 +124,15 @@ CANIMALLIST::~CANIMALLIST()
 		delete temp;
 	}
 }
+
+void CANIMALLIST::save(ofstream& fout)
+{
+	fout.write((char*)&type, sizeof(type));
+	fout.write((char*)&dir, sizeof(dir));
+}
+
+void CANIMALLIST::load(ifstream& fin)
+{
+	fin.read((char*)&type, sizeof(type));
+	fin.read((char*)&dir, sizeof(dir));
+}

@@ -6,6 +6,7 @@ CPEOPLE::CPEOPLE()
 	mY = 500;
 	mState = true; //1 is alive, 0 is dead
 }
+
 CPEOPLE::CPEOPLE(sf::RenderWindow* window, float x, float y)
 {
 	mX = x;
@@ -18,6 +19,7 @@ CPEOPLE::CPEOPLE(sf::RenderWindow* window, float x, float y)
 	sprite.setPosition(mX, mY);
 	mState = true;
 }
+
 bool CPEOPLE::isImpact(COBJECT*& obj)
 {
 	if (sprite.getGlobalBounds().intersects(obj->out.getGlobalBounds()) || sprite.getPosition().y >=Constants::Height_screen)
@@ -26,7 +28,6 @@ bool CPEOPLE::isImpact(COBJECT*& obj)
 	}
 	return false;
 }
-
 
 bool CPEOPLE::isNearRoad(CROAD& road)
 {
@@ -107,8 +108,6 @@ void CPEOPLE::moveLeft()
 	}
 }
 
-
-
 void CPEOPLE::Control()
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
@@ -145,6 +144,7 @@ void CPEOPLE::Control()
 		if (mY > 1080) mY = 900;
 	}
 }
+
 sf::Sprite CPEOPLE::getObj()
 {
 	return sprite;
@@ -155,7 +155,7 @@ void CPEOPLE::save(ofstream& fout)
 	float x = sprite.getPosition().x;
 	fout.write((char*)&x, sizeof(x));
 
-	float y = mY;
+	float y = sprite.getPosition().y;
 	fout.write((char*)&y, sizeof(y));
 }
 

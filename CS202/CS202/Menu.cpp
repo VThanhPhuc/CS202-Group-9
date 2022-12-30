@@ -351,8 +351,7 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 				{
 					int f1 = 0;
 					if (player->isImpact(cur->at(i)))
-					{
-						
+					{						
 						f1 = 1;
 						std::cout << "die" << endl;
 						int k = 0;
@@ -485,7 +484,13 @@ void Menu::save()
 
 void Menu::load()
 {
-	initGame();
+	delete roadli;
+	delete player;
+
+	player = new CPEOPLE(this->window, 750, 700);
+	roadli = new CROADLIST(player);
+	point = 0;
+
 	ifstream fin;
 	fin.open(Constants::dataFile, ios::binary);
 	if (fin)

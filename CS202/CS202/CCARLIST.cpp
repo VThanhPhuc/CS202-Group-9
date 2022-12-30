@@ -103,13 +103,10 @@ void CCARLIST::update(float mX, float mY, sf::RenderWindow& window, CLight& l)
 	if (carlist.empty()) initGame(mX, mY);
 	while (!carlist.empty() && carlist.back()->CheckOutWindow(window))
 	{
-
 		COBJECT* tmp = carlist.back();
 		carlist.pop_back();
 		delete tmp;
-
 	}
-
 }
 int CCARLIST::direction()
 {
@@ -141,4 +138,16 @@ CCARLIST::~CCARLIST()
 		carlist.pop_front();
 		delete temp;
 	}
+}
+
+void CCARLIST::save(ofstream& fout)
+{
+	fout.write((char*)&type, sizeof(type));
+	fout.write((char*)&dir, sizeof(dir));
+}
+
+void CCARLIST::load(ifstream& fin)
+{
+	fin.read((char*)&type, sizeof(type));
+	fin.read((char*)&dir, sizeof(dir));
 }

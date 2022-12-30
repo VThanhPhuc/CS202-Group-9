@@ -9,12 +9,11 @@ private:
 	CLight light;
 	const string file = "Pavement_bottom";
 	CCARLIST carli;
-
 public:
 	// Constructor | destructor
 	CARLANE(sf::Vector2f pos);
 	CARLANE(float index = 1);
-	CARLANE(float x, float y, bool traffic);
+	CARLANE(float x, float y, bool traffic, CCARLIST carlist);
 	~CARLANE();
 
 	// other function

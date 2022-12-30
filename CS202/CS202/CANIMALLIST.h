@@ -3,6 +3,7 @@
 #include "CANIMAL.h"
 #include <deque>
 #include <random>
+#include<fstream>
 enum ANITYPE {bird, dino, LASTTY }; 
 
 enum ANIDIR { TLEFT, TRIGHT, LASTDI };
@@ -26,5 +27,8 @@ public:
 	deque<COBJECT*>* getAniList();
 	int direction();
 	~CANIMALLIST();
+
+	void save(ofstream& fout);
+	void load(ifstream& fin);
 };
 

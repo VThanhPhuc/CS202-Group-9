@@ -3,6 +3,7 @@
 #include "CCAR.h"
 #include <deque>
 #include <random>
+#include<fstream>
 enum CARTYPE {car, truck, pickup, race, LASTTYPE }; // LASTTYPE is to determine the number of cartypes.
 
 enum CARDIR { TOLEFT, TORIGHT, LASTDIR }; // LASTDIR is to determine the number of CARDIR
@@ -25,4 +26,7 @@ public:
 	deque<COBJECT*>* getCarList();
 	int direction();
 	~CCARLIST();
+
+	void save(ofstream& fout);
+	void load(ifstream& fin);
 };

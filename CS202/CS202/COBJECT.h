@@ -14,11 +14,10 @@ class COBJECT
 protected:
 	friend class CPEOPLE;
 	friend class CGAME;
+
 	float mX, mY;
 	int speed;
-
 	bool isVisible;
-
 	int direction;
 
 	sf::Texture* texture;
@@ -32,8 +31,6 @@ public:
 	COBJECT(float x, float y);
 	COBJECT(float x, float y, int direction = 1);
 
-
-
 	void shiftObject(char shift); // use char: U(up), D(down)
 
 	// virtual
@@ -44,10 +41,6 @@ public:
 	//virtual void tell() = 0;
 
 	bool CheckOutWindow(sf::RenderWindow& window);
-
-
-	sf::Vector2f getPos();
-
-	
+	sf::Vector2f getPos();	
 };
 

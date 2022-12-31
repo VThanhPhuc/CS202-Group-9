@@ -7,6 +7,7 @@
 #include <cstdlib>
 #include <ctime>
 #include "Light.h"
+#include<fstream>
 using namespace std;
 
 COBJECT::COBJECT(float x, float y)
@@ -64,6 +65,19 @@ bool COBJECT::CheckOutWindow(sf::RenderWindow& window) // check if sprite is in 
 	/*return (out.getPosition().x <= -2*Constants::widthVehicle) || (out.getPosition().x >= 2*Constants::widthVehicle + Constants::WidthRoad)
 		|| (out.getPosition().y <= -3 * Constants::HeightRoad - 50) || (out.getPosition().y >= Constants::HeightRoad + Constants::Height_screen + 5);*/
 }
+
+void COBJECT::save(ofstream& fout)
+{
+	fout.write((char*)&out.getPosition().x, sizeof(out.getPosition().x));
+	fout.write((char*)&out.getPosition().y, sizeof(out.getPosition().y));
+}
+
+//void COBJECT::load(ifstream& fin)
+//{
+//	fin.read((char*)&mX, sizeof(mX));
+//	fin.read((char*)&mY, sizeof(mY));
+//}
+
 /* old source
 void CCar::setspr(int type) {
 	sf::Texture texture;

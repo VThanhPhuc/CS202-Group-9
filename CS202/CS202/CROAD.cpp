@@ -60,12 +60,11 @@ sf::Vector2f CROAD::getPos()
 
 void CROAD::save(ofstream& fout)
 {
-	fout.write((char*)&mX, sizeof(mX));
-	fout.write((char*)&mY, sizeof(mY));
+	fout.write((char*)&out.getPosition().x, sizeof(out.getPosition().x));
+	fout.write((char*)&out.getPosition().y, sizeof(out.getPosition().y));
 
 	bool isCarlane = this->isCarlane();
 	fout.write((char*)&isCarlane, sizeof(isCarlane));
 
 	saveLight(fout);
-
 }

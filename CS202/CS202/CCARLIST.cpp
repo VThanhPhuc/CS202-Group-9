@@ -144,10 +144,30 @@ void CCARLIST::save(ofstream& fout)
 {
 	fout.write((char*)&type, sizeof(type));
 	fout.write((char*)&dir, sizeof(dir));
+	/*for (auto i : carlist)
+		i->save(fout);*/
+	/*carlist.back()->save(fout);*/
 }
 
 void CCARLIST::load(ifstream& fin)
 {
 	fin.read((char*)&type, sizeof(type));
 	fin.read((char*)&dir, sizeof(dir));
+
+	/*float mX, mY;
+	fin.read((char*)&mX, sizeof(mX));
+	fin.read((char*)&mY, sizeof(mY));
+	initGame(mX, mY);*/
+
+	//while (carlist.size() < Constants::NCar)
+	//{
+	//	float mX, mY;
+	//	fin.read((char*)&mX, sizeof(mX));
+	//	fin.read((char*)&mY, sizeof(mY));
+	//	carlist.push_front(createCar(mX, mY));
+	//	/*string t = "1";
+	//	if (dir == TOLEFT)
+	//		t = "0";
+	//	carlist.push_front(new CCAR(Constants::Cartype[type] + t, mX, mY, Constants::speedCar[type], 2 * dir - 1));*/
+	//}
 }

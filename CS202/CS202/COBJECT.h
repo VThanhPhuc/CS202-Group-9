@@ -42,5 +42,8 @@ public:
 
 	bool CheckOutWindow(sf::RenderWindow& window);
 	sf::Vector2f getPos();	
+
+	void save(ofstream& fout);
+	//void load(ifstream& fin);
 };
 

@@ -45,6 +45,7 @@ protected:
 	int point;
 	//sound
 	sf::Sound ingameSound;
+	sf::Sound deathSound;
 	bool soundOn;
 	// private function
 	void initializeVariable()
@@ -57,7 +58,7 @@ protected:
 		delete roadli;
 		delete player;
 
-		player = new CPEOPLE(this->window, 750, 700);
+		player = new CPEOPLE(this->window, 750, 700, soundOn);
 		roadli = new CROADLIST(player, soundOn);
 		roadli->initRoad();
 		point = 0;
@@ -70,6 +71,8 @@ public:
 		ingameSound.setLoop(true);
 		ingameSound.setVolume(60);
 		ingameSound.play();
+		
+		deathSound = sf::Sound(LoadPic::GetIns().sound["death"]);
 		soundOn = true;
 
 		initializeVariable();

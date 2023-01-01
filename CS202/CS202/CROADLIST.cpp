@@ -95,15 +95,14 @@ void CROADLIST::update(sf::RenderWindow& window)
 		roadList.pop_back();
 		delete tmp;
 	}
-	int count = 0;
+
 	for (auto it : roadList)
 	{
-		cout << "Road number " << ++count << endl;
 		it->update(window);
 
 		if (player->isNearRoad(*it) && soundOn)
 		{
-			addSound(*it);
+			playSound(*it);
 		}
 	}
 }
@@ -146,17 +145,13 @@ void CROADLIST::turnSound()
 	soundOn = !soundOn;
 }
 
-void CROADLIST::addSound(CROAD& it)
+void CROADLIST::playSound(CROAD& it)
 {
 	int type = it.soundType();
 	if (type != -1)
 	{
-		sf::Sound tmp = sf::Sound(LoadPic::GetIns().sound[Constants::Soundtype[type]]);
-		soundList.push(tmp);
-		soundList.back().play();
-
-		it.setplaying();
-		if (soundList.front().getStatus() == sf::SoundSource::Stopped)
-			soundList.pop();
+		mySound = sf::Sound(LoadPic::GetIns().sound[Constants::Soundtype[type]]);		
+		mySound.play();
+		it.setplaying();	
 	}
 }

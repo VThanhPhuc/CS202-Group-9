@@ -305,7 +305,8 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 					int f1 = 0;
 					if (player->isImpact(cur->at(i)))
 					{
-
+						deathSound.play();
+						Sleep(300);
 						f1 = 1;
 						std::cout << "die" << endl;
 						int k = 0;
@@ -446,7 +447,7 @@ void Menu::load()
 	delete roadli;
 	delete player;
 
-	player = new CPEOPLE(this->window, 750, 700);
+	player = new CPEOPLE(this->window, 750, 700, soundOn);
 	roadli = new CROADLIST(player, soundOn);
 	point = 0;
 

@@ -7,7 +7,7 @@ CPEOPLE::CPEOPLE()
 	mState = true; //1 is alive, 0 is dead
 }
 
-CPEOPLE::CPEOPLE(sf::RenderWindow* window, float x, float y)
+CPEOPLE::CPEOPLE(sf::RenderWindow* window, float x, float y, bool soundOn)
 {
 	mX = x;
 	mY = y+5;
@@ -18,6 +18,10 @@ CPEOPLE::CPEOPLE(sf::RenderWindow* window, float x, float y)
 	//sprite.setOrigin(50, 50);
 	sprite.setPosition(mX, mY);
 	mState = true;
+
+	this->soundOn = soundOn;
+	buffer = &LoadPic::GetIns().sound["step"];
+	step.setBuffer(*buffer);
 }
 
 bool CPEOPLE::isImpact(COBJECT*& obj)
@@ -35,8 +39,7 @@ bool CPEOPLE::isNearRoad(CROAD& road)
 	sf::Vector2f pos = road.getPos();
 	pos.y += 100;
 	int y = sprite.getPosition().y;
-	cout << "People y: " << y << " Road y: " << pos.y << " Abs: " << abs(y - pos.y) << endl;
-	return abs(y - pos.y) <= 100;
+	return abs(y - pos.y) <= 50;
 }
 
 void CPEOPLE::die()
@@ -79,6 +82,8 @@ void CPEOPLE::draw(sf::RenderWindow& window)
 
 void CPEOPLE::moveUp()
 {
+	if (soundOn)
+		step.play();
 	sprite.move(0, -Constants::HeightRoad);
 	if (sprite.getPosition().y < 0)
 	{
@@ -87,6 +92,8 @@ void CPEOPLE::moveUp()
 }
 void CPEOPLE::moveDown()
 {
+	if (soundOn)
+		step.play();
 	sprite.move(0, Constants::HeightRoad);
 	if (sprite.getPosition().y > (Constants::Height_screen - Constants::HeightRoad))
 	{
@@ -95,6 +102,8 @@ void CPEOPLE::moveDown()
 }
 void CPEOPLE::moveRight()
 {
+	if (soundOn)
+		step.play();
 	sprite.move(Constants::width_person, 0);
 	if (sprite.getPosition().x > (Constants::WidthRoad - Constants::width_person))
 	{
@@ -104,6 +113,8 @@ void CPEOPLE::moveRight()
 }
 void CPEOPLE::moveLeft()
 {
+	if (soundOn)
+		step.play();
 	sprite.move(-Constants::width_person, 0);
 	if (sprite.getPosition().x < 0)
 	{
@@ -168,4 +179,9 @@ void CPEOPLE::load(ifstream& fin)
 	fin.read((char*)&x, sizeof(x));
 	fin.read((char*)&y, sizeof(y));
 	sprite.setPosition(x, y);
+}
+
+void CPEOPLE::turnSound()
+{
+	soundOn = !soundOn;
 }

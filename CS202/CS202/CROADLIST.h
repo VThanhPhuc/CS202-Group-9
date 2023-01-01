@@ -1,6 +1,5 @@
 #pragma once
 #include <deque>
-#include<queue>
 #include "CARLANE.h"
 #include "People.h"
 #include "CGRASS.h"
@@ -13,7 +12,7 @@ private:
 	friend class Menu;
 
 	deque<CROAD*> roadList;
-	queue<sf::Sound> soundList;
+	sf::Sound mySound;
 	bool soundOn;
 
 	CPEOPLE* player;
@@ -35,7 +34,7 @@ public:
 
 	//sound
 	void turnSound();
-	void addSound(CROAD& it);
+	void playSound(CROAD& it);
 
 	// save to file | load from file
 	void save(ofstream& fout);

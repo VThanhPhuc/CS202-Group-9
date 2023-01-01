@@ -59,4 +59,6 @@ LoadPic::LoadPic()
 	initSound("bird");
 	initSound("dino");
 	initSound("ingame");
+	initSound("step");
+	initSound("death");
 }

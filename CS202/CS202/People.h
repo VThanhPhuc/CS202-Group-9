@@ -14,12 +14,15 @@ private:
 
 	sf::RenderWindow* window;
 
+	sf::SoundBuffer* buffer;
+	sf::Sound step;
+	bool soundOn;
 
 	sf::Texture* texture;
 	sf::Sprite sprite;
 public:
 	CPEOPLE();
-	CPEOPLE(sf::RenderWindow* window, float x, float y);
+	CPEOPLE(sf::RenderWindow* window, float x, float y, bool soundOn);
 	
 
 	void moveUp();
@@ -40,5 +43,6 @@ public:
 	sf::Sprite getObj();
 	void save(ofstream& fout);
 	void load(ifstream& fin);
+	void turnSound();
 };
 

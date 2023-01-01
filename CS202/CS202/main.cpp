@@ -7,7 +7,6 @@ int main()
 {
 	Menu c1;
 	c1.Begin();
-
 	return 0;
 
 }

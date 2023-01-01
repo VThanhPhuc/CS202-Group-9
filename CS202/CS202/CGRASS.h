@@ -10,7 +10,7 @@ public:
 	// Constructor | destructor
 	CGRASS(sf::Vector2f pos);
 	CGRASS(float index = 1);
-	CGRASS(float x, float y, CANIMALLIST animallist);
+	CGRASS(float x, float y, ifstream& fin);
 	~CGRASS();
 
 	// other function

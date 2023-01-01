@@ -129,30 +129,30 @@ void CANIMALLIST::save(ofstream& fout)
 {
 	fout.write((char*)&type, sizeof(type));
 	fout.write((char*)&dir, sizeof(dir));
-	/*for (auto i : Anlist)
-		i->save(fout);*/
-	/*Anlist.back()->save(fout);*/
+
+	int size = Anlist.size();
+	fout.write((char*)&size, sizeof(size));
+
+	for (auto i : Anlist)
+		i->save(fout);
 }
 
 void CANIMALLIST::load(ifstream& fin)
 {
 	fin.read((char*)&type, sizeof(type));
 	fin.read((char*)&dir, sizeof(dir));
+	
+	int size;
+	fin.read((char*)&size, sizeof(size));
+	while (Anlist.size() < size)
+	{
+		float mX, mY;
+		fin.read((char*)&mX, sizeof(mX));
+		fin.read((char*)&mY, sizeof(mY));
 
-	/*float mX, mY;
-	fin.read((char*)&mX, sizeof(mX));
-	fin.read((char*)&mY, sizeof(mY));
-	initGame(mX, mY);*/
-
-	//while (Anlist.size() < Constants::NCar)
-	//{
-	//	float mX, mY;
-	//	fin.read((char*)&mX, sizeof(mX));
-	//	fin.read((char*)&mY, sizeof(mY));
-	//	Anlist.push_front(createAnimal(mX, mY));
-	//	/*string t = "1";
-	//	if (dir == TLEFT)
-	//		t = "0";
-	//	Anlist.push_front(new CANIMAL(Constants::Animaltype[type] + t, mX, mY, Constants::speedAni[type], 2 * dir - 1));*/
-	//}
+		string t = "1";
+		if (dir == TLEFT)
+			t = "0";
+		Anlist.push_front(new CANIMAL(Constants::Animaltype[type] + t, mX, mY, Constants::speedAni[type], 2 * dir - 1));
+	}
 }

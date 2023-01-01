@@ -23,14 +23,14 @@ CGRASS::CGRASS(float index) : CROAD()
 
 }
 
-CGRASS::CGRASS(float x, float y, CANIMALLIST animallist) :CROAD(x, y)
+CGRASS::CGRASS(float x, float y, ifstream& fin) :CROAD(x, y)
 {
 	// create texture
 	texture = &LoadPic::GetIns().texture[file];
 	out.setTexture(*texture);
 	out.setPosition(mX, mY);
 
-	Animali = animallist;
+	Animali.load(fin);
 }
 
 CGRASS::~CGRASS()

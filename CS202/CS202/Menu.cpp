@@ -3,6 +3,8 @@
 #include "time.h"
 #include <chrono>
 using namespace std::chrono;
+int CROAD::NumRoad = 0;
+//hinh nhu xoa cai nay game chay khong duoc
 void Menu::InnitMenuBackground()
 {
 	if (!this->t.loadFromFile("universe.png"))
@@ -438,7 +440,16 @@ void Menu::save()
 
 void Menu::load()
 {
-	initGame();
+	/*initGame();*/
+	//de cai nay thi bi dinh cai roadli->initRoad(); trong ham initGame();
+
+	delete roadli;
+	delete player;
+
+	player = new CPEOPLE(this->window, 750, 700);
+	roadli = new CROADLIST(player);
+	point = 0;
+
 	ifstream fin;
 	fin.open(Constants::dataFile, ios::binary);
 	if (fin)

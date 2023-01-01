@@ -55,7 +55,8 @@ int CROAD::getNumRoads()
 
 sf::Vector2f CROAD::getPos()
 {
-	return sf::Vector2f(mX, mY);
+	return sf::Vector2f(out.getPosition().x, out.getPosition().y - 100);
+	/*return sf::Vector2f(mX, mY);*/
 }
 
 void CROAD::save(ofstream& fout)

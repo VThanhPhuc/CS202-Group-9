@@ -115,27 +115,21 @@ void  CROADLIST::load(ifstream& fin)
 	fin.read((char*)&mY, sizeof(mY));
 	fin.read((char*)&mX, sizeof(mX));
 	fin.read((char*)&mY_origin, sizeof(mY_origin));
-	while (!fin.eof())
+	int count = 0, read = 0, k = Constants::MAX_ROAD + 1;
+	while (k--)
 	{
 		float x, y;	
 		fin.read((char*)&x, sizeof(x));
 		fin.read((char*)&y, sizeof(y));
-
+		
 		bool isCarlane, isLight;
 		fin.read((char*)&isCarlane, sizeof(isCarlane));
 		fin.read((char*)&isLight, sizeof(isLight));
-
+		
 		if (isCarlane)
-		{
-			CCARLIST carlist;
-			carlist.load(fin);
-			roadList.push_back(new CARLANE(x, y, isLight, carlist));
-		}
-		else
-		{
-			CANIMALLIST animallist;
-			animallist.load(fin);
-			roadList.push_back(new CGRASS(x, y, animallist));
-		}
+			roadList.push_back(new CARLANE(x, y, isLight, fin));
+		else	
+			roadList.push_back(new CGRASS(x, y, fin));		
+		
 	}
 }

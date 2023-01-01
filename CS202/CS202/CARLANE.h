@@ -13,7 +13,7 @@ public:
 	// Constructor | destructor
 	CARLANE(sf::Vector2f pos);
 	CARLANE(float index = 1);
-	CARLANE(float x, float y, bool traffic, CCARLIST carlist);
+	CARLANE(float x, float y, bool traffic, ifstream& fin);
 	~CARLANE();
 
 	// other function

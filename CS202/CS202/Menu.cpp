@@ -3,7 +3,6 @@
 #include "time.h"
 #include <chrono>
 using namespace std::chrono;
-int CROAD::NumRoad = 0;
 void Menu::InnitMenuBackground()
 {
 	if (!this->t.loadFromFile("universe.png"))
@@ -43,60 +42,12 @@ void Menu::draw_menu(sf::RenderWindow& window)
 	InnitMenuBackground();
 	window.draw(this->MenuBackground);
 }
-//int Menu::Start_Play(sf::RenderWindow& window)
-//{
-//	float mouseX = sf::Mouse::getPosition(window).x;
-//	float mouseY = sf::Mouse::getPosition(window).y;
-//
-//	if (mouseX >= button_start.getPosition().x && mouseX <= (button_start.getPosition().x + 200) && mouseY <= (button_start.getPosition().y + 200) && mouseY >= button_start.getPosition().y)
-//	{
-//		return 1;
-//	}
-//	if (mouseX >= button_exit.getPosition().x && mouseX <= (button_exit.getPosition().x + 200) && mouseY <= (button_exit.getPosition().y + 200) && mouseY >= button_exit.getPosition().y)
-//	{
-//		return 2;
-//	}
-//	return 0;
-//}
 void Menu::LoseGame(sf::RenderWindow& window)
 {
 	window.draw(this->you_lose1);
 }
-//int Menu::CheckMouseGamePlay(sf::RenderWindow& window)
-//{
-//	float mouseX = sf::Mouse::getPosition(window).x;
-//	float mouseY = sf::Mouse::getPosition(window).y;
-//
-//	if (mouseX >= button_back.getPosition().x && mouseX <= (button_back.getPosition().x + 100) && mouseY <= (button_back.getPosition().y + 100) && mouseY >= button_back.getPosition().y)
-//	{
-//		return 1;
-//	}
-//	else if (mouseX >= button_resume.getPosition().x && mouseX <= (button_resume.getPosition().x + 100) && mouseY <= (button_resume.getPosition().y + 100) && mouseY >= button_resume.getPosition().y)
-//	{
-//		return 2;
-//	}
-//	return 0;
-//}
-//int Menu::ChoiceLoseGame(sf::RenderWindow& window)
-//{
-//	float mouseX = sf::Mouse::getPosition(window).x;
-//	float mouseY = sf::Mouse::getPosition(window).y;
-//
-//	if (mouseX >= this->continue_button.getPosition().x && mouseX <= (this->continue_button.getPosition().x + 150) && mouseY <= (this->continue_button.getPosition().y + 150) && mouseY >= this->continue_button.getPosition().y)
-//	{
-//		return 1;
-//	}
-//	else if (mouseX >= this->button_back1.getPosition().x && mouseX <= (this->button_back1.getPosition().x + 150) && mouseY <= (this->button_back1.getPosition().y + 150) && mouseY >= button_resume.getPosition().y)
-//	{
-//		return 2;
-//	}
-//	return 0;
-//}
 void Menu::Draw_Menu_In_game(sf::RenderWindow& window)
 {
-
-	//this->button_start.setPosition(-1000, -1000);
-	//this->button_exit.setPosition(-1000, -1000);
 	window.draw(this->menu_in_game);
 }
 void Menu::Begin()
@@ -229,7 +180,7 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 					}
 					else if (ev.key.code == sf::Keyboard::Left) player->moveLeft();
 					else if (ev.key.code == sf::Keyboard::Right) player->moveRight();
-					else if (ev.key.code == sf::Keyboard::Down) { 
+					else if (ev.key.code == sf::Keyboard::Down) {
 						player->moveDown();
 						point--;
 						Point.SetText("Point : " + to_string(point));
@@ -351,7 +302,8 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 				{
 					int f1 = 0;
 					if (player->isImpact(cur->at(i)))
-					{						
+					{
+
 						f1 = 1;
 						std::cout << "die" << endl;
 						int k = 0;
@@ -367,6 +319,7 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 							EXIT.setPosition({ 1000,450 });
 							EXIT.setFont(font);
 
+							Point.setPosition({ 740,600 });
 							while (window.pollEvent(ev))
 							{
 								if (ev.type == sf::Event::Closed)
@@ -415,6 +368,7 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 							}
 							window.clear();
 							this->LoseGame(window);
+							Point.drawTo(window);
 							resume.drawTo(window);
 							EXIT.drawTo(window);
 							window.display();
@@ -484,13 +438,7 @@ void Menu::save()
 
 void Menu::load()
 {
-	delete roadli;
-	delete player;
-
-	player = new CPEOPLE(this->window, 750, 700);
-	roadli = new CROADLIST(player);
-	point = 0;
-
+	initGame();
 	ifstream fin;
 	fin.open(Constants::dataFile, ios::binary);
 	if (fin)

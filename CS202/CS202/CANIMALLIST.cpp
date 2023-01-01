@@ -156,3 +156,11 @@ void CANIMALLIST::load(ifstream& fin)
 		Anlist.push_front(new CANIMAL(Constants::Animaltype[type] + t, mX, mY, Constants::speedAni[type], 2 * dir - 1));
 	}
 }
+
+int CANIMALLIST::soundType()
+{
+	if (type == 0)
+		return 4;
+	else
+		return 5;
+}

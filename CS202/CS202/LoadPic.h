@@ -17,7 +17,7 @@ private:
 	LoadPic(const LoadPic&) {};
 	LoadPic& operator = (const LoadPic&) {};
 	void initTexture(string texFileName, bool isplayer = false);
-
+	void initSound(string soundFileName);
 public:
 	static LoadPic& GetIns()
 	{
@@ -26,5 +26,5 @@ public:
 	}
 
 	unordered_map<string, sf::Texture> texture;
+	unordered_map<string, sf::SoundBuffer> sound;
 };
-

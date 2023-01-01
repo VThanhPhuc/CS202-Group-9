@@ -32,8 +32,11 @@ bool CPEOPLE::isImpact(COBJECT*& obj)
 bool CPEOPLE::isNearRoad(CROAD& road)
 {
 	if (mState == 0) return false;
-	return abs((mY + (100 * 100) / 2) - 100 - 100) <= 250;
-
+	sf::Vector2f pos = road.getPos();
+	pos.y += 100;
+	int y = sprite.getPosition().y;
+	cout << "People y: " << y << " Road y: " << pos.y << " Abs: " << abs(y - pos.y) << endl;
+	return abs(y - pos.y) <= 100;
 }
 
 void CPEOPLE::die()

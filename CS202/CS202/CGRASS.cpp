@@ -70,3 +70,12 @@ void CGRASS::saveLight(ofstream& fout)
 	fout.write((char*)&isLight, sizeof(isLight));
 	Animali.save(fout);
 }
+
+int CGRASS::soundType()
+{
+	if (!playing)
+	{
+		return Animali.soundType();
+	}
+	return -1;
+}

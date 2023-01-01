@@ -1,8 +1,9 @@
 #include "CROADLIST.h"
 
-CROADLIST::CROADLIST(CPEOPLE* player)
+CROADLIST::CROADLIST(CPEOPLE* player, bool soundOn)
 {
 	this->player = player;
+	this->soundOn = soundOn;
 	mX = mY = 0;
 	mY_origin = Constants::Height_HiddenRoad;
 }
@@ -94,13 +95,20 @@ void CROADLIST::update(sf::RenderWindow& window)
 		roadList.pop_back();
 		delete tmp;
 	}
+	int count = 0;
 	for (auto it : roadList)
 	{
+		cout << "Road number " << ++count << endl;
 		it->update(window);
+
+		if (player->isNearRoad(*it) && soundOn)
+		{
+			addSound(*it);
+		}
 	}
 }
 
-void  CROADLIST::save(ofstream& fout)
+void CROADLIST::save(ofstream& fout)
 {
 	fout.write((char*)&mY, sizeof(mY));
 	fout.write((char*)&mX, sizeof(mX));
@@ -110,13 +118,13 @@ void  CROADLIST::save(ofstream& fout)
 		i->save(fout);
 }
 
-void  CROADLIST::load(ifstream& fin)
+void CROADLIST::load(ifstream& fin)
 {
 	fin.read((char*)&mY, sizeof(mY));
 	fin.read((char*)&mX, sizeof(mX));
 	fin.read((char*)&mY_origin, sizeof(mY_origin));
-	int count = 0, read = 0, k = Constants::MAX_ROAD + 1;
-	while (k--)
+	int roadsNum = Constants::MAX_ROAD + 1;
+	while (roadsNum--)
 	{
 		float x, y;	
 		fin.read((char*)&x, sizeof(x));
@@ -129,7 +137,26 @@ void  CROADLIST::load(ifstream& fin)
 		if (isCarlane)
 			roadList.push_back(new CARLANE(x, y, isLight, fin));
 		else	
-			roadList.push_back(new CGRASS(x, y, fin));		
-		
+			roadList.push_back(new CGRASS(x, y, fin));				
+	}
+}
+
+void CROADLIST::turnSound()
+{
+	soundOn = !soundOn;
+}
+
+void CROADLIST::addSound(CROAD& it)
+{
+	int type = it.soundType();
+	if (type != -1)
+	{
+		sf::Sound tmp = sf::Sound(LoadPic::GetIns().sound[Constants::Soundtype[type]]);
+		soundList.push(tmp);
+		soundList.back().play();
+
+		it.setplaying();
+		if (soundList.front().getStatus() == sf::SoundSource::Stopped)
+			soundList.pop();
 	}
 }

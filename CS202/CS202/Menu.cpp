@@ -447,7 +447,7 @@ void Menu::load()
 	delete player;
 
 	player = new CPEOPLE(this->window, 750, 700);
-	roadli = new CROADLIST(player);
+	roadli = new CROADLIST(player, soundOn);
 	point = 0;
 
 	ifstream fin;

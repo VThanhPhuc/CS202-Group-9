@@ -19,6 +19,7 @@ public:
 	void update(sf::RenderWindow& window);
 	bool isCarlane();
 	void saveLight(ofstream& fout);
+	int soundType();
 
 	deque<COBJECT*>* getObjLi();
 };

@@ -1,5 +1,6 @@
 #pragma once
 #include <deque>
+#include<queue>
 #include "CARLANE.h"
 #include "People.h"
 #include "CGRASS.h"
@@ -10,7 +11,10 @@ class CROADLIST
 private:
 	friend class CGAME;
 	friend class Menu;
+
 	deque<CROAD*> roadList;
+	queue<sf::Sound> soundList;
+	bool soundOn;
 
 	CPEOPLE* player;
 
@@ -19,7 +23,7 @@ private:
 	float mY_origin;
 
 public:
-	CROADLIST(CPEOPLE* player);
+	CROADLIST(CPEOPLE* player, bool soundOn);
 	~CROADLIST();
 	void initRoad();
 
@@ -30,7 +34,8 @@ public:
 	CROAD* createRoad(float index = 1);
 
 	//sound
-
+	void turnSound();
+	void addSound(CROAD& it);
 
 	// save to file | load from file
 	void save(ofstream& fout);

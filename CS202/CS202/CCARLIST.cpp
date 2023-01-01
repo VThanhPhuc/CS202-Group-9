@@ -171,3 +171,8 @@ void CCARLIST::load(ifstream& fin)
 		carlist.push_front(new CCAR(Constants::Cartype[type] + t, mX, mY, Constants::speedCar[type], 2 * dir - 1));
 	}
 }
+
+int CCARLIST::soundType()
+{
+	return type;
+}

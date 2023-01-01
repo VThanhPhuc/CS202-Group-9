@@ -27,7 +27,7 @@ namespace Constants
 	//Car
 	const int NCar = 25; // number of cars
 	const int NAnimal = 25; //number of animals
-	const string Cartype[] = { "car", "truck", "pickup", "race"};
+	const string Cartype[] = { "car", "truck", "pickup", "race" };
 	const int speedCar[] = { 1, 1, 1, 2 };
 	const string Animaltype[] = {"bird", "dino" };
 	const int speedAni[] = { 1,1 };
@@ -48,4 +48,7 @@ namespace Constants
 
 	//save game
 	const std::string dataFile = "data.dat";
+
+	//sound
+	const std::string Soundtype[] = { "car", "truck", "pickup", "race", "bird", "dino" };
 }

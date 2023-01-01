@@ -11,6 +11,17 @@ void LoadPic::initTexture(string texFileName, bool isplayer)
 	cout << file << "load successfully" << endl;
 }
 
+void  LoadPic::initSound(string soundFileName)
+{
+	string file = soundFileName + ".wav";
+	if (!sound[soundFileName].loadFromFile(file))
+	{
+		cout << "Unable to load" << file << endl;
+		return;
+	}
+	cout << file << "load successfully" << endl;
+}
+
 LoadPic::LoadPic()
 {
 	//load road
@@ -37,4 +48,15 @@ LoadPic::LoadPic()
 
 	//load light
 	initTexture("light");
+
+	//load sound
+	initSound("bird");
+	initSound("dino");
+	initSound("car");
+	initSound("truck");
+	initSound("pickup");
+	initSound("race");
+	initSound("bird");
+	initSound("dino");
+	initSound("ingame");
 }

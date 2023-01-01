@@ -94,3 +94,12 @@ void CARLANE::saveLight(ofstream& fout)
 	fout.write((char*)&isLight, sizeof(isLight));
 	carli.save(fout);
 }
+
+int CARLANE::soundType()
+{
+	if (!playing)
+	{
+		return carli.soundType();
+	}
+	return -1;
+}

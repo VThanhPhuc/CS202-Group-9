@@ -43,6 +43,9 @@ protected:
 	CPEOPLE* player;
 	CROADLIST* roadli;
 	int point;
+	//sound
+	sf::Sound ingameSound;
+	bool soundOn;
 	// private function
 	void initializeVariable()
 	{
@@ -55,7 +58,7 @@ protected:
 		delete player;
 
 		player = new CPEOPLE(this->window, 750, 700);
-		roadli = new CROADLIST(player);
+		roadli = new CROADLIST(player, soundOn);
 		roadli->initRoad();
 		point = 0;
 	}
@@ -63,6 +66,12 @@ protected:
 public:
 	Menu()
 	{
+		ingameSound = sf::Sound(LoadPic::GetIns().sound["ingame"]);
+		ingameSound.setLoop(true);
+		ingameSound.setVolume(60);
+		ingameSound.play();
+		soundOn = true;
+
 		initializeVariable();
 		//initGame();
 	}

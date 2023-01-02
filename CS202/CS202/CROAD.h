@@ -8,7 +8,6 @@ using namespace std;
 class CROAD
 {
 protected:
-	friend class CGAME;
 	friend class Menu;
 
 	float mX;
@@ -42,7 +41,7 @@ public:
 	virtual void drawSubObj(sf::RenderWindow& window) = 0;
 	virtual void shiftObj(char shift) = 0;
 	virtual void update(sf::RenderWindow& window) = 0;
-	virtual bool isCarlane() = 0;
+	virtual int isCarlane() = 0;
 	virtual void saveLight(ofstream& fout) = 0;
 	virtual int soundType() = 0;
 

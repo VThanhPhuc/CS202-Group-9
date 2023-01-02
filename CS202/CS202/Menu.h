@@ -4,7 +4,6 @@
 #include "CCAR.h"
 #include "textbox.h"
 #include "button.h"
-#include "CGAME.h"
 #include "COBJECT.h"
 #include "CROADLIST.h"
 #include "SFML/Graphics.hpp"

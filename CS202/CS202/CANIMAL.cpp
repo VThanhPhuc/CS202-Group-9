@@ -4,7 +4,7 @@ int CANIMAL::type()
 	return Constants::animal;
 }
 
-CANIMAL::CANIMAL(string FileTextureName, float x, float y, int speed, int direction) : COBJECT(x, y, direction)
+CANIMAL::CANIMAL(string FileTextureName, float x, float y, float speed, int direction) : COBJECT(x, y, direction)
 {
 	this->speed = speed;
 

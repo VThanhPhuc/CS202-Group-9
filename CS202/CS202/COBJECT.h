@@ -13,10 +13,9 @@ class COBJECT
 {
 protected:
 	friend class CPEOPLE;
-	friend class CGAME;
 
 	float mX, mY;
-	int speed;
+	float speed;
 	bool isVisible;
 	int direction;
 

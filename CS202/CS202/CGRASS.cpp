@@ -59,9 +59,9 @@ deque<COBJECT*>* CGRASS::getObjLi()
 	return Animali.getAniList();
 }
 
-bool CGRASS::isCarlane()
+int CGRASS::isCarlane()
 {
-	return false;
+	return 2;
 }
 
 void CGRASS::saveLight(ofstream& fout)

@@ -5,7 +5,7 @@ int CCAR::type()
 	return Constants::car;
 }
 
-CCAR::CCAR(string FileTextureName, float x, float y, int speed, int direction) : COBJECT(x, y, direction)
+CCAR::CCAR(string FileTextureName, float x, float y, float speed, int direction) : COBJECT(x, y, direction)
 {
 	this->speed = speed;
 

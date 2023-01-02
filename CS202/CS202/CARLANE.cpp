@@ -83,9 +83,9 @@ deque<COBJECT*>* CARLANE::getObjLi()
 	return carli.getCarList();
 }
 
-bool CARLANE::isCarlane()
+int CARLANE::isCarlane()
 {
-	return true;
+	return 1;
 }
 
 void CARLANE::saveLight(ofstream& fout)

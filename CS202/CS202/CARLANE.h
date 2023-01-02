@@ -7,7 +7,7 @@ class CARLANE : public CROAD
 {
 private:
 	CLight light;
-	const string file = "Pavement_bottom";
+	const string file = "Road";
 	CCARLIST carli;
 public:
 	// Constructor | destructor
@@ -20,7 +20,7 @@ public:
 	void drawSubObj(sf::RenderWindow& window);
 	void shiftObj(char shift);
 	void update(sf::RenderWindow& window);
-	bool isCarlane();
+	int isCarlane();
 	void saveLight(ofstream& fout);
 	int soundType();
 

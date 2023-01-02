@@ -25,10 +25,10 @@ void  LoadPic::initSound(string soundFileName)
 LoadPic::LoadPic()
 {
 	//load road
-	initTexture("Pavement_bottom");
+	initTexture("Road");
 	initTexture("river");
 	initTexture("Grass");
-
+	initTexture("Free");
 	//load people
 	initTexture("boyback", 1);
 

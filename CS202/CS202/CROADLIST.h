@@ -3,12 +3,12 @@
 #include "CARLANE.h"
 #include "People.h"
 #include "CGRASS.h"
-enum RoadType { LANE, GRASS, LAST };
+#include "CFREELANE.h"
+enum RoadType { LANE, GRASS,FREE ,LAST };
 
 class CROADLIST
 {
 private:
-	friend class CGAME;
 	friend class Menu;
 
 	deque<CROAD*> roadList;

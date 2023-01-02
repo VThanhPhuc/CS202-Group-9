@@ -37,14 +37,21 @@ CROAD* CROADLIST::createRoad(sf::Vector2f pos)
 	{
 		return new CGRASS(pos);
 	}
+	else if (type == FREE)
+	{
+		return new CFREELANE(pos);
+	}
 }
 
 CROAD* CROADLIST::createRoad(float index)
 {
 	RoadType type = RoadType(rand() % LAST);
 	int diff = 1;
-
-	if (type == LANE)
+	if (type == FREE || index >= 10)
+	{
+		return new CFREELANE(index - diff);
+	}
+	else if (type == LANE)
 	{
 		return new CARLANE(index - diff);
 	}
@@ -129,14 +136,17 @@ void CROADLIST::load(ifstream& fin)
 		fin.read((char*)&x, sizeof(x));
 		fin.read((char*)&y, sizeof(y));
 		
-		bool isCarlane, isLight;
+		int isCarlane;
+		bool isLight;
 		fin.read((char*)&isCarlane, sizeof(isCarlane));
 		fin.read((char*)&isLight, sizeof(isLight));
 		
-		if (isCarlane)
+		if (isCarlane == 1)
 			roadList.push_back(new CARLANE(x, y, isLight, fin));
-		else	
-			roadList.push_back(new CGRASS(x, y, fin));				
+		else if (isCarlane == 2)
+			roadList.push_back(new CGRASS(x, y, fin));
+		else
+			roadList.push_back(new CFREELANE(x, y, fin));
 	}
 }
 

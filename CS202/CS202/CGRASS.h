@@ -17,7 +17,7 @@ public:
 	void drawSubObj(sf::RenderWindow& window);
 	void shiftObj(char shift);
 	void update(sf::RenderWindow& window);
-	bool isCarlane();
+	int isCarlane();
 	void saveLight(ofstream& fout);
 	int soundType();
 

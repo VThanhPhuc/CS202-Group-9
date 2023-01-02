@@ -145,6 +145,7 @@
     <ClCompile Include="CARLANE.cpp" />
     <ClCompile Include="CCAR.cpp" />
     <ClCompile Include="CCARLIST.cpp" />
+    <ClCompile Include="CFREELANE.cpp" />
     <ClCompile Include="CGRASS.cpp" />
     <ClCompile Include="CROAD.cpp" />
     <ClCompile Include="CROADLIST.cpp" />
@@ -163,6 +164,7 @@
     <ClInclude Include="CARLANE.h" />
     <ClInclude Include="CCAR.h" />
     <ClInclude Include="CCARLIST.h" />
+    <ClInclude Include="CFREELANE.h" />
     <ClInclude Include="CGRASS.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="CROAD.h" />

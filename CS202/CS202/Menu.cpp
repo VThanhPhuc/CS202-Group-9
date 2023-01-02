@@ -166,6 +166,7 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 			back.drawTo(window);
 			window.draw(this->instruction);
 			Point.drawTo(window);
+			window.setKeyRepeatEnabled(false);
 			while (window.pollEvent(ev))
 			{
 				switch (ev.type)

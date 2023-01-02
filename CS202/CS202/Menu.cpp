@@ -256,6 +256,8 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 								{
 									if (EXIT.isMouseOver(window))
 									{
+										setpoint(point);
+										this->save();
 										d.reload();
 										i1 = 1;
 										i = 1;

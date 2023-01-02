@@ -31,6 +31,8 @@ LoadPic::LoadPic()
 	initTexture("Free");
 	//load people
 	initTexture("boyback", 1);
+	initTexture("boyside0", 1);
+	initTexture("boyside1", 1);
 
 	//load object
 	initTexture("car0");

@@ -84,6 +84,8 @@ void CPEOPLE::moveUp()
 {
 	if (soundOn)
 		step.play();
+	texture = &LoadPic::GetIns().texture["boyback"];
+	sprite.setTexture(*texture);
 	sprite.move(0, -Constants::HeightRoad);
 	if (sprite.getPosition().y < 0)
 	{
@@ -94,6 +96,8 @@ void CPEOPLE::moveDown()
 {
 	if (soundOn)
 		step.play();
+	texture = &LoadPic::GetIns().texture["boyback"];
+	sprite.setTexture(*texture);
 	sprite.move(0, Constants::HeightRoad);
 	if (sprite.getPosition().y > (Constants::Height_screen - Constants::HeightRoad))
 	{
@@ -104,17 +108,20 @@ void CPEOPLE::moveRight()
 {
 	if (soundOn)
 		step.play();
+	texture = &LoadPic::GetIns().texture["boyside1"];
+	sprite.setTexture(*texture);
 	sprite.move(Constants::width_person, 0);
 	if (sprite.getPosition().x > (Constants::WidthRoad - Constants::width_person))
 	{
 		sprite.move(-Constants::width_person, 0);
 	}
-
 }
 void CPEOPLE::moveLeft()
 {
 	if (soundOn)
 		step.play();
+	texture = &LoadPic::GetIns().texture["boyside0"];
+	sprite.setTexture(*texture);
 	sprite.move(-Constants::width_person, 0);
 	if (sprite.getPosition().x < 0)
 	{

@@ -30,7 +30,8 @@ LoadPic::LoadPic()
 	initTexture("Grass");
 	initTexture("Free");
 	//load people
-	initTexture("boyback", 1);
+	initTexture("boyside2", 1);
+	initTexture("boyside3", 1);
 	initTexture("boyside0", 1);
 	initTexture("boyside1", 1);
 

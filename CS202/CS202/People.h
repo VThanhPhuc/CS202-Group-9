@@ -19,10 +19,10 @@ private:
 
 	sf::Texture* texture;
 	sf::Sprite sprite;
+	int side;
 public:
 	CPEOPLE();
 	CPEOPLE(sf::RenderWindow* window, float x, float y, bool soundOn);
-	
 
 	void moveUp();
 	void moveDown();

@@ -210,6 +210,14 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 	Button back("", { 400,Constants::Height_screen }, 20, sf::Color::Black, sf::Color::Black);
 	back.setPosition({ Constants::WidthRoad + 10,0 });
 
+
+	sound.setPosition({ 1600,700 });
+	music.setPosition({ 1600,800 });
+
+	this->Sound_on.setPosition(1600, 700);
+	this->Sound_off.setPosition(1600, 700);
+	this->Music_on.setPosition(1600, 800);
+	this->Music_off.setPosition(1600, 800);
 	while (window.isOpen())
 	{
 		int i = 0;
@@ -224,6 +232,24 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 			window.draw(this->instruction);
 			Point.drawTo(window);
 			highPoint.drawTo(window);
+			sound.drawTo(window);
+			music.drawTo(window);
+			if (s == "           ON")
+			{
+				window.draw(this->Sound_on);
+			}
+			else if (s == "           OFF")
+			{
+				window.draw(this->Sound_off);
+			}
+			if (s1 == "           ON")
+			{
+				window.draw(this->Music_on);
+			}
+			else if (s1 == "           OFF")
+			{
+				window.draw(this->Music_off);
+			}
 			window.setKeyRepeatEnabled(false);
 			while (window.pollEvent(ev))
 			{
@@ -324,6 +350,9 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 										i1 = 1;
 										i = 1;
 										return1 = 1;
+
+										sound.setPosition({ 100,400 });
+										music.setPosition({ 100,600 });
 										break;
 									}
 									else if (resume.isMouseOver(window))
@@ -334,7 +363,7 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 									}
 									else if (reset.isMouseOver(window))
 									{
-										this->PlayGame(window, d, return1, false);
+										this->PlayGame(window, d, return1, false,sound,music,s,s1);
 										if (return1 == 1) return;
 									}
 									else if (save.isMouseOver(window))
@@ -358,6 +387,50 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 						}
 					}
 					break;
+				case sf::Event::MouseMoved:
+					if (sound.isMouseOver(*this->window))
+					{
+						sound.setBackColor(sf::Color::White);
+					}
+					else if (!sound.isMouseOver(*this->window))
+					{
+						sound.setBackColor(sf::Color::Green);
+					}
+
+					if (music.isMouseOver(*this->window))
+					{
+						music.setBackColor(sf::Color::White);
+					}
+					else if (!music.isMouseOver(*this->window))
+					{
+						music.setBackColor(sf::Color::Green);
+					}
+					break;
+				case sf::Event::MouseButtonPressed:
+					if (sound.isMouseOver(window))
+					{
+						if (s == "           ON")
+						{
+							s = "           OFF";
+						}
+						else if (s == "           OFF")
+						{
+							s = "           ON";
+						}
+						sound.SetText(s);
+					}
+					else if (music.isMouseOver(window))
+					{
+						if (s1 == "           ON")
+						{
+							s1 = "           OFF";
+						}
+						else if (s1 == "           OFF")
+						{
+							s1 = "           ON";
+						}
+						music.SetText(s1);
+					}
 				}
 			}
 			for (auto road : roadli->roadList)
@@ -419,7 +492,7 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 									{
 										if (resume.isMouseOver(window))
 										{
-											this->PlayGame(window, d, return1, false);
+											this->PlayGame(window, d, return1, false,sound,music,s,s1);
 											if (return1 == 1) return;
 											k = 1;
 											i = 0;
@@ -430,6 +503,9 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 											k = 1;
 											i = 1;
 											return1 = 1;
+
+											sound.setPosition({ 100,400 });
+											music.setPosition({ 100,600 });
 											break;
 										}
 									}
@@ -476,7 +552,7 @@ void Menu::Menu_control(sf::RenderWindow& window, sf::Event event, Background d,
 		int return1 = 0;
 		if (b1.isMouseOver(window))
 		{
-			this->PlayGame(window, d, return1, false);
+			this->PlayGame(window, d, return1, false,sound,music,s,s1);
 		}
 		else if (exit1.isMouseOver(window))
 		{
@@ -484,7 +560,7 @@ void Menu::Menu_control(sf::RenderWindow& window, sf::Event event, Background d,
 		}
 		else if (load.isMouseOver(window))
 		{
-			this->PlayGame(window, d, return1, true);
+			this->PlayGame(window, d, return1, true,sound,music,s,s1);
 		}
 		else if (setting.isMouseOver(window))
 		{
@@ -577,7 +653,7 @@ void Menu::Setting(sf::RenderWindow& window, Button& sound, Button& music, strin
 					}
 					sound.SetText(s);
 				}
-				if (music.isMouseOver(window))
+				else if (music.isMouseOver(window))
 				{
 					if (s1 == "           ON")
 					{

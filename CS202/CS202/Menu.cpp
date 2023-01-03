@@ -200,7 +200,7 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 						if (point > highpoint)
 						{
 							highpoint = point;
-							highPoint.SetText("High point : " + to_string(point));
+							highPoint.SetText("High point : " + to_string(highpoint));
 						}
 					}
 					else if (ev.key.code == sf::Keyboard::Left) player->moveLeft();
@@ -492,16 +492,6 @@ void Menu::load()
 	}
 	else
 		cout << "Cannot read file!\n";
-}
-
-int Menu::getpoint()
-{
-	return point;
-}
-
-void Menu::setpoint(int point)
-{
-	this->point = point;
 }
 
 void Menu::savepoint()

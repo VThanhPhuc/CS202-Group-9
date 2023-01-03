@@ -76,11 +76,9 @@ public:
 	void LoseGame(sf::RenderWindow& window);
 	void Begin();
 	void PlayGame(sf::RenderWindow& window, Background d, int& return1, bool playLoad);
+
 	void save();
 	void load();
-
-	int getpoint();
-	void setpoint(int point);
 
 	void savepoint();
 	void loadpoint();

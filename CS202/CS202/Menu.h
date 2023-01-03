@@ -11,16 +11,15 @@ class Menu
 {
 protected:
 	sf::Sprite MenuBackground;
+
 	sf::RectangleShape menu_in_game; // menu
 	sf::RectangleShape you_lose1;
-
 	sf::RectangleShape instruction;
 
 	sf::Texture t;
 	sf::Texture menu_;
 	sf::Texture you_lose;
 	sf::Texture instruct;
-
 
 	sf::RenderWindow* window;
 	sf::Event ev;
@@ -29,6 +28,7 @@ protected:
 	CPEOPLE* player;
 	CROADLIST* roadli;
 	int point;
+	int highpoint;
 	//sound
 	sf::Sound ingameSound;
 	sf::Sound deathSound;
@@ -49,7 +49,6 @@ protected:
 		roadli->initRoad();
 		point = 0;
 	}
-
 public:
 	Menu()
 	{
@@ -57,7 +56,7 @@ public:
 		ingameSound.setLoop(true);
 		ingameSound.setVolume(60);
 		ingameSound.play();
-		
+
 		deathSound = sf::Sound(LoadPic::GetIns().sound["death"]);
 		soundOn = true;
 
@@ -82,4 +81,7 @@ public:
 
 	int getpoint();
 	void setpoint(int point);
+
+	void savepoint();
+	void loadpoint();
 };

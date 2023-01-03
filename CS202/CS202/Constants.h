@@ -10,7 +10,7 @@ namespace Constants
 	const float width_screen = 1500;
 
 	// velocity
-	const float ShiftVelocity = 1.2;
+	const float ShiftVelocity = 0.8;
 	const float VelcocityX = 3.3;
 
 	const int widthVehicle = 100;
@@ -29,7 +29,7 @@ namespace Constants
 	const int NAnimal = 25; //number of animals
 	const string Cartype[] = { "car", "truck", "pickup", "race" };
 	const float speedCar[] = { 1, 0.7, 0.85, 2 };
-	const string Animaltype[] = {"bird", "dino" };
+	const string Animaltype[] = { "bird", "dino" };
 	const float speedAni[] = { 1.2,0.7 };
 	// type
 	const int car = 1;
@@ -48,6 +48,7 @@ namespace Constants
 
 	//save game
 	const std::string dataFile = "data.dat";
+	const std::string pointFile = "point.dat";
 
 	//sound
 	const std::string Soundtype[] = { "car", "truck", "pickup", "race", "bird", "dino" };

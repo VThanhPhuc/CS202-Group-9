@@ -10,7 +10,6 @@ void Menu::InnitMenuBackground()
 	{
 		cout << "Can not load" << endl;
 	};
-
 	this->MenuBackground.setTexture(t);
 
 	if (!this->menu_.loadFromFile("Menu_game.png"))
@@ -28,7 +27,6 @@ void Menu::InnitMenuBackground()
 	this->you_lose1.setTexture(&this->you_lose);
 	this->you_lose1.setSize(sf::Vector2f(400, 400));
 	this->you_lose1.setPosition(675, 30);
-
 
 	if (!this->instruct.loadFromFile("Instruction.png"))
 	{
@@ -66,6 +64,8 @@ void Menu::Begin()
 	{
 		cout << " Fail to load";
 	}
+
+	loadpoint();
 
 	Button play("PLAY GAME", { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
 	play.setPosition({ 100,200 });
@@ -130,9 +130,8 @@ void Menu::Begin()
 			}
 			if (event.type == sf::Event::MouseButtonPressed)
 			{
-				this->Menu_control(*this->window, event, d, play, exit1, load,setting);
+				this->Menu_control(*this->window, event, d, play, exit1, load, setting);
 			}
-
 		}
 		window->clear();
 		this->draw_menu(*this->window);
@@ -158,10 +157,14 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 	{
 		cout << " Fail to load";
 	}
-	int point = getpoint();
+
 	Button Point("Point : " + to_string(point), { 200,50 }, 20, sf::Color::Green, sf::Color::Red);
 	Point.setPosition({ 1600,100 });
 	Point.setFont(font);
+
+	Button highPoint("High point : " + to_string(highpoint), { 200,50 }, 20, sf::Color::Green, sf::Color::Red);
+	highPoint.setPosition({ 1600,600 });
+	highPoint.setFont(font);
 
 	Button back("", { 400,Constants::Height_screen }, 20, sf::Color::Black, sf::Color::Black);
 	back.setPosition({ Constants::WidthRoad + 10,0 });
@@ -179,6 +182,7 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 			back.drawTo(window);
 			window.draw(this->instruction);
 			Point.drawTo(window);
+			highPoint.drawTo(window);
 			window.setKeyRepeatEnabled(false);
 			while (window.pollEvent(ev))
 			{
@@ -193,6 +197,11 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 						player->moveUp();
 						point++;
 						Point.SetText("Point : " + to_string(point));
+						if (point > highpoint)
+						{
+							highpoint = point;
+							highPoint.SetText("High point : " + to_string(point));
+						}
 					}
 					else if (ev.key.code == sf::Keyboard::Left) player->moveLeft();
 					else if (ev.key.code == sf::Keyboard::Right) player->moveRight();
@@ -289,7 +298,6 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 									}
 									else if (save.isMouseOver(window))
 									{
-										setpoint(point);
 										this->save();
 										d.reload();
 										i1 = 1;
@@ -313,18 +321,18 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 			}
 			for (auto road : roadli->roadList)
 			{
-				if (road->getObjLi() != NULL) 
+				if (road->getObjLi() != NULL)
 				{
 					deque<COBJECT*>* cur = road->getObjLi();
 					for (long i = 0; i < cur->size(); ++i)
 					{
-						int f1 = 0;
 						if (player->isImpact(cur->at(i)))
 						{
 							deathSound.play();
 							Sleep(300);
-							f1 = 1;
 							std::cout << "die" << endl;
+							savepoint();
+
 							int k = 0;
 							while (window.isOpen())
 							{
@@ -417,9 +425,8 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 		if (i == 1) break;
 	}
 }
-void Menu::Menu_control(sf::RenderWindow& window, sf::Event event, Background d, Button b1, Button exit1, Button load,Button setting)
+void Menu::Menu_control(sf::RenderWindow& window, sf::Event event, Background d, Button b1, Button exit1, Button load, Button setting)
 {
-
 	if (event.type == sf::Event::Closed)
 		window.close();
 	if (event.type == sf::Event::MouseButtonPressed)
@@ -495,4 +502,32 @@ int Menu::getpoint()
 void Menu::setpoint(int point)
 {
 	this->point = point;
+}
+
+void Menu::savepoint()
+{
+	ofstream fout;
+	fout.open(Constants::pointFile, ios::binary);
+	if (fout)
+	{
+		fout.write((char*)&highpoint, sizeof(highpoint));
+		fout.close();
+		cout << "Saving highest point successfully\n";
+	}
+	else
+		cout << "Cannot save highest point to file!\n";
+}
+
+void Menu::loadpoint()
+{
+	ifstream fin;
+	fin.open(Constants::pointFile, ios::binary);
+	if (fin)
+	{
+		fin.read((char*)&highpoint, sizeof(highpoint));
+		fin.close();
+		cout << "Loading highest point successfully\n";
+	}
+	else
+		highpoint = 0;
 }

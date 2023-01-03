@@ -4,7 +4,6 @@
 #include <chrono>
 using namespace std::chrono;
 int CROAD::NumRoad = 0;
-//hinh nhu xoa cai nay game chay khong duoc
 void Menu::InnitMenuBackground()
 {
 	if (!this->t.loadFromFile("universe.png"))
@@ -69,12 +68,16 @@ void Menu::Begin()
 	}
 
 	Button play("PLAY GAME", { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
-	play.setPosition({ 100,400 });
+	play.setPosition({ 100,200 });
 	play.setFont(font);
 
 	Button load("LOAD", { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
-	load.setPosition({ 100,600 });
+	load.setPosition({ 100,400 });
 	load.setFont(font);
+
+	Button setting("SETTING", { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
+	setting.setPosition({ 100,600 });
+	setting.setFont(font);
 
 	Button exit1("EXIT", { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
 	exit1.setPosition({ 100,800 });
@@ -115,10 +118,19 @@ void Menu::Begin()
 				{
 					load.setBackColor(sf::Color::Green);
 				}
+
+				if (setting.isMouseOver(*this->window))
+				{
+					setting.setBackColor(sf::Color::White);
+				}
+				else if (!setting.isMouseOver(*this->window))
+				{
+					setting.setBackColor(sf::Color::Green);
+				}
 			}
 			if (event.type == sf::Event::MouseButtonPressed)
 			{
-				this->Menu_control(*this->window, event, d, play, exit1, load);
+				this->Menu_control(*this->window, event, d, play, exit1, load,setting);
 			}
 
 		}
@@ -127,6 +139,7 @@ void Menu::Begin()
 		play.drawTo(*this->window);
 		exit1.drawTo(*this->window);
 		load.drawTo(*this->window);
+		setting.drawTo(*this->window);
 		window->display();
 	}
 }
@@ -404,7 +417,7 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 		if (i == 1) break;
 	}
 }
-void Menu::Menu_control(sf::RenderWindow& window, sf::Event event, Background d, Button b1, Button exit1, Button load)
+void Menu::Menu_control(sf::RenderWindow& window, sf::Event event, Background d, Button b1, Button exit1, Button load,Button setting)
 {
 
 	if (event.type == sf::Event::Closed)
@@ -423,6 +436,10 @@ void Menu::Menu_control(sf::RenderWindow& window, sf::Event event, Background d,
 		else if (load.isMouseOver(window))
 		{
 			this->PlayGame(window, d, return1, true);
+		}
+		else if (setting.isMouseOver(window))
+		{
+
 		}
 	}
 }

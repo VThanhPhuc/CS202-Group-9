@@ -12,7 +12,8 @@ CPEOPLE::CPEOPLE(sf::RenderWindow* window, float x, float y, bool soundOn)
 	mX = x;
 	mY = y+5;
 	this->window = window;
-	texture = &LoadPic::GetIns().texture["boyback"];
+	texture = &LoadPic::GetIns().texture["boyside2"];
+	side = 0;
 
 	sprite.setTexture(*texture);
 	//sprite.setOrigin(50, 50);
@@ -26,7 +27,7 @@ CPEOPLE::CPEOPLE(sf::RenderWindow* window, float x, float y, bool soundOn)
 
 bool CPEOPLE::isImpact(COBJECT*& obj)
 {
-	if (sprite.getGlobalBounds().intersects(obj->out.getGlobalBounds()) || sprite.getPosition().y >=Constants::Height_screen)
+	if (sprite.getGlobalBounds().intersects(obj->out.getGlobalBounds()) || sprite.getPosition().y >= Constants::Height_screen)
 	{
 		return true;
 	}
@@ -84,8 +85,11 @@ void CPEOPLE::moveUp()
 {
 	if (soundOn)
 		step.play();
-	texture = &LoadPic::GetIns().texture["boyback"];
+
+	texture = &LoadPic::GetIns().texture["boyside2"];
 	sprite.setTexture(*texture);
+	side = 2;
+
 	sprite.move(0, -Constants::HeightRoad);
 	if (sprite.getPosition().y < 0)
 	{
@@ -96,8 +100,11 @@ void CPEOPLE::moveDown()
 {
 	if (soundOn)
 		step.play();
-	texture = &LoadPic::GetIns().texture["boyback"];
+
+	texture = &LoadPic::GetIns().texture["boyside3"];
 	sprite.setTexture(*texture);
+	side = 3;
+
 	sprite.move(0, Constants::HeightRoad);
 	if (sprite.getPosition().y > (Constants::Height_screen - Constants::HeightRoad))
 	{
@@ -108,8 +115,11 @@ void CPEOPLE::moveRight()
 {
 	if (soundOn)
 		step.play();
+
 	texture = &LoadPic::GetIns().texture["boyside1"];
 	sprite.setTexture(*texture);
+	side = 1;
+
 	sprite.move(Constants::width_person, 0);
 	if (sprite.getPosition().x > (Constants::WidthRoad - Constants::width_person))
 	{
@@ -120,8 +130,11 @@ void CPEOPLE::moveLeft()
 {
 	if (soundOn)
 		step.play();
+
 	texture = &LoadPic::GetIns().texture["boyside0"];
 	sprite.setTexture(*texture);
+	side = 0;
+
 	sprite.move(-Constants::width_person, 0);
 	if (sprite.getPosition().x < 0)
 	{
@@ -178,6 +191,8 @@ void CPEOPLE::save(ofstream& fout)
 
 	float y = sprite.getPosition().y;
 	fout.write((char*)&y, sizeof(y));
+
+	fout.write((char*)&side, sizeof(side));
 }
 
 void CPEOPLE::load(ifstream& fin)
@@ -186,6 +201,10 @@ void CPEOPLE::load(ifstream& fin)
 	fin.read((char*)&x, sizeof(x));
 	fin.read((char*)&y, sizeof(y));
 	sprite.setPosition(x, y);
+
+	fin.read((char*)&side, sizeof(side));
+	texture = &LoadPic::GetIns().texture["boyside" + to_string(side)];
+	sprite.setTexture(*texture);
 }
 
 void CPEOPLE::turnSound()

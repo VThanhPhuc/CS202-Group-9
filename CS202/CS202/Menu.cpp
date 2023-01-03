@@ -409,6 +409,7 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 				case sf::Event::MouseButtonPressed:
 					if (sound.isMouseOver(window))
 					{
+						//switching sound
 						if (s == "           ON")
 						{
 							s = "           OFF";
@@ -421,6 +422,7 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 					}
 					else if (music.isMouseOver(window))
 					{
+						//switching music
 						if (s1 == "           ON")
 						{
 							s1 = "           OFF";
@@ -585,6 +587,7 @@ void Menu::Setting(sf::RenderWindow& window, Button& sound, Button& music, strin
 		window.draw(this->MenuBackground);
 		sound.drawTo(window);
 		music.drawTo(window);
+		Return.drawTo(window);
 		if (s == "           ON")
 		{
 			window.draw(this->Sound_on);
@@ -601,7 +604,7 @@ void Menu::Setting(sf::RenderWindow& window, Button& sound, Button& music, strin
 		{
 			window.draw(this->Music_off);
 		}
-		Return.drawTo(window);
+
 		while (window.pollEvent(ev))
 		{
 			if (ev.type == sf::Event::Closed)
@@ -643,6 +646,7 @@ void Menu::Setting(sf::RenderWindow& window, Button& sound, Button& music, strin
 				}
 				if (sound.isMouseOver(window))
 				{
+					//switching sound
 					if (s == "           ON")
 					{
 						s = "           OFF";
@@ -655,6 +659,7 @@ void Menu::Setting(sf::RenderWindow& window, Button& sound, Button& music, strin
 				}
 				else if (music.isMouseOver(window))
 				{
+					//switching music
 					if (s1 == "           ON")
 					{
 						s1 = "           OFF";

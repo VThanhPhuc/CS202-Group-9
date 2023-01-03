@@ -29,6 +29,7 @@ protected:
 	sf::RectangleShape Sound_off;
 	sf::RectangleShape Music_on;
 	sf::RectangleShape Music_off;
+
 	sf::RenderWindow* window;
 	sf::Event ev;
 	sf::VideoMode videoMode;

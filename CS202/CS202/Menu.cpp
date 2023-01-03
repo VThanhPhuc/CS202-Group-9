@@ -35,6 +35,38 @@ void Menu::InnitMenuBackground()
 	this->instruction.setTexture(&this->instruct);
 	this->instruction.setSize(sf::Vector2f(350, 350));
 	this->instruction.setPosition(1550, 200);
+
+	if (!this->sound_on.loadFromFile("On_sound.png"))
+	{
+		cout << "Can not load" << endl;
+	}
+	this->Sound_on.setTexture(&this->sound_on);
+	this->Sound_on.setSize(sf::Vector2f(350, 350));
+	this->Sound_on.setPosition(1550, 200);
+
+	if (!this->music_on.loadFromFile("On_music.png"))
+	{
+		cout << "Can not load" << endl;
+	}
+	this->Music_on.setTexture(&this->music_on);
+	this->Music_on.setSize(sf::Vector2f(350, 350));
+	this->Music_on.setPosition(1550, 200);
+
+	if (!this->sound_off.loadFromFile("Off_sound.png"))
+	{
+		cout << "Can not load" << endl;
+	}
+	this->Sound_off.setTexture(&this->sound_off);
+	this->Sound_off.setSize(sf::Vector2f(350, 350));
+	this->Sound_off.setPosition(1550, 200);
+
+	if (!this->music_off.loadFromFile("Off_music.png"))
+	{
+		cout << "Can not load" << endl;
+	}
+	this->Music_off.setTexture(&this->music_off);
+	this->Music_off.setSize(sf::Vector2f(350, 350));
+	this->Music_off.setPosition(1550, 200);
 }
 void Menu::draw_menu(sf::RenderWindow& window)
 {

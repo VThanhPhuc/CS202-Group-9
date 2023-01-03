@@ -23,14 +23,14 @@ CGRASS::CGRASS(float index) : CROAD()
 
 }
 
-CGRASS::CGRASS(float x, float y, CANIMALLIST animallist) :CROAD(x, y)
+CGRASS::CGRASS(float x, float y, ifstream& fin) :CROAD(x, y)
 {
 	// create texture
 	texture = &LoadPic::GetIns().texture[file];
 	out.setTexture(*texture);
 	out.setPosition(mX, mY);
 
-	Animali = animallist;
+	Animali.load(fin);
 }
 
 CGRASS::~CGRASS()
@@ -59,9 +59,9 @@ deque<COBJECT*>* CGRASS::getObjLi()
 	return Animali.getAniList();
 }
 
-bool CGRASS::isCarlane()
+int CGRASS::isCarlane()
 {
-	return false;
+	return 2;
 }
 
 void CGRASS::saveLight(ofstream& fout)
@@ -69,4 +69,13 @@ void CGRASS::saveLight(ofstream& fout)
 	bool isLight = false;
 	fout.write((char*)&isLight, sizeof(isLight));
 	Animali.save(fout);
+}
+
+int CGRASS::soundType()
+{
+	if (!playing)
+	{
+		return Animali.soundType();
+	}
+	return -1;
 }

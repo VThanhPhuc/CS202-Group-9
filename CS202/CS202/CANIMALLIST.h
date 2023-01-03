@@ -30,5 +30,6 @@ public:
 
 	void save(ofstream& fout);
 	void load(ifstream& fin);
-};
 
+	int soundType();
+};

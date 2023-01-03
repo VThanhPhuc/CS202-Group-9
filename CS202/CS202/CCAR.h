@@ -7,7 +7,7 @@ private:
 public:
 	int type();
 
-	CCAR(string FileTextureName, float x, float y, int speed, int direction);
+	CCAR(string FileTextureName, float x, float y, float speed, int direction);
 
 	void move(float x, float y, float frac = 1);
 };

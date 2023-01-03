@@ -5,7 +5,7 @@ int CCAR::type()
 	return Constants::car;
 }
 
-CCAR::CCAR(string FileTextureName, float x, float y, int speed, int direction) : COBJECT(x, y, direction)
+CCAR::CCAR(string FileTextureName, float x, float y, float speed, int direction) : COBJECT(x, y, direction)
 {
 	this->speed = speed;
 
@@ -13,7 +13,7 @@ CCAR::CCAR(string FileTextureName, float x, float y, int speed, int direction) :
 
 	texture = &LoadPic::GetIns().texture[FileTextureName];
 	out.setTexture(*texture);
-	out.setPosition(mX, mY + 10);
+	out.setPosition(mX, mY);
 }
 
 void CCAR::move(float x, float y, float frac)

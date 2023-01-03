@@ -11,15 +11,29 @@ void LoadPic::initTexture(string texFileName, bool isplayer)
 	cout << file << "load successfully" << endl;
 }
 
+void  LoadPic::initSound(string soundFileName)
+{
+	string file = soundFileName + ".wav";
+	if (!sound[soundFileName].loadFromFile(file))
+	{
+		cout << "Unable to load" << file << endl;
+		return;
+	}
+	cout << file << "load successfully" << endl;
+}
+
 LoadPic::LoadPic()
 {
 	//load road
-	initTexture("Pavement_bottom");
+	initTexture("Road");
 	initTexture("river");
 	initTexture("Grass");
-
+	initTexture("Free");
 	//load people
-	initTexture("boyback", 1);
+	initTexture("boyside2", 1);
+	initTexture("boyside3", 1);
+	initTexture("boyside0", 1);
+	initTexture("boyside1", 1);
 
 	//load object
 	initTexture("car0");
@@ -37,4 +51,17 @@ LoadPic::LoadPic()
 
 	//load light
 	initTexture("light");
+
+	//load sound
+	initSound("bird");
+	initSound("dino");
+	initSound("car");
+	initSound("truck");
+	initSound("pickup");
+	initSound("race");
+	initSound("bird");
+	initSound("dino");
+	initSound("ingame");
+	initSound("step");
+	initSound("death");
 }

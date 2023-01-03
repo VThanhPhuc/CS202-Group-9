@@ -4,7 +4,6 @@
 #include "CCAR.h"
 #include "textbox.h"
 #include "button.h"
-#include "CGAME.h"
 #include "COBJECT.h"
 #include "CROADLIST.h"
 #include "SFML/Graphics.hpp"
@@ -43,6 +42,10 @@ protected:
 	CPEOPLE* player;
 	CROADLIST* roadli;
 	int point;
+	//sound
+	sf::Sound ingameSound;
+	sf::Sound deathSound;
+	bool soundOn;
 	// private function
 	void initializeVariable()
 	{
@@ -54,8 +57,8 @@ protected:
 		delete roadli;
 		delete player;
 
-		player = new CPEOPLE(this->window, 750, 700);
-		roadli = new CROADLIST(player);
+		player = new CPEOPLE(this->window, 750, 700, soundOn);
+		roadli = new CROADLIST(player, soundOn);
 		roadli->initRoad();
 		point = 0;
 	}
@@ -63,6 +66,14 @@ protected:
 public:
 	Menu()
 	{
+		ingameSound = sf::Sound(LoadPic::GetIns().sound["ingame"]);
+		ingameSound.setLoop(true);
+		ingameSound.setVolume(60);
+		ingameSound.play();
+		
+		deathSound = sf::Sound(LoadPic::GetIns().sound["death"]);
+		soundOn = true;
+
 		initializeVariable();
 		//initGame();
 	}

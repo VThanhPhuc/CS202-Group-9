@@ -7,20 +7,22 @@
 class CPEOPLE
 {
 private:
-	friend class CGAME;
 	friend class CLANE;
 	float mX, mY;
 	bool mState;
 
 	sf::RenderWindow* window;
 
+	sf::SoundBuffer* buffer;
+	sf::Sound step;
+	bool soundOn;
 
 	sf::Texture* texture;
 	sf::Sprite sprite;
+	int side;
 public:
 	CPEOPLE();
-	CPEOPLE(sf::RenderWindow* window, float x, float y);
-	
+	CPEOPLE(sf::RenderWindow* window, float x, float y, bool soundOn);
 
 	void moveUp();
 	void moveDown();
@@ -40,5 +42,6 @@ public:
 	sf::Sprite getObj();
 	void save(ofstream& fout);
 	void load(ifstream& fin);
+	void turnSound();
 };
 

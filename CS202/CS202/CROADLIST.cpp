@@ -1,8 +1,9 @@
 #include "CROADLIST.h"
 
-CROADLIST::CROADLIST(CPEOPLE* player)
+CROADLIST::CROADLIST(CPEOPLE* player, bool soundOn)
 {
 	this->player = player;
+	this->soundOn = soundOn;
 	mX = mY = 0;
 	mY_origin = Constants::Height_HiddenRoad;
 }
@@ -36,14 +37,21 @@ CROAD* CROADLIST::createRoad(sf::Vector2f pos)
 	{
 		return new CGRASS(pos);
 	}
+	else if (type == FREE)
+	{
+		return new CFREELANE(pos);
+	}
 }
 
 CROAD* CROADLIST::createRoad(float index)
 {
 	RoadType type = RoadType(rand() % LAST);
 	int diff = 1;
-
-	if (type == LANE)
+	if (type == FREE || index >= 10)
+	{
+		return new CFREELANE(index - diff);
+	}
+	else if (type == LANE)
 	{
 		return new CARLANE(index - diff);
 	}
@@ -94,13 +102,19 @@ void CROADLIST::update(sf::RenderWindow& window)
 		roadList.pop_back();
 		delete tmp;
 	}
+
 	for (auto it : roadList)
 	{
 		it->update(window);
+
+		if (player->isNearRoad(*it) && soundOn)
+		{
+			playSound(*it);
+		}
 	}
 }
 
-void  CROADLIST::save(ofstream& fout)
+void CROADLIST::save(ofstream& fout)
 {
 	fout.write((char*)&mY, sizeof(mY));
 	fout.write((char*)&mX, sizeof(mX));
@@ -110,32 +124,44 @@ void  CROADLIST::save(ofstream& fout)
 		i->save(fout);
 }
 
-void  CROADLIST::load(ifstream& fin)
+void CROADLIST::load(ifstream& fin)
 {
 	fin.read((char*)&mY, sizeof(mY));
 	fin.read((char*)&mX, sizeof(mX));
 	fin.read((char*)&mY_origin, sizeof(mY_origin));
-	while (!fin.eof())
+	int roadsNum = Constants::MAX_ROAD + 1;
+	while (roadsNum--)
 	{
 		float x, y;	
 		fin.read((char*)&x, sizeof(x));
 		fin.read((char*)&y, sizeof(y));
-
-		bool isCarlane, isLight;
+		
+		int isCarlane;
+		bool isLight;
 		fin.read((char*)&isCarlane, sizeof(isCarlane));
 		fin.read((char*)&isLight, sizeof(isLight));
-
-		if (isCarlane)
-		{
-			CCARLIST carlist;
-			carlist.load(fin);
-			roadList.push_back(new CARLANE(x, y, isLight, carlist));
-		}
+		
+		if (isCarlane == 1)
+			roadList.push_back(new CARLANE(x, y, isLight, fin));
+		else if (isCarlane == 2)
+			roadList.push_back(new CGRASS(x, y, fin));
 		else
-		{
-			CANIMALLIST animallist;
-			animallist.load(fin);
-			roadList.push_back(new CGRASS(x, y, animallist));
-		}
+			roadList.push_back(new CFREELANE(x, y, fin));
+	}
+}
+
+void CROADLIST::turnSound()
+{
+	soundOn = !soundOn;
+}
+
+void CROADLIST::playSound(CROAD& it)
+{
+	int type = it.soundType();
+	if (type != -1)
+	{
+		mySound = sf::Sound(LoadPic::GetIns().sound[Constants::Soundtype[type]]);		
+		mySound.play();
+		it.setplaying();	
 	}
 }

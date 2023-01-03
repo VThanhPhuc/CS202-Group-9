@@ -29,7 +29,7 @@ CARLANE::CARLANE(float index) : CROAD()
 	if (rand() % Constants::numLights == 0) light = CLight(mX, mY);
 }
 
-CARLANE::CARLANE(float x, float y, bool traffic, CCARLIST carlist) :CROAD(x, y)
+CARLANE::CARLANE(float x, float y, bool traffic, ifstream& fin) :CROAD(x, y)
 {
 	// create texture
 	texture = &LoadPic::GetIns().texture[file];
@@ -42,7 +42,7 @@ CARLANE::CARLANE(float x, float y, bool traffic, CCARLIST carlist) :CROAD(x, y)
 		light = CLight(mX, mY);
 	}
 
-	carli = carlist;
+	carli.load(fin);
 }
 
 CARLANE::~CARLANE()
@@ -83,9 +83,9 @@ deque<COBJECT*>* CARLANE::getObjLi()
 	return carli.getCarList();
 }
 
-bool CARLANE::isCarlane()
+int CARLANE::isCarlane()
 {
-	return true;
+	return 1;
 }
 
 void CARLANE::saveLight(ofstream& fout)
@@ -93,4 +93,13 @@ void CARLANE::saveLight(ofstream& fout)
 	bool isLight = light.Traffic();
 	fout.write((char*)&isLight, sizeof(isLight));
 	carli.save(fout);
+}
+
+int CARLANE::soundType()
+{
+	if (!playing)
+	{
+		return carli.soundType();
+	}
+	return -1;
 }

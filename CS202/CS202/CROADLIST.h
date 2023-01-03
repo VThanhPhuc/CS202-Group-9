@@ -3,14 +3,17 @@
 #include "CARLANE.h"
 #include "People.h"
 #include "CGRASS.h"
-enum RoadType { LANE, GRASS, LAST };
+#include "CFREELANE.h"
+enum RoadType { LANE, GRASS,FREE ,LAST };
 
 class CROADLIST
 {
 private:
-	friend class CGAME;
 	friend class Menu;
+
 	deque<CROAD*> roadList;
+	sf::Sound mySound;
+	bool soundOn;
 
 	CPEOPLE* player;
 
@@ -19,7 +22,7 @@ private:
 	float mY_origin;
 
 public:
-	CROADLIST(CPEOPLE* player);
+	CROADLIST(CPEOPLE* player, bool soundOn);
 	~CROADLIST();
 	void initRoad();
 
@@ -30,7 +33,8 @@ public:
 	CROAD* createRoad(float index = 1);
 
 	//sound
-
+	void turnSound();
+	void playSound(CROAD& it);
 
 	// save to file | load from file
 	void save(ofstream& fout);

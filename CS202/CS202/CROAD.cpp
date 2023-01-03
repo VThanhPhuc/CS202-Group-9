@@ -55,7 +55,8 @@ int CROAD::getNumRoads()
 
 sf::Vector2f CROAD::getPos()
 {
-	return sf::Vector2f(mX, mY);
+	return sf::Vector2f(out.getPosition().x, out.getPosition().y - 100);
+	/*return sf::Vector2f(mX, mY);*/
 }
 
 void CROAD::save(ofstream& fout)
@@ -63,7 +64,7 @@ void CROAD::save(ofstream& fout)
 	fout.write((char*)&out.getPosition().x, sizeof(out.getPosition().x));
 	fout.write((char*)&out.getPosition().y, sizeof(out.getPosition().y));
 
-	bool isCarlane = this->isCarlane();
+	int isCarlane = this->isCarlane();
 	fout.write((char*)&isCarlane, sizeof(isCarlane));
 
 	saveLight(fout);

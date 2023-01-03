@@ -7,7 +7,7 @@ private:
 public:
 	int type();
 
-	CANIMAL(string FileTextureName, float x, float y, int speed, int direction);
+	CANIMAL(string FileTextureName, float x, float y, float speed, int direction);
 
 	void move(float x, float y, float frac = 1);
 };

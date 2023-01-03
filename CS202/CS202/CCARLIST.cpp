@@ -83,7 +83,7 @@ void CCARLIST::update(float mX, float mY, sf::RenderWindow& window, CLight& l)
 		{
 			if (l.statusLight() == 2)
 			{
-				i->move(0, 0, 0.3);
+				i->move(0, 0, 0.35);
 			}
 			else if (l.statusLight() == 1)
 			{

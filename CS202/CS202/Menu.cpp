@@ -41,32 +41,32 @@ void Menu::InnitMenuBackground()
 		cout << "Can not load" << endl;
 	}
 	this->Sound_on.setTexture(&this->sound_on);
-	this->Sound_on.setSize(sf::Vector2f(350, 350));
-	this->Sound_on.setPosition(1550, 200);
+	this->Sound_on.setSize(sf::Vector2f(90, 50));
+	this->Sound_on.setPosition(100, 400);
 
 	if (!this->music_on.loadFromFile("On_music.png"))
 	{
 		cout << "Can not load" << endl;
 	}
 	this->Music_on.setTexture(&this->music_on);
-	this->Music_on.setSize(sf::Vector2f(350, 350));
-	this->Music_on.setPosition(1550, 200);
+	this->Music_on.setSize(sf::Vector2f(90, 50));
+	this->Music_on.setPosition(100, 600);
 
 	if (!this->sound_off.loadFromFile("Off_sound.png"))
 	{
 		cout << "Can not load" << endl;
 	}
 	this->Sound_off.setTexture(&this->sound_off);
-	this->Sound_off.setSize(sf::Vector2f(350, 350));
-	this->Sound_off.setPosition(1550, 200);
+	this->Sound_off.setSize(sf::Vector2f(90,50));
+	this->Sound_off.setPosition(100, 400);
 
 	if (!this->music_off.loadFromFile("Off_music.png"))
 	{
 		cout << "Can not load" << endl;
 	}
 	this->Music_off.setTexture(&this->music_off);
-	this->Music_off.setSize(sf::Vector2f(350, 350));
-	this->Music_off.setPosition(1550, 200);
+	this->Music_off.setSize(sf::Vector2f(90, 50));
+	this->Music_off.setPosition(100, 600);
 }
 void Menu::draw_menu(sf::RenderWindow& window)
 {
@@ -115,6 +115,15 @@ void Menu::Begin()
 	exit1.setPosition({ 100,800 });
 	exit1.setFont(font);
 
+	string s = "           ON";
+	Button sound(s, { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
+	sound.setPosition({ 100,400 });
+	sound.setFont(font);
+
+	string s1 = "           ON";
+	Button music(s1, { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
+	music.setPosition({ 100,600 });
+	music.setFont(font);
 	while (window->isOpen())
 	{
 		sf::Event event;
@@ -162,7 +171,7 @@ void Menu::Begin()
 			}
 			if (event.type == sf::Event::MouseButtonPressed)
 			{
-				this->Menu_control(*this->window, event, d, play, exit1, load, setting);
+				this->Menu_control(*this->window, event, d, play, exit1, load, setting,sound,music,s,s1);
 			}
 		}
 		window->clear();
@@ -174,7 +183,7 @@ void Menu::Begin()
 		window->display();
 	}
 }
-void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool playLoad)
+void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool playLoad,Button &sound,Button &music,string &s,string &s1)
 {
 	if (playLoad)
 		this->load();
@@ -457,8 +466,9 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 		if (i == 1) break;
 	}
 }
-void Menu::Menu_control(sf::RenderWindow& window, sf::Event event, Background d, Button b1, Button exit1, Button load, Button setting)
+void Menu::Menu_control(sf::RenderWindow& window, sf::Event event, Background d, Button b1, Button exit1, Button load, Button setting, Button& sound, Button& music, string& s, string& s1)
 {
+
 	if (event.type == sf::Event::Closed)
 		window.close();
 	if (event.type == sf::Event::MouseButtonPressed)
@@ -478,11 +488,112 @@ void Menu::Menu_control(sf::RenderWindow& window, sf::Event event, Background d,
 		}
 		else if (setting.isMouseOver(window))
 		{
-
+			this->Setting(window, sound, music, s, s1);
 		}
 	}
 }
+void Menu::Setting(sf::RenderWindow& window, Button& sound, Button& music, string& s, string& s1)
+{
+	sf::Font font;
+	if (!font.loadFromFile("ayar.ttf"))
+	{
+		cout << " Fail to load";
+	}
+	Button Return("RETURN", { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
+	Return.setPosition({ 100,800 });
+	Return.setFont(font);
 
+	while (window.isOpen())
+	{
+		window.clear();
+		window.draw(this->MenuBackground);
+		sound.drawTo(window);
+		music.drawTo(window);
+		if (s == "           ON")
+		{
+			window.draw(this->Sound_on);
+		}
+		else if (s == "           OFF")
+		{
+			window.draw(this->Sound_off);
+		}
+		if (s1 == "           ON")
+		{
+			window.draw(this->Music_on);
+		}
+		else if (s1 == "           OFF")
+		{
+			window.draw(this->Music_off);
+		}
+		Return.drawTo(window);
+		while (window.pollEvent(ev))
+		{
+			if (ev.type == sf::Event::Closed)
+				window.close();
+			if (ev.type == sf::Event::MouseMoved)
+			{
+				if (sound.isMouseOver(*this->window))
+				{
+					sound.setBackColor(sf::Color::White);
+				}
+				else if (!sound.isMouseOver(*this->window))
+				{
+					sound.setBackColor(sf::Color::Green);
+				}
+
+				if (music.isMouseOver(*this->window))
+				{
+					music.setBackColor(sf::Color::White);
+				}
+				else if (!music.isMouseOver(*this->window))
+				{
+					music.setBackColor(sf::Color::Green);
+				}
+
+				if (Return.isMouseOver(*this->window))
+				{
+					Return.setBackColor(sf::Color::White);
+				}
+				else if (!Return.isMouseOver(*this->window))
+				{
+					Return.setBackColor(sf::Color::Green);
+				}
+			}
+			if (ev.type == sf::Event::MouseButtonPressed)
+			{
+				if (Return.isMouseOver(window))
+				{
+					return;
+				}
+				if (sound.isMouseOver(window))
+				{
+					if (s == "           ON")
+					{
+						s = "           OFF";
+					}
+					else if (s == "           OFF")
+					{
+						s = "           ON";
+					}
+					sound.SetText(s);
+				}
+				if (music.isMouseOver(window))
+				{
+					if (s1 == "           ON")
+					{
+						s1 = "           OFF";
+					}
+					else if (s1 == "           OFF")
+					{
+						s1 = "           ON";
+					}
+					music.SetText(s1);
+				}
+			}
+			window.display();
+		}
+	};
+}
 void Menu::save()
 {
 	ofstream fout;

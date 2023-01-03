@@ -81,11 +81,11 @@ public:
 	void InnitMenuBackground();
 	void draw_menu(sf::RenderWindow& window);
 	void Draw_Menu_In_game(sf::RenderWindow& window);
-	void Menu_control(sf::RenderWindow& window, sf::Event event, Background d, Button b1, Button exit1, Button load, Button setting);
+	void Menu_control(sf::RenderWindow& window, sf::Event event, Background d, Button b1, Button exit1, Button load, Button setting, Button& sound, Button& music, string& s, string& s1);
 	void LoseGame(sf::RenderWindow& window);
 	void Begin();
-	void PlayGame(sf::RenderWindow& window, Background d, int& return1, bool playLoad);
-
+	void PlayGame(sf::RenderWindow& window, Background d, int& return1, bool playLoad, Button& sound, Button& music, string& s, string& s1);
+	void Setting(sf::RenderWindow& window, Button &sound, Button &music, string &s, string &s1);
 	void save();
 	void load();
 

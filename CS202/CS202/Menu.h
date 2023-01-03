@@ -11,8 +11,7 @@ class Menu
 {
 protected:
 	sf::Sprite MenuBackground;
-
-	sf::RectangleShape menu_in_game; // menu
+	sf::RectangleShape menu_in_game; 
 	sf::RectangleShape you_lose1;
 	sf::RectangleShape instruction;
 
@@ -21,6 +20,15 @@ protected:
 	sf::Texture you_lose;
 	sf::Texture instruct;
 
+	sf::Texture sound_on;
+	sf::Texture sound_off;
+	sf::Texture music_on;
+	sf::Texture music_off;
+
+	sf::RectangleShape Sound_on;
+	sf::RectangleShape Sound_off;
+	sf::RectangleShape Music_on;
+	sf::RectangleShape Music_off;
 	sf::RenderWindow* window;
 	sf::Event ev;
 	sf::VideoMode videoMode;

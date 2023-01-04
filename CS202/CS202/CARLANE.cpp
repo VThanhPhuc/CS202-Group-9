@@ -59,12 +59,12 @@ void CARLANE::drawSubObj(sf::RenderWindow& window)
 	carli.draw(window);
 }
 
-void CARLANE::shiftObj(char shift)
+void CARLANE::shiftObj(char shift, const float& point)
 {
-	carli.shiftObject(shift);
+	carli.shiftObject(shift,point);
 	if (light.Traffic())
 	{
-		light.shiftObject(shift);
+		light.shiftObject(shift,point);
 	}
 }
 

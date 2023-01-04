@@ -226,8 +226,8 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 		{
 			window.clear();
 			roadli->draw(*this->window);
-			roadli->shiftObj('U');
-			player->shiftObj();
+			roadli->shiftObj('U',float(point));
+			player->shiftObj(float(point));
 			back.drawTo(window);
 			window.draw(this->instruction);
 			Point.drawTo(window);

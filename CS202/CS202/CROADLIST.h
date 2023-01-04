@@ -26,7 +26,7 @@ public:
 	~CROADLIST();
 	void initRoad();
 
-	void shiftObj(char shift);
+	void shiftObj(char shift,const float& point);
 	void draw(sf::RenderWindow& window);
 	void update(sf::RenderWindow& window);
 	CROAD* createRoad(sf::Vector2f pos);

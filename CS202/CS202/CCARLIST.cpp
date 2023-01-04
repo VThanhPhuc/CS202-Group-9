@@ -100,6 +100,7 @@ void CCARLIST::update(float mX, float mY, sf::RenderWindow& window, CLight& l)
 		}
 
 	}
+	mY += 3;
 	if (carlist.empty()) initGame(mX, mY);
 	while (!carlist.empty() && carlist.back()->CheckOutWindow(window))
 	{

@@ -81,6 +81,7 @@ void CANIMALLIST::update(float mX, float mY, sf::RenderWindow& window)
 	{
 		i->move(0, 0);
 	}
+	mY += 3;
 	if (Anlist.empty()) initGame(mX, mY);
 	while (!Anlist.empty() && Anlist.back()->CheckOutWindow(window))
 	{

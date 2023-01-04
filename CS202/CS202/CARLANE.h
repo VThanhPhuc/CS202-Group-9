@@ -18,7 +18,7 @@ public:
 
 	// other function
 	void drawSubObj(sf::RenderWindow& window);
-	void shiftObj(char shift);
+	void shiftObj(char shift,const float&point);
 	void update(sf::RenderWindow& window);
 	int isCarlane();
 	void saveLight(ofstream& fout);

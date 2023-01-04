@@ -114,11 +114,11 @@ int CCARLIST::direction()
 }
 
 
-void CCARLIST::shiftObject(char shift)
+void CCARLIST::shiftObject(char shift,const float& point)
 {
 	for (auto i : carlist)
 	{
-		i->shiftObject(shift);
+		i->shiftObject(shift,point);
 	}
 }
 

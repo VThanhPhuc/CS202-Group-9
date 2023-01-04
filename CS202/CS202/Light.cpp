@@ -67,10 +67,11 @@ void CLight::draw(sf::RenderWindow& window)
 {
 	window.draw(out);
 }
-void CLight::shiftObject(char shift)
+void CLight::shiftObject(char shift,const float& point)
 {
-
-	out.move(0, Constants::ShiftVelocity);
+	float go;
+	go = up * min(point, maxi);
+	out.move(0, Constants::ShiftVelocity+go);
 	mX = out.getPosition().x;
 	mY = out.getPosition().y;
 }

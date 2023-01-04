@@ -28,9 +28,11 @@ COBJECT::COBJECT(float x, float y, int direction)
 }
 
 
-void COBJECT::shiftObject(char shift)
+void COBJECT::shiftObject(char shift,const float& point)
 {
-	out.move(0, Constants::ShiftVelocity);
+	float go;
+	go = up * min(point, maxi);
+	out.move(0, Constants::ShiftVelocity + go);
 }
 
 void COBJECT::move(float x, float y, float frac)

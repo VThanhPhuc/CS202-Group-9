@@ -18,7 +18,7 @@ private:
 public:
 	CANIMALLIST();
 	void initGame(float mX, float mY);
-	void shiftObject(char shift);
+	void shiftObject(char shift,const float& point);
 	void draw(sf::RenderWindow& window);
 	void update(float mX, float mY, sf::RenderWindow& window);
 

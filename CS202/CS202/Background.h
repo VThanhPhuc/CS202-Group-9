@@ -57,7 +57,6 @@ public:
 		this->loadTexture();
 	}
 	sf::RectangleShape m_rectTopPavement; // Public so the bounds can be checked
-
 };
 
 #endif 

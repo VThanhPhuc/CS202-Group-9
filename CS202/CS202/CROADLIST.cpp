@@ -62,12 +62,14 @@ CROAD* CROADLIST::createRoad(float index)
 }
 
 
-void CROADLIST::shiftObj(char shift)
+void CROADLIST::shiftObj(char shift,const float& point)
 {
-	mY += Constants::ShiftVelocity;
+	float go;
+	go = up * min(point, maxi);
+	mY += Constants::ShiftVelocity+go;
 	if (mY > mY_origin)
 		mY_origin = mY;
-	for (auto it : roadList) it->shiftObject(shift);
+	for (auto it : roadList) it->shiftObject(shift,point);
 	/*else if ((shift == 'D' || shift == 'd') && ((mY_origin - mY) <= Constants::Height_HiddenRoad))
 	{
 		mY -= Constants::ShiftVelocity;

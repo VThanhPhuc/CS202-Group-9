@@ -86,9 +86,11 @@ public:
 	void Begin();
 	void PlayGame(sf::RenderWindow& window, Background d, int& return1, bool playLoad, Button& sound, Button& music, string& s, string& s1);
 	void Setting(sf::RenderWindow& window, Button &sound, Button &music, string &s, string &s1);
+
 	void save();
 	void load();
 
 	void savepoint();
 	void loadpoint();
+	void turnSound();
 };

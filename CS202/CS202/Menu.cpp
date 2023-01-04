@@ -41,8 +41,8 @@ void Menu::InnitMenuBackground()
 		cout << "Can not load" << endl;
 	}
 	this->Sound_on.setTexture(&this->sound_on);
-	this->Sound_on.setSize(sf::Vector2f(90, 50));
-	this->Sound_on.setPosition(100, 400);
+	this->Sound_on.setSize(sf::Vector2f(60, 50));
+	this->Sound_on.setPosition(120, 400);
 
 	if (!this->music_on.loadFromFile("On_music.png"))
 	{
@@ -57,8 +57,8 @@ void Menu::InnitMenuBackground()
 		cout << "Can not load" << endl;
 	}
 	this->Sound_off.setTexture(&this->sound_off);
-	this->Sound_off.setSize(sf::Vector2f(90,50));
-	this->Sound_off.setPosition(100, 400);
+	this->Sound_off.setSize(sf::Vector2f(60,50));
+	this->Sound_off.setPosition(120, 400);
 
 	if (!this->music_off.loadFromFile("Off_music.png"))
 	{
@@ -171,7 +171,7 @@ void Menu::Begin()
 			}
 			if (event.type == sf::Event::MouseButtonPressed)
 			{
-				this->Menu_control(*this->window, event, d, play, exit1, load, setting,sound,music,s,s1);
+				this->Menu_control(*this->window, event, d, play, exit1, load, setting, sound, music, s, s1);
 			}
 		}
 		window->clear();
@@ -183,7 +183,7 @@ void Menu::Begin()
 		window->display();
 	}
 }
-void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool playLoad,Button &sound,Button &music,string &s,string &s1)
+void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool playLoad, Button& sound, Button& music, string& s, string& s1)
 {
 	if (playLoad)
 		this->load();
@@ -210,14 +210,14 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 	Button back("", { 400,Constants::Height_screen }, 20, sf::Color::Black, sf::Color::Black);
 	back.setPosition({ Constants::WidthRoad + 10,0 });
 
-
 	sound.setPosition({ 1600,700 });
 	music.setPosition({ 1600,800 });
 
-	this->Sound_on.setPosition(1600, 700);
-	this->Sound_off.setPosition(1600, 700);
+	this->Sound_on.setPosition(1620, 700);
+	this->Sound_off.setPosition(1620, 700);
 	this->Music_on.setPosition(1600, 800);
 	this->Music_off.setPosition(1600, 800);
+
 	while (window.isOpen())
 	{
 		int i = 0;
@@ -226,8 +226,8 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 		{
 			window.clear();
 			roadli->draw(*this->window);
-			roadli->shiftObj('U');
-			player->shiftObj();
+			roadli->shiftObj('U',float(point));
+			player->shiftObj(float(point));
 			back.drawTo(window);
 			window.draw(this->instruction);
 			Point.drawTo(window);
@@ -412,10 +412,16 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 						//switching sound
 						if (s == "           ON")
 						{
+							turnSound();
+							roadli->turnSound();
+							player->turnSound();
 							s = "           OFF";
 						}
 						else if (s == "           OFF")
 						{
+							turnSound();
+							roadli->turnSound();
+							player->turnSound();
 							s = "           ON";
 						}
 						sound.SetText(s);
@@ -423,12 +429,14 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 					else if (music.isMouseOver(window))
 					{
 						//switching music
-						if (s1 == "           ON")
+						if (s1 == "           ON")							
 						{
+							ingameSound.setVolume(0);
 							s1 = "           OFF";
 						}
 						else if (s1 == "           OFF")
 						{
+							ingameSound.setVolume(60);
 							s1 = "           ON";
 						}
 						music.SetText(s1);
@@ -444,7 +452,9 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 					{
 						if (player->isImpact(cur->at(i)))
 						{
-							deathSound.play();
+							if (soundOn)
+								deathSound.play();
+
 							Sleep(300);
 							std::cout << "die" << endl;
 							savepoint();
@@ -494,7 +504,7 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 									{
 										if (resume.isMouseOver(window))
 										{
-											this->PlayGame(window, d, return1, false,sound,music,s,s1);
+											this->PlayGame(window, d, return1, false, sound, music, s, s1);
 											if (return1 == 1) return;
 											k = 1;
 											i = 0;
@@ -546,7 +556,6 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 }
 void Menu::Menu_control(sf::RenderWindow& window, sf::Event event, Background d, Button b1, Button exit1, Button load, Button setting, Button& sound, Button& music, string& s, string& s1)
 {
-
 	if (event.type == sf::Event::Closed)
 		window.close();
 	if (event.type == sf::Event::MouseButtonPressed)
@@ -554,7 +563,7 @@ void Menu::Menu_control(sf::RenderWindow& window, sf::Event event, Background d,
 		int return1 = 0;
 		if (b1.isMouseOver(window))
 		{
-			this->PlayGame(window, d, return1, false,sound,music,s,s1);
+			this->PlayGame(window, d, return1, false, sound, music, s, s1);
 		}
 		else if (exit1.isMouseOver(window))
 		{
@@ -562,7 +571,7 @@ void Menu::Menu_control(sf::RenderWindow& window, sf::Event event, Background d,
 		}
 		else if (load.isMouseOver(window))
 		{
-			this->PlayGame(window, d, return1, true,sound,music,s,s1);
+			this->PlayGame(window, d, return1, true, sound, music, s, s1);
 		}
 		else if (setting.isMouseOver(window))
 		{
@@ -646,34 +655,37 @@ void Menu::Setting(sf::RenderWindow& window, Button& sound, Button& music, strin
 				}
 				if (sound.isMouseOver(window))
 				{
-					//switching sound
 					if (s == "           ON")
 					{
+						soundOn = false;
 						s = "           OFF";
 					}
 					else if (s == "           OFF")
 					{
+						soundOn = true;
 						s = "           ON";
 					}
 					sound.SetText(s);
 				}
 				else if (music.isMouseOver(window))
 				{
-					//switching music
 					if (s1 == "           ON")
 					{
+						ingameSound.setVolume(0);
 						s1 = "           OFF";
 					}
 					else if (s1 == "           OFF")
 					{
+						ingameSound.setVolume(60);
 						s1 = "           ON";
 					}
 					music.SetText(s1);
 				}
 			}
-			window.display();
 		}
-	};
+		window.display();
+
+	}
 }
 void Menu::save()
 {
@@ -744,4 +756,9 @@ void Menu::loadpoint()
 	}
 	else
 		highpoint = 0;
+}
+
+void Menu::turnSound()
+{
+	soundOn = !soundOn;
 }

@@ -37,6 +37,6 @@ public:
 	void yellow();
 	void update(sf::RenderWindow& window); // update picture after changing the light traffic
 	void draw(sf::RenderWindow& window);
-	void shiftObject(char shift);
+	void shiftObject(char shift,const float& point);
 	bool Traffic();
 };

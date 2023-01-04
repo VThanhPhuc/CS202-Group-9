@@ -30,7 +30,7 @@ public:
 	COBJECT(float x, float y);
 	COBJECT(float x, float y, int direction = 1);
 
-	void shiftObject(char shift); // use char: U(up), D(down)
+	void shiftObject(char shift,const float& point); // use char: U(up), D(down)
 
 	// virtual
 	virtual void move(float x, float y, float frac = 1);

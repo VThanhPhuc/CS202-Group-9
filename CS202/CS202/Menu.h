@@ -53,7 +53,7 @@ protected:
 		delete roadli;
 		delete player;
 
-		player = new CPEOPLE(this->window, 750, 700, soundOn);
+		player = new CPEOPLE(this->window, 750, 710, soundOn);
 		roadli = new CROADLIST(player, soundOn);
 		roadli->initRoad();
 		point = 0;

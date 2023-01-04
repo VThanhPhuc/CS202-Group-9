@@ -43,9 +43,9 @@ void CGRASS::drawSubObj(sf::RenderWindow& window)
 	Animali.draw(window);
 }
 
-void CGRASS::shiftObj(char shift)
+void CGRASS::shiftObj(char shift,const float& point)
 {
-	Animali.shiftObject(shift);
+	Animali.shiftObject(shift,point);
 }
 
 void CGRASS::update(sf::RenderWindow& window)

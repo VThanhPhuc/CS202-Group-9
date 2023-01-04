@@ -98,11 +98,11 @@ int CANIMALLIST::direction()
 }
 
 
-void CANIMALLIST::shiftObject(char shift)
+void CANIMALLIST::shiftObject(char shift,const float& point)
 {
 	for (auto i : Anlist)
 	{
-		i->shiftObject(shift);
+		i->shiftObject(shift,point);
 	}
 }
 

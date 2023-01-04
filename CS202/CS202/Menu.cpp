@@ -682,9 +682,10 @@ void Menu::Setting(sf::RenderWindow& window, Button& sound, Button& music, strin
 					music.SetText(s1);
 				}
 			}
-			window.display();
 		}
-	};
+		window.display();
+
+	}
 }
 void Menu::save()
 {

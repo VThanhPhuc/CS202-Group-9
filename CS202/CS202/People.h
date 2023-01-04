@@ -28,7 +28,7 @@ public:
 	void moveDown();
 	void moveRight();
 	void moveLeft();
-	void shiftObj();
+	void shiftObj(const float& up);
 
 	bool isImpact(COBJECT*& obj);
 	bool isFinish();

@@ -70,9 +70,11 @@ int CPEOPLE::getmY()
 	return mY;
 }
 
-void CPEOPLE::shiftObj()
+void CPEOPLE::shiftObj(const float& point)
 {
-	sprite.move(0, Constants::ShiftVelocity);
+	float go;
+	go = up * min(point, float(30));
+	sprite.move(0, Constants::ShiftVelocity+go);
 }
 
 void CPEOPLE::draw(sf::RenderWindow& window)

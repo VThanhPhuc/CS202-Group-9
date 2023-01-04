@@ -30,7 +30,7 @@ public:
 	//function
 	bool checkoutwindow(sf::RenderWindow& window);
 	void  draw(sf::RenderWindow& window);
-	void shiftObject(char shift);
+	void shiftObject(char shift,const float& point);
 	sf::Vector2f getPos();
 	void setplaying();
 
@@ -39,7 +39,7 @@ public:
 
 	//virtual
 	virtual void drawSubObj(sf::RenderWindow& window) = 0;
-	virtual void shiftObj(char shift) = 0;
+	virtual void shiftObj(char shift,const float& point) = 0;
 	virtual void update(sf::RenderWindow& window) = 0;
 	virtual int isCarlane() = 0;
 	virtual void saveLight(ofstream& fout) = 0;

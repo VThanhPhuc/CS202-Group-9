@@ -32,14 +32,16 @@ void CROAD::draw(sf::RenderWindow& window)
 	window.draw(out);
 }
 
-void CROAD::shiftObject(char shift)
+void CROAD::shiftObject(char shift,const float& point)
 {
-	out.move(0, Constants::ShiftVelocity);
+	float go;
+	go = up * min(point, float(30));
+	out.move(0, Constants::ShiftVelocity+go);
 
 
 	/*mX = out.getPosition().x;
 	mY = out.getPosition().y;*/
-	shiftObj(shift);
+	shiftObj(shift,point);
 	//out.setPosition(mX, mY);
 }
 

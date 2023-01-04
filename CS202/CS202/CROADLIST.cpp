@@ -65,7 +65,7 @@ CROAD* CROADLIST::createRoad(float index)
 void CROADLIST::shiftObj(char shift,const float& point)
 {
 	float go;
-	go = up * min(point, float(30));
+	go = up * min(point, maxi);
 	mY += Constants::ShiftVelocity+go;
 	if (mY > mY_origin)
 		mY_origin = mY;

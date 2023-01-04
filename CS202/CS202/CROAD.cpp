@@ -35,7 +35,7 @@ void CROAD::draw(sf::RenderWindow& window)
 void CROAD::shiftObject(char shift,const float& point)
 {
 	float go;
-	go = up * min(point, float(30));
+	go = up * min(point, maxi);
 	out.move(0, Constants::ShiftVelocity+go);
 
 

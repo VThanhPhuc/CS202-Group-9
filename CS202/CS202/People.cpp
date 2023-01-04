@@ -73,7 +73,7 @@ int CPEOPLE::getmY()
 void CPEOPLE::shiftObj(const float& point)
 {
 	float go;
-	go = up * min(point, float(30));
+	go = up * min(point, maxi);
 	sprite.move(0, Constants::ShiftVelocity+go);
 }
 

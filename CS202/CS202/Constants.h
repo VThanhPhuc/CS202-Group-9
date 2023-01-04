@@ -2,7 +2,8 @@
 #include <iostream>
 #include <string>
 using namespace std;
-const float up = 0.1;
+const float up = 0.09;
+const float maxi = 35;
 namespace Constants
 {
 	//window
@@ -10,8 +11,8 @@ namespace Constants
 	const float width_screen = 1500;
 
 	// velocity
-	const float ShiftVelocity = 0.9;
-	const float VelcocityX = 3.3;
+	const float ShiftVelocity = 1.1;
+	const float VelcocityX = 3.6;
 
 	const int widthVehicle = 100;
 	const int heightVehicle = 100;

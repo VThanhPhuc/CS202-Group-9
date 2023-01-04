@@ -100,19 +100,19 @@ void Menu::Begin()
 	loadpoint();
 
 	Button play("PLAY GAME", { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
-	play.setPosition({ 100,200 });
+	play.setPosition({ 100,350 });
 	play.setFont(font);
 
 	Button load("LOAD", { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
-	load.setPosition({ 100,400 });
+	load.setPosition({ 600,350 });
 	load.setFont(font);
 
 	Button setting("SETTING", { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
-	setting.setPosition({ 100,600 });
+	setting.setPosition({ 1100,350 });
 	setting.setFont(font);
 
 	Button exit1("EXIT", { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
-	exit1.setPosition({ 100,800 });
+	exit1.setPosition({ 1600,350 });
 	exit1.setFont(font);
 
 	string s = "           ON";

@@ -41,7 +41,7 @@ namespace Constants
 	//Person
 	const float width_person = 50;
 	const float height_person = 100;
-
+	const int Height_PerImage = 75;
 	//number of lights
 	const int numLights = 6;
 	const string lightname = "light";

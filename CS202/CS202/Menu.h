@@ -53,7 +53,7 @@ protected:
 		delete roadli;
 		delete player;
 
-		player = new CPEOPLE(this->window, 750, 710, soundOn);
+		player = new CPEOPLE(this->window, 750, 750-(Constants::Height_PerImage/2), soundOn);
 		roadli = new CROADLIST(player, soundOn);
 		roadli->initRoad();
 		point = 0;

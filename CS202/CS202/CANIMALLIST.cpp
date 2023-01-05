@@ -160,8 +160,5 @@ void CANIMALLIST::load(ifstream& fin)
 
 int CANIMALLIST::soundType()
 {
-	if (type == 0)
-		return 4;
-	else
-		return 5;
+	return Constants::NCartype + type;
 }

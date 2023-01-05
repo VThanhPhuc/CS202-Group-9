@@ -48,6 +48,8 @@ LoadPic::LoadPic()
 	initTexture("pickup0");
 	initTexture("race1");
 	initTexture("race0");
+	initTexture("ghost1");
+	initTexture("ghost0");
 
 	//load light
 	initTexture("light");

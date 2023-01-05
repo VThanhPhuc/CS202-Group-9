@@ -66,4 +66,5 @@ LoadPic::LoadPic()
 	initSound("ingame");
 	initSound("step");
 	initSound("death");
+	initSound("ghost");
 }

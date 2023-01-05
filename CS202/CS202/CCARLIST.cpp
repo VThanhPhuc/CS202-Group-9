@@ -100,7 +100,7 @@ void CCARLIST::update(float mX, float mY, sf::RenderWindow& window, CLight& l)
 		}
 
 	}
-	mY += 3;
+	mY = mY +50 - (Constants::Height_Cartype[type]/2);
 	if (carlist.empty()) initGame(mX, mY);
 	while (!carlist.empty() && carlist.back()->CheckOutWindow(window))
 	{

@@ -29,6 +29,7 @@ namespace Constants
 	const int NCar = 25; // number of cars
 	const int NAnimal = 25; //number of animals
 	const string Cartype[] = { "car", "truck", "pickup", "race" };
+	const int Height_Cartupe[] = { 64,64,64,64 };
 	const float speedCar[] = { 1, 0.7, 0.85, 2 };
 	const string Animaltype[] = { "bird", "dino" };
 	const float speedAni[] = { 1.2,0.7 };

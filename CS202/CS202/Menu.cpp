@@ -257,9 +257,9 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 				{
 				case sf::Event::Closed:
 					window.close();
-					break;
+					return;
 				case sf::Event::KeyPressed:
-					if (ev.key.code == sf::Keyboard::Up)
+					if (ev.key.code == sf::Keyboard::Up )
 					{
 						player->moveUp();
 						point++;
@@ -270,9 +270,27 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 							highPoint.SetText("High point : " + to_string(highpoint));
 						}
 					}
-					else if (ev.key.code == sf::Keyboard::Left) player->moveLeft();
-					else if (ev.key.code == sf::Keyboard::Right) player->moveRight();
-					else if (ev.key.code == sf::Keyboard::Down) {
+					else if (ev.key.code == sf::Keyboard::W)
+					{
+						player->moveUp();
+						point++;
+						Point.SetText("Point : " + to_string(point));
+						if (point > highpoint)
+						{
+							highpoint = point;
+							highPoint.SetText("High point : " + to_string(highpoint));
+						}
+					}
+					else if (ev.key.code == sf::Keyboard::Left ) player->moveLeft();
+					else if (ev.key.code == sf::Keyboard::A) player->moveLeft();
+					else if (ev.key.code == sf::Keyboard::Right ) player->moveRight();
+					else if (ev.key.code == sf::Keyboard::D) player->moveRight();
+					else if (ev.key.code == sf::Keyboard::Down ) {
+						player->moveDown();
+						point--;
+						Point.SetText("Point : " + to_string(point));
+					}
+					else if (ev.key.code == sf::Keyboard::S) {
 						player->moveDown();
 						point--;
 						Point.SetText("Point : " + to_string(point));

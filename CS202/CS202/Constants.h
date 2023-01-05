@@ -33,8 +33,8 @@ namespace Constants
 	const int Height_Cartype[] = { 64,64,64,64 };
 	const float speedCar[] = { 1, 0.7, 0.85, 2 };
 	const string Animaltype[] = { "bird", "dino", "ghost"};
-	const int Height_AniType[] = { 80,80 };
-	const float speedAni[] = { 1.2,0.7 };
+	const int Height_AniType[] = { 80,80,80};
+	const float speedAni[] = { 1.2,0.7,0.9 };
 	// type
 	const int car = 1;
 	const int animal = 2;

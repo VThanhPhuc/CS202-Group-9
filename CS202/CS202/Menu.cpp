@@ -131,7 +131,7 @@ void Menu::Begin()
 		{
 			if (event.type == sf::Event::Closed)
 				window->close();
-			if (event.type == sf::Event::MouseMoved)
+			if(event.type == sf::Event::MouseMoved)
 			{
 				if (play.isMouseOver(*this->window))
 				{
@@ -257,7 +257,6 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 				{
 				case sf::Event::Closed:
 					window.close();
-					return;
 				case sf::Event::KeyPressed:
 					if (ev.key.code == sf::Keyboard::Up )
 					{

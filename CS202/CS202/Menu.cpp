@@ -257,6 +257,7 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 				{
 				case sf::Event::Closed:
 					window.close();
+					return;
 				case sf::Event::KeyPressed:
 					if (ev.key.code == sf::Keyboard::Up )
 					{

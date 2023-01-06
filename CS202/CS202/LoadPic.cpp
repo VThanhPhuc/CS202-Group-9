@@ -54,7 +54,8 @@ LoadPic::LoadPic()
 	initTexture("truck31");
 	initTexture("car30");
 	initTexture("car31");
-
+	initTexture("cat0");
+	initTexture("cat1");
 
 	//load light
 	initTexture("light");
@@ -75,4 +76,5 @@ LoadPic::LoadPic()
 	initSound("truck3");
 	initSound("menuS");
 	initSound("car3");
+	initSound("cat");
 }

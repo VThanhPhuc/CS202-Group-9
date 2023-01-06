@@ -472,104 +472,107 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 			}
 			for (auto road : roadli->roadList)
 			{
-				if (road->getObjLi() != NULL)
+				if (player->isNearRoad(*road))
 				{
-					deque<COBJECT*>* cur = road->getObjLi();
-					for (long i = 0; i < cur->size(); ++i)
+					if (road->getObjLi() != NULL)
 					{
-						if (player->isImpact(cur->at(i)))
+						deque<COBJECT*>* cur = road->getObjLi();
+						for (long i = 0; i < cur->size(); ++i)
 						{
-							if (soundOn)
-								deathSound.play();
-
-							Sleep(300);
-							std::cout << "die" << endl;
-							savepoint();
-
-							int k = 0;
-							while (window.isOpen())
+							if (player->isImpact(cur->at(i)))
 							{
-								if (return1 == 1) return;
+								if (soundOn)
+									deathSound.play();
 
-								Button resume("PLAY AGAIN", { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
-								resume.setPosition({ 500,450 });
-								resume.setFont(font);
+								Sleep(300);
+								std::cout << "die" << endl;
+								savepoint();
 
-								Button EXIT("EXIT", { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
-								EXIT.setPosition({ 1000,450 });
-								EXIT.setFont(font);
-
-								Point.setPosition({ 740,600 });
-								while (window.pollEvent(ev))
+								int k = 0;
+								while (window.isOpen())
 								{
-									if (ev.type == sf::Event::Closed)
+									if (return1 == 1) return;
+
+									Button resume("PLAY AGAIN", { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
+									resume.setPosition({ 500,450 });
+									resume.setFont(font);
+
+									Button EXIT("EXIT", { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
+									EXIT.setPosition({ 1000,450 });
+									EXIT.setFont(font);
+
+									Point.setPosition({ 740,600 });
+									while (window.pollEvent(ev))
 									{
-										window.close();
+										if (ev.type == sf::Event::Closed)
+										{
+											window.close();
+										}
+										if (ev.type == sf::Event::MouseMoved)
+										{
+											if (resume.isMouseOver(window))
+											{
+												resume.setBackColor(sf::Color::White);
+											}
+											else if (!resume.isMouseOver(window))
+											{
+												resume.setBackColor(sf::Color::Green);
+											}
+
+											if (EXIT.isMouseOver(window))
+											{
+												EXIT.setBackColor(sf::Color::White);
+											}
+											else if (!EXIT.isMouseOver(window))
+											{
+												EXIT.setBackColor(sf::Color::Green);
+											}
+
+										}
+										if (ev.type == sf::Event::MouseButtonPressed)
+										{
+											if (resume.isMouseOver(window))
+											{
+												this->PlayGame(window, d, return1, false, sound, music, s, s1);
+												if (return1 == 1) return;
+												k = 1;
+												i = 0;
+												break;
+											}
+											else if (EXIT.isMouseOver(window))
+											{
+												k = 1;
+												i = 1;
+												return1 = 1;
+
+												sound.setPosition({ 100,400 });
+												music.setPosition({ 100,600 });
+												break;
+											}
+										}
 									}
-									if (ev.type == sf::Event::MouseMoved)
+									window.clear();
+									this->LoseGame(window);
+									Point.drawTo(window);
+									resume.drawTo(window);
+									EXIT.drawTo(window);
+									window.display();
+									if (k == 1 && i == 1)
 									{
-										if (resume.isMouseOver(window))
-										{
-											resume.setBackColor(sf::Color::White);
-										}
-										else if (!resume.isMouseOver(window))
-										{
-											resume.setBackColor(sf::Color::Green);
-										}
-
-										if (EXIT.isMouseOver(window))
-										{
-											EXIT.setBackColor(sf::Color::White);
-										}
-										else if (!EXIT.isMouseOver(window))
-										{
-											EXIT.setBackColor(sf::Color::Green);
-										}
-
+										return;
 									}
-									if (ev.type == sf::Event::MouseButtonPressed)
+									else if (k == 1 && i == 0)
 									{
-										if (resume.isMouseOver(window))
-										{
-											this->PlayGame(window, d, return1, false, sound, music, s, s1);
-											if (return1 == 1) return;
-											k = 1;
-											i = 0;
-											break;
-										}
-										else if (EXIT.isMouseOver(window))
-										{
-											k = 1;
-											i = 1;
-											return1 = 1;
-
-											sound.setPosition({ 100,400 });
-											music.setPosition({ 100,600 });
-											break;
-										}
+										break;
 									}
 								}
-								window.clear();
-								this->LoseGame(window);
-								Point.drawTo(window);
-								resume.drawTo(window);
-								EXIT.drawTo(window);
-								window.display();
-								if (k == 1 && i == 1)
+								if (k == 1 && i == 0)
 								{
-									return;
-								}
-								else if (k == 1 && i == 0)
-								{
+									window.clear();
 									break;
 								}
-							}
-							if (k == 1 && i == 0)
-							{
-								window.clear();
 								break;
 							}
-							break;
 						}
 					}
 				}

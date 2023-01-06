@@ -32,9 +32,9 @@ namespace Constants
 	const int NCartype = 6;
 	const int Height_Cartype[] = { 64,64,64,64,64,64};
 	const float speedCar[] = { 1,1.2, 0.7,0.8,0.85, 2 };
-	const string Animaltype[] = { "bird", "dino", "ghost","cat"};
-	const int Height_AniType[] = { 80,80,80,80};
-	const float speedAni[] = { 1.2,0.7,0.9,1 };
+	const string Animaltype[] = { "bird", "dino", "ghost", "cat", "dog" };
+	const int Height_AniType[] = { 80,80,80,80,80 };
+	const float speedAni[] = { 1.2,0.7,0.9,1,0.8 };
 	// type
 	const int car = 1;
 	const int animal = 2;
@@ -55,5 +55,6 @@ namespace Constants
 	const std::string pointFile = "point.dat";
 
 	//sound
-	const std::string Soundtype[] = { "car","car3" ,"truck","truck3","pickup", "race", "bird", "dino", "ghost","cat"};
+	const std::string Soundtype[] = { "car", "car3","truck", "truck3", "pickup", "race",
+									"bird", "dino", "ghost", "cat", "dog" };
 }

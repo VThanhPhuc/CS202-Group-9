@@ -4,7 +4,7 @@
 #include <deque>
 #include <random>
 #include<fstream>
-enum ANITYPE {bird, dino, ghost, cat, dog, penguin, LASTTY }; 
+enum ANITYPE {bird, dino, ghost, cat, dog, penguin, pika, LASTTY }; 
 
 enum ANIDIR { TLEFT, TRIGHT, LASTDI };
 

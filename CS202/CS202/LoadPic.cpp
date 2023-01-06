@@ -58,6 +58,8 @@ LoadPic::LoadPic()
 	initTexture("cat1");
 	initTexture("dog0");
 	initTexture("dog1");
+	initTexture("penguin0");
+	initTexture("penguin1");
 
 	//load light
 	initTexture("light");
@@ -80,4 +82,5 @@ LoadPic::LoadPic()
 	initSound("car3");
 	initSound("cat");
 	initSound("dog");
+	initSound("penguin");
 }

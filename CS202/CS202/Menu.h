@@ -7,6 +7,8 @@
 #include "COBJECT.h"
 #include "CROADLIST.h"
 #include "SFML/Graphics.hpp"
+
+enum Music_State { ON, OFF };
 class Menu
 {
 protected:
@@ -33,12 +35,15 @@ protected:
 	sf::RenderWindow* window;
 	sf::Event ev;
 	sf::VideoMode videoMode;
+
+	Music_State ms;
 	// game obj
 	CPEOPLE* player;
 	CROADLIST* roadli;
 	int point;
 	int highpoint;
 	//sound
+	sf::Sound menuSound;
 	sf::Sound ingameSound;
 	sf::Sound deathSound;
 	bool soundOn;
@@ -63,12 +68,18 @@ public:
 	{
 		ingameSound = sf::Sound(LoadPic::GetIns().sound["ingame"]);
 		ingameSound.setLoop(true);
-		ingameSound.setVolume(60);
+		ingameSound.setVolume(0);
 		ingameSound.play();
+
+		menuSound = sf::Sound(LoadPic::GetIns().sound["menuS"]);
+		menuSound.setLoop(true);
+		menuSound.setVolume(60);
+		menuSound.play();
 
 		deathSound = sf::Sound(LoadPic::GetIns().sound["death"]);
 		soundOn = true;
 
+		ms = ON;
 		initializeVariable();
 		//initGame();
 	}

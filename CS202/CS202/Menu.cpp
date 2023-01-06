@@ -129,6 +129,11 @@ void Menu::Begin()
 		sf::Event event;
 		while (window->pollEvent(event))
 		{
+			if (ms == ON)
+			{
+				ingameSound.setVolume(0);
+				menuSound.setVolume(60);
+			}
 			if (event.type == sf::Event::Closed)
 				window->close();
 			if(event.type == sf::Event::MouseMoved)
@@ -449,11 +454,15 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 						//switching music
 						if (s1 == "           ON")							
 						{
+							ms = OFF;
+							menuSound.setVolume(0);
 							ingameSound.setVolume(0);
 							s1 = "           OFF";
 						}
 						else if (s1 == "           OFF")
 						{
+							ms = ON;
+							menuSound.setVolume(0);
 							ingameSound.setVolume(60);
 							s1 = "           ON";
 						}
@@ -581,6 +590,11 @@ void Menu::Menu_control(sf::RenderWindow& window, sf::Event event, Background d,
 		int return1 = 0;
 		if (b1.isMouseOver(window))
 		{
+			if (ms == ON)
+			{
+				ingameSound.setVolume(60);
+				menuSound.setVolume(0);
+			}
 			this->PlayGame(window, d, return1, false, sound, music, s, s1);
 		}
 		else if (exit1.isMouseOver(window))
@@ -589,16 +603,27 @@ void Menu::Menu_control(sf::RenderWindow& window, sf::Event event, Background d,
 		}
 		else if (load.isMouseOver(window))
 		{
+			if (ms == ON)
+			{
+				ingameSound.setVolume(60);
+				menuSound.setVolume(0);
+			}
 			this->PlayGame(window, d, return1, true, sound, music, s, s1);
 		}
 		else if (setting.isMouseOver(window))
 		{
+			if (ms == ON)
+			{
+				ingameSound.setVolume(0);
+				menuSound.setVolume(60);
+			}
 			this->Setting(window, sound, music, s, s1);
 		}
 	}
 }
 void Menu::Setting(sf::RenderWindow& window, Button& sound, Button& music, string& s, string& s1)
 {
+
 	sf::Font font;
 	if (!font.loadFromFile("ayar.ttf"))
 	{
@@ -689,12 +714,16 @@ void Menu::Setting(sf::RenderWindow& window, Button& sound, Button& music, strin
 				{
 					if (s1 == "           ON")
 					{
+						ms = OFF;
+						menuSound.setVolume(0);
 						ingameSound.setVolume(0);
 						s1 = "           OFF";
 					}
 					else if (s1 == "           OFF")
 					{
-						ingameSound.setVolume(60);
+						ms = ON;
+						menuSound.setVolume(60);
+						ingameSound.setVolume(0);
 						s1 = "           ON";
 					}
 					music.SetText(s1);

@@ -24,10 +24,15 @@ CPEOPLE::CPEOPLE(sf::RenderWindow* window, float x, float y, bool soundOn)
 	buffer = &LoadPic::GetIns().sound["step"];
 	step.setBuffer(*buffer);
 }
+bool CPEOPLE::CheckOutWindow()
+{
+	if (sprite.getPosition().y >= Constants::Height_screen) return true;
+	return false;
+}
 
 bool CPEOPLE::isImpact(COBJECT*& obj)
 {
-	if (sprite.getGlobalBounds().intersects(obj->out.getGlobalBounds()) || sprite.getPosition().y >= Constants::Height_screen)
+	if (sprite.getGlobalBounds().intersects(obj->out.getGlobalBounds()) || CheckOutWindow()==true)
 	{
 		return true;
 	}

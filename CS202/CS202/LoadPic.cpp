@@ -86,4 +86,5 @@ LoadPic::LoadPic()
 	initSound("dog");
 	initSound("penguin");
 	initSound("pika");
+	initSound("conflictsound");
 }

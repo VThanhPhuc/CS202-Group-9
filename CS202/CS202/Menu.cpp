@@ -484,11 +484,16 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 								if (soundOn)
 									deathSound.play();
 
-								Sleep(300);
+								Sleep(1000);
 								std::cout << "die" << endl;
 								savepoint();
 
 								int k = 0;
+								if (ms == ON)
+								{
+									ingameSound.setVolume(0);
+									menuSound.setVolume(60);
+								}
 								while (window.isOpen())
 								{
 									if (return1 == 1) return;
@@ -572,6 +577,95 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 									break;
 								}
 								break;
+							}
+						}
+					}
+					else
+					{
+						if (player->CheckOutWindow())
+						{
+							if (soundOn)
+								deathSound.play();
+
+							Sleep(1000);
+							std::cout << "die" << endl;
+							savepoint();
+
+							int k = 0;
+							while (window.isOpen())
+							{
+								if (return1 == 1) return;
+
+								Button resume("PLAY AGAIN", { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
+								resume.setPosition({ 500,450 });
+								resume.setFont(font);
+
+								Button EXIT("EXIT", { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
+								EXIT.setPosition({ 1000,450 });
+								EXIT.setFont(font);
+
+								Point.setPosition({ 740,600 });
+								while (window.pollEvent(ev))
+								{
+									if (ev.type == sf::Event::Closed)
+									{
+										window.close();
+									}
+									if (ev.type == sf::Event::MouseMoved)
+									{
+										if (resume.isMouseOver(window))
+										{
+											resume.setBackColor(sf::Color::White);
+										}
+										else if (!resume.isMouseOver(window))
+										{
+											resume.setBackColor(sf::Color::Green);
+										}
+
+										if (EXIT.isMouseOver(window))
+										{
+											EXIT.setBackColor(sf::Color::White);
+										}
+										else if (!EXIT.isMouseOver(window))
+										{
+											EXIT.setBackColor(sf::Color::Green);
+										}
+
+									}
+									if (ev.type == sf::Event::MouseButtonPressed)
+									{
+										if (resume.isMouseOver(window))
+										{
+											this->PlayGame(window, d, return1, false, sound, music, s, s1);
+											if (return1 == 1) return;
+											k = 1;
+											i = 0;
+										}
+										else if (EXIT.isMouseOver(window))
+										{
+											k = 1;
+											i = 1;
+											return1 = 1;
+
+											sound.setPosition({ 100,400 });
+											music.setPosition({ 100,600 });
+										}
+									}
+								}
+								window.clear();
+								this->LoseGame(window);
+								Point.drawTo(window);
+								resume.drawTo(window);
+								EXIT.drawTo(window);
+								window.display();
+								if (k == 1 && i == 1)
+								{
+									return;
+								}
+							}
+							if (k == 1 && i == 0)
+							{
+								window.clear();
 							}
 						}
 					}

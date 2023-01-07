@@ -40,6 +40,7 @@ public:
 	void Control();
 	bool isNearRoad(CROAD& road);
 	sf::Sprite getObj();
+	bool CheckOutWindow();
 	void save(ofstream& fout);
 	void load(ifstream& fin);
 	void turnSound();

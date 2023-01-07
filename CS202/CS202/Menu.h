@@ -76,7 +76,7 @@ public:
 		menuSound.setVolume(60);
 		menuSound.play();
 
-		deathSound = sf::Sound(LoadPic::GetIns().sound["death"]);
+		deathSound = sf::Sound(LoadPic::GetIns().sound["conflictsound"]);
 		soundOn = true;
 
 		ms = ON;

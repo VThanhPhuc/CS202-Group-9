@@ -487,13 +487,12 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 								Sleep(1000);
 								std::cout << "die" << endl;
 								savepoint();
-
-								int k = 0;
 								if (ms == ON)
 								{
 									ingameSound.setVolume(0);
 									menuSound.setVolume(60);
 								}
+								int k = 0;
 								while (window.isOpen())
 								{
 									if (return1 == 1) return;
@@ -590,7 +589,11 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 							Sleep(1000);
 							std::cout << "die" << endl;
 							savepoint();
-
+							if (ms == ON)
+							{
+								ingameSound.setVolume(0);
+								menuSound.setVolume(60);
+							}
 							int k = 0;
 							while (window.isOpen())
 							{

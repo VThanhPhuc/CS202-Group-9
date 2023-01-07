@@ -537,6 +537,11 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 										{
 											if (resume.isMouseOver(window))
 											{
+												if (ms == ON)
+												{
+													ingameSound.setVolume(60);
+													menuSound.setVolume(0);
+												}
 												this->PlayGame(window, d, return1, false, sound, music, s, s1);
 												if (return1 == 1) return;
 												k = 1;
@@ -639,6 +644,11 @@ void Menu::PlayGame(sf::RenderWindow& window, Background d, int& return1, bool p
 									{
 										if (resume.isMouseOver(window))
 										{
+											if (ms == ON)
+											{
+												ingameSound.setVolume(60);
+												menuSound.setVolume(0);
+											}
 											this->PlayGame(window, d, return1, false, sound, music, s, s1);
 											if (return1 == 1) return;
 											k = 1;
